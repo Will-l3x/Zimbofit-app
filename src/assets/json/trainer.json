@@ -1,0 +1,71 @@
+[
+    {
+        "key": "name",
+        "type": "input",
+        "templateOptions": {
+            "placeholder": "Full Name",
+            "required": true
+        }
+    },
+    {
+        "key": "description",
+        "type": "textarea",
+        "templateOptions": {
+            "placeholder": "Description",
+            "required": true,
+            "rows": 5
+        }
+    },
+    {
+        "key": "phone",
+        "type": "input",
+        "templateOptions": {
+            "input": "phone",
+            "placeholder": "Phone",
+            "required": true
+        }
+    },
+    {
+        "key": "facebook",
+        "type": "input",
+        "templateOptions": {
+            "type": "url",
+            "placeholder": "Facebook URL",
+            "required": true,
+            "addonLeft": {
+                "class": "fa fa-facebook"
+            }
+        }
+    },
+    {
+        "key": "twitter",
+        "type": "input",
+        "templateOptions": { 
+            "type": "url",
+            "placeholder": "Twitter URL",
+            "required": true,
+            "addonLeft": {
+                "class": "fa fa-twitter"
+            }
+        }
+    },
+    {
+        "key": "linkedin",
+        "type": "input",
+        "templateOptions": {
+            "type": "url",
+            "placeholder": "LinkedIn URL",
+            "required": true,
+            "addonLeft": {
+                "class": "fa fa-linkedin"
+            }
+        }
+    },
+    { 
+      "key": "image_url",
+      "type": "input",
+      "templateOptions": {
+        "type": "hidden"
+      }
+    }
+]

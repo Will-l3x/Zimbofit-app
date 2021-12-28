@@ -1,0 +1,26 @@
+[
+    {
+      "key": "name",
+      "type": "input",
+      "templateOptions": {
+        "placeholder": "Muscle Name",
+        "required": true,
+        "label": "",
+        "focus": false,
+        "disabled": false
+      }
+    },
+    {
+      "key": "description",
+      "type": "textarea",
+      "templateOptions": {
+        "placeholder": "Muscle Group Description",
+        "required": false,
+        "label": "",
+        "focus": false,
+        "cols": 1,
+        "rows": 1,
+        "disabled": false
+      }
+    }
+  ]

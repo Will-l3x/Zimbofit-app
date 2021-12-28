@@ -1,0 +1,84 @@
+[
+    {
+      "key": "name",
+      "type": "input",
+      "templateOptions": {
+        "placeholder": "Exercise Name",
+        "required": true,
+        "label": "",
+        "focus": false,
+        "disabled": false
+      }
+    },
+    {
+      "key": "description",
+      "type": "textarea",
+      "templateOptions": {
+        "placeholder": "Exercise Description",
+        "required": false,
+        "label": "",
+        "focus": false,
+        "cols": 1,
+        "rows": 6,
+        "disabled": false
+      }
+    },
+    {
+      "key": "type",
+      "type": "select",
+      "templateOptions": {
+        "placeholder": "Exercise Type",
+        "required": true,
+        "options": [],
+        "valueProp": "id",
+        "labelProp": "name",
+        "label": "",
+        "focus": false,
+        "disabled": false
+      }
+    },
+    {
+      "key": "compound",
+      "type": "checkbox",
+      "templateOptions": {
+        "label": "Is a Compound Exercise"
+      }
+    },
+    {
+      "key": "muscleGroup_id",
+      "type": "select",
+      "templateOptions": {
+        "placeholder": "Primary Muscle",
+        "required": true,
+        "options": [],
+        "valueProp": "id",
+        "labelProp": "name",
+        "label": "",
+        "focus": false,
+        "disabled": false
+      }
+    },
+    {
+      "key": "muscleGroup_ids",
+      "type": "select",
+      "templateOptions": {
+        "multiple": true,
+        "required": true,
+        "label": "Secondary Muscles",
+        "options": [],
+        "cols": 4,
+        "valueProp": "id",
+        "labelProp": "name",
+        "focus": false,
+        "disabled": false
+      },
+      "hideExpression": "!model.compound"
+    },
+    { 
+      "key": "image_url",
+      "type": "input",
+      "templateOptions": {
+        "type": "hidden"
+      }
+    }
+  ]

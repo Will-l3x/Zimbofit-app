@@ -1,0 +1,55 @@
+[
+    {
+        "key": "name",
+        "type": "input",
+        "className": "col-md-12",
+        "templateOptions": {
+            "placeholder": "Name",
+            "required": true
+        }
+    },
+    {
+        "key": "amount",
+        "type": "input",
+        "className": "col-md-12",
+        "templateOptions": {
+            "type": "number",
+            "placeholder": "Amount",
+            "required": true,
+            "addonLeft": {
+                "text": "$"
+            }
+        }
+    },
+    {
+        "key": "date",
+        "type": "input",
+        "className": "col-md-6",
+        "templateOptions": {
+            "type": "date",
+            "placeholder": "Date",
+            "required": true
+        } 
+    },
+    {
+        "key": "time",
+        "type": "input",
+        "className": "col-md-6",
+        "templateOptions": {
+            "type": "time",
+            "placeholder": "Time",
+            "required": false
+        }
+    },
+    {
+        "key": "comments",
+        "type": "textarea",
+        "className": "col-md-12",
+        "templateOptions": {
+            "placeholder": "Comments",
+            "required": false,
+            "cols": 1,
+            "rows": 2
+        }
+    }
+]

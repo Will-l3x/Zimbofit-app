@@ -1,0 +1,104 @@
+[
+    {
+        "key": "name",
+        "type": "input",
+        "templateOptions": {
+            "label": "Workout Name",
+            "required": true
+        }
+    },
+    {
+        "key": "description",
+        "type": "textarea",
+        "templateOptions": {
+            "label": "Workout Description",
+            "required": false
+        }
+    },
+    {
+        "key": "category_id",
+        "type": "select",
+        "templateOptions": {
+            "placeholder": "Choose Category",
+            "label": "Category",
+            "required": true,
+            "options": [],
+            "valueProp": "id",
+            "labelProp": "name"
+        }
+    },
+    {
+        "className": "col-3 pr-0",
+        "key": "muscleGroup_ids",
+        "type": "select",
+        "templateOptions": {
+            "multiple": true,
+            "placeholder": "Choose Muscle Groups",
+            "label": "Muscle Groups",
+            "required": false, 
+            "options": [],
+            "valueProp": "id",
+            "labelProp": "name"
+        }
+    },
+    {
+        "key": "exercises",
+        "type": "repeat",
+        "templateOptions": {
+            "addText": "Add Exercise",
+            "title": "Exercises"
+        },
+        "fieldArray": {
+            "fieldGroupClassName": "row",
+            "fieldGroup": [
+                {
+                    "className": "col-3",
+                    "key": "exercise_id",
+                    "type": "select",
+                    "templateOptions": {
+                        "placeholder": "Choose Exercise",
+                        "label": "Exercise",
+                        "required": true,
+                        "options": [],
+                        "valueProp": "id",
+                        "labelProp": "name"
+                    }
+                },
+                {
+                    "type": "input",
+                    "key": "reps",
+                    "className": "col-3",
+                    "templateOptions": {
+                        "type": "number",
+                        "placeholder": "",
+                        "label": "Reps",
+                        "required": true,
+                        "disabled": false,
+                        "addonRight": {
+                            "text": "Reps"
+                        }
+                    }
+                },
+                {
+                    "type": "input",
+                    "key": "rest",
+                    "className": "col-3",
+                    "templateOptions": {
+                        "type": "number",
+                        "placeholder": "",
+                        "label": "Rest Period (min)",
+                        "required": false,
+                        "disabled": false
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "key": "image_url",
+        "type": "input",
+        "templateOptions": {
+            "type": "hidden"
+        }
+    }
+]

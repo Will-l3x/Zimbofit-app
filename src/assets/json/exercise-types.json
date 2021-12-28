@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "name": "Cardio"
+    },
+    {
+        "id": "2",
+        "name": "Strength"
+    },
+    {
+        "id": "3",
+        "name": "Stretch"
+    },
+    {
+        "id": "4",
+        "name": "Balance"
+    }
+]

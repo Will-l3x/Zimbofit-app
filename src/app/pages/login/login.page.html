@@ -1,0 +1,206 @@
+<ion-content>
+  <div class="lg:flex text-red-500">
+    <div class="lg:w-1/2 xl:max-w-screen-sm">
+      <div class="py-12 flex justify-center lg:justify-start lg:px-12">
+        <div class="cursor-pointer flex items-center" data-url="/home">
+          <div>
+            <img
+              src="../../../assets/img/128 icon.png"
+              alt="logo"
+              class="w-10 h-10 shadow-lg rounded-full"
+            />
+          </div>
+          <div class="text-2xl text-slate-700 tracking-wide ml-2 font-semibold">
+            ZimboFit
+          </div>
+        </div>
+      </div>
+      <div
+        class="
+          mt-10
+          px-12
+          sm:px-24
+          md:px-48
+          lg:px-12 lg:mt-16
+          xl:px-24 xl:max-w-2xl
+        "
+      >
+        <h2
+          class="
+            text-center text-4xl text-slate-700
+            font-display font-semibold
+            lg:text-left
+            xl:text-5xl xl:text-bold
+          "
+        >
+          Log in
+        </h2>
+        <div class="mt-12">
+          <form>
+            <div>
+              <div class="text-sm font-bold text-slate-700 tracking-wide">
+                Email Address / Phone Number
+              </div>
+              <input
+                class="
+                  w-full
+                  text-lg
+                  py-2
+                  border-b border-slate-300
+                  focus:outline-none focus:border-orange-600
+                "
+                type=""
+                placeholder="email@gmail.com / +263 893 383 3888"
+              />
+            </div>
+            <div class="mt-8">
+              <div class="flex justify-between items-center">
+                <div class="text-sm font-bold text-slate-700 tracking-wide">
+                  Password
+                </div>
+                <div>
+                  <a
+                    class="
+                      text-xs
+                      font-display font-semibold
+                      text-orange-600
+                      hover:text-slate-700
+                      cursor-pointer
+                    "
+                  >
+                    Forgot Password?
+                  </a>
+                </div>
+              </div>
+              <input
+                class="
+                  w-full
+                  text-lg
+                  py-2
+                  border-b border-slate-300
+                  focus:outline-none focus:border-orange-600
+                "
+                type=""
+                placeholder="Enter your password"
+              />
+            </div>
+            <div class="mt-10">
+              <button
+                (click)="onLogin()"
+                class="
+                  bg-orange-600
+                  text-white
+                  p-4
+                  w-full
+                  rounded-full
+                  tracking-wide
+                  font-semibold font-display
+                  focus:outline-none focus:shadow-outline
+                  hover:bg-orange-400
+                  shadow-lg
+                "
+              >
+                Log In
+              </button>
+            </div>
+          </form>
+
+          <!-- <div [hidden]="user">
+            <h1 class="ion-text-center">Sign In with Your Phone Number</h1>
+
+            <form [hidden]="windowRef.confirmationResult" [formGroup]="form">
+              <div>
+                <ion-item>
+                  <ion-label>Country</ion-label>
+                  <ion-select
+                    formControlName="country"
+                    [interfaceOptions]="selectOptions"
+                    required
+                  >
+                    <ion-select-option
+                      *ngFor="let c of countries"
+                      [value]="c.code"
+                    >
+                      {{c.name}}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Phone Number: ({{prefix}})</ion-label>
+                  <ion-input
+                    formControlName="number"
+                    class="input"
+                    placeholder="774684534"
+                    minlength="7"
+                    maxlength="15"
+                    required
+                  >
+                  </ion-input>
+                </ion-item>
+                <div id="recaptcha-container"></div>
+                <ion-button
+                  margin
+                  class="button is-info"
+                  size="block"
+                  [disabled]="form.invalid"
+                  (click)="sendLoginCode()"
+                >
+                  SMS Code
+                </ion-button>
+              </div>
+            </form>
+
+            <div *ngIf="windowRef.confirmationResult">
+              <label padding for="code">Enter your Verification Code Here</label
+              ><br />
+              <ion-item>
+                <ion-label position="floating">Code</ion-label>
+                <ion-input
+                  type="text"
+                  name="code"
+                  [(ngModel)]="verificationCode"
+                ></ion-input>
+              </ion-item>
+              <ion-button
+                margin
+                class="button is-success"
+                (click)="verifyLoginCode()"
+                >Verify</ion-button
+              >
+            </div>
+          </div>
+
+          <div *ngIf="user" padding>
+            <div class="notification is-success">
+              You have successfully logged in with your phone number!
+            </div>
+            <ion-note>UserId: {{ user?.uid }}</ion-note>
+          </div>
+          -->
+          <div
+            class="
+              mt-12
+              text-sm
+              font-display font-semibold
+              text-slate-700 text-center
+            "
+          >
+            Don't have an account ?
+            <a class="cursor-pointer text-orange-600 hover:text-slate-500"
+              >Sign up</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden lg:flex h-screen bg-[#e5e3d4]">
+      <div class="cursor-pointer">
+        <img
+          src="../../../assets/img/home/Lifestyle 05.jpg"
+          class="w-full h-full object-cover object-center"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</ion-content>

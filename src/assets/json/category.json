@@ -1,0 +1,26 @@
+[
+  {
+    "key": "name",
+    "type": "input",
+    "templateOptions": {
+      "placeholder": "Category Name",
+      "required": true,
+      "label": "",
+      "focus": false,
+      "disabled": false
+    }
+  },
+  {
+    "key": "description",
+    "type": "textarea",
+    "templateOptions": {
+      "placeholder": "Category Description",
+      "required": true,
+      "label": "",
+      "focus": false,
+      "cols": 1,
+      "rows": 2,
+      "disabled": false
+    }
+  }
+]

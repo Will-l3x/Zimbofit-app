@@ -1,0 +1,89 @@
+[
+    {
+        "key": "name",
+        "type": "input",
+        "templateOptions": {
+            "placeholder": "Program Name",
+            "required": true,
+            "label": "",
+            "focus": false,
+            "disabled": false
+        }
+    },
+    {
+        "key": "description",
+        "type": "textarea",
+        "templateOptions": {
+            "placeholder": "Program Description",
+            "required": false,
+            "label": "",
+            "focus": false,
+            "cols": 1,
+            "rows": 2,
+            "disabled": false
+        }
+    },
+    {
+        "key": "category_id",
+        "type": "select",
+        "templateOptions": {
+            "label": "Category",
+            "required": true,
+            "options": [],
+            "valueProp": "id",
+            "labelProp": "name",
+            "placeholder": "Choose Category",
+            "focus": false,
+            "disabled": false
+        }
+    },
+    {
+        "key": "workouts",
+        "type": "repeat",
+        "templateOptions": {
+            "addText": "Add Workout",
+            "label": "",
+            "placeholder": "",
+            "focus": false,
+            "disabled": false
+        },
+        "fieldArray": {
+            "fieldGroupClassName": "row",
+            "fieldGroup": [
+                {
+                    "type": "input",
+                    "key": "day",
+                    "className": "col-md-6",
+                    "templateOptions": {
+                        "type": "number",
+                        "label": "Workout Number",
+                        "required": true,
+                        "addonLeft": {
+                            "text": "Day"
+                        }
+                    }
+                },
+                {
+                    "className": "col-md-6",
+                    "key": "workout_id",
+                    "type": "select",
+                    "templateOptions": {
+                        "label": "Workout",
+                        "placeholder": "Choose Workout",
+                        "required": true,
+                        "options": [],
+                        "valueProp": "id",
+                        "labelProp": "name"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "key": "image_url",
+        "type": "input",
+        "templateOptions": {
+            "type": "hidden"
+        }
+    }
+]
