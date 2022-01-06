@@ -1,13 +1,6 @@
 <ion-content>
   <div
-    class="
-      flex
-      h-screen
-      antialiased
-      text-slate-900
-      bg-slate-100
-      dark:bg-dark dark:text-light
-    "
+    class="flex h-screen antialiased text-slate-900 bg-slate-100 dark:bg-dark dark:text-light"
   >
     <!-- Sidebar -->
     <aside class="flex-shrink-0 hidden w-64 bg-slate-50 border-r md:block">
@@ -15,30 +8,13 @@
         <!-- Sidebar links -->
         <nav
           aria-label="Main"
-          class="
-            flex-1
-            px-2
-            py-4
-            space-y-2
-            overflow-y-hidden
-            hover:overflow-y-auto
-          "
+          class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto"
         >
           <!-- Dashboard links -->
           <div>
             <a
               href="/dashboard"
-              class="
-                selected
-                flex
-                items-center
-                p-2
-                text-orange-600
-                transition-colors
-                rounded-md
-                cursor-pointer
-                hover:bg-orange-600 hover:text-slate-50
-              "
+              class="selected flex items-center p-2 text-orange-600 transition-colors rounded-md cursor-pointer from-orange-600 to-orange-500 hover:bg-gradient-to-r hover:text-slate-50"
               role="button"
               aria-haspopup="true"
             >
@@ -66,15 +42,7 @@
           <div>
             <a
               href="#"
-              class="
-                flex
-                items-center
-                p-2
-                text-orange-600
-                transition-colors
-                rounded-md
-                hover:bg-orange-600 hover:text-slate-50
-              "
+              class="flex items-center p-2 text-orange-600 transition-colors rounded-md from-orange-600 to-orange-500 hover:bg-gradient-to-r hover:text-slate-50"
               role="button"
               aria-haspopup="true"
             >
@@ -121,16 +89,7 @@
                 href="#"
                 role="menuitem"
                 *ngFor="let category of categories"
-                class="
-                  block
-                  p-2
-                  text-sm text-slate-500
-                  transition-colors
-                  duration-200
-                  rounded-md
-                  cursor-pointer
-                  hover:bg-orange-400 hover:text-slate-50
-                "
+                class="block p-2 text-sm text-slate-500 transition-colors duration-200 rounded-md cursor-pointer hover:bg-orange-400 hover:text-slate-50"
               >
                 {{category.name}}
               </a>
@@ -141,15 +100,7 @@
           <div>
             <a
               href="#"
-              class="
-                flex
-                items-center
-                p-2
-                text-orange-600
-                transition-colors
-                rounded-md
-                hover:bg-orange-600 hover:text-slate-50
-              "
+              class="flex items-center p-2 text-orange-600 transition-colors rounded-md from-orange-600 to-orange-500 hover:bg-gradient-to-r hover:text-slate-50"
               role="button"
               aria-haspopup="true"
             >
@@ -164,15 +115,7 @@
           <div>
             <a
               href="#"
-              class="
-                flex
-                items-center
-                p-2
-                text-orange-600
-                transition-colors
-                rounded-md
-                hover:bg-orange-600 hover:text-slate-50
-              "
+              class="flex items-center p-2 text-orange-600 transition-colors rounded-md from-orange-600 to-orange-500 hover:bg-gradient-to-r hover:text-slate-50"
               role="button"
               aria-haspopup="true"
             >
@@ -191,15 +134,7 @@
           <div>
             <a
               href="#"
-              class="
-                flex
-                items-center
-                p-2
-                text-orange-600
-                transition-colors
-                rounded-md
-                hover:bg-orange-600 hover:text-slate-50
-              "
+              class="flex items-center p-2 text-orange-600 transition-colors rounded-md from-orange-600 to-orange-500 hover:bg-gradient-to-r hover:text-slate-50"
               role="button"
               aria-haspopup="true"
             >
@@ -213,15 +148,7 @@
           <div>
             <a
               href="#"
-              class="
-                flex
-                items-center
-                p-2
-                text-orange-600
-                transition-colors
-                rounded-md
-                hover:bg-orange-600 hover:text-slate-50
-              "
+              class="flex items-center p-2 text-orange-600 transition-colors rounded-md from-orange-600 to-orange-500 hover:bg-gradient-to-r hover:text-slate-50"
               role="button"
               aria-haspopup="true"
             >
@@ -250,23 +177,7 @@
         <div class="flex-shrink-0 px-2 py-4 space-y-2">
           <button
             type="button"
-            class="
-              flex
-              items-center
-              justify-center
-              w-full
-              bg-orange-600
-              px-4
-              py-2
-              text-sm text-slate-50
-              rounded-md
-              hover:bg-orange-500
-              focus:outline-none
-              focus:ring
-              focus:ring-orange-400
-              focus:ring-offset-1
-              focus:ring-offset-white
-            "
+            class="flex items-center justify-center w-full from-orange-600 to-orange-500 bg-gradient-to-r px-4 py-2 text-sm text-slate-50 rounded-md hover:bg-orange-400 focus:outline-none focus:ring focus:ring-orange-400 focus:ring-offset-1 focus:ring-offset-white"
           >
             <span aria-hidden="true">
               <svg
@@ -290,24 +201,16 @@
       </div>
     </aside>
 
-    <div class="flex-1 h-full relative overflow-x-hidden overflow-y-auto">
+    <div
+      class="flex-1 h-full relative overflow-x-hidden overflow-y-auto bg-slate-200"
+    >
       <!-- Navbar -->
-      <header class="sticky top-0 z-50 bg-white">
+      <header class="sticky top-0 z-50 bg-slate-50">
         <div class="flex items-center justify-between p-2 border-b">
           <!-- Mobile menu button -->
           <button
             (click)="toggleMenu()"
-            class="
-              p-1
-              transition-colors
-              duration-200
-              rounded-md
-              text-orange-600
-              bg-slate-100
-              hover:text-slate-50 hover:bg-orange-600
-              md:hidden
-              focus:outline-none focus:ring
-            "
+            class="p-1 transition-colors duration-200 rounded-md text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 md:hidden focus:outline-none focus:ring"
           >
             <span class="sr-only">Open main manu</span>
             <span aria-hidden="true">
@@ -331,14 +234,7 @@
           <!-- Brand -->
           <a
             href="/dashboard"
-            class="
-              inline-block
-              text-2xl
-              font-bold
-              tracking-wider
-              uppercase
-              text-orange-600
-            "
+            class="inline-block text-2xl font-bold tracking-wider uppercase text-orange-600"
           >
             ZimboFit
           </a>
@@ -346,17 +242,7 @@
           <!-- Mobile sub menu button -->
           <button
             (click)="toggleSubMenu()"
-            class="
-              p-1
-              transition-colors
-              duration-200
-              rounded-md
-              text-orange-600
-              bg-slate-100
-              hover:text-slate-50 hover:bg-orange-600
-              md:hidden
-              focus:outline-none focus:ring
-            "
+            class="p-1 transition-colors duration-200 rounded-md text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 md:hidden focus:outline-none focus:ring"
           >
             <span class="sr-only">Open sub menu</span>
             <span aria-hidden="true">
@@ -384,16 +270,7 @@
           >
             <!-- Notification button -->
             <button
-              class="
-                p-2
-                transition-colors
-                duration-200
-                rounded-full
-                text-orange-600
-                bg-slate-100
-                hover:text-slate-50 hover:bg-orange-600
-                focus:outline-none focus:bg-orange-600 focus:ring-orange-400
-              "
+              class="p-2 transition-colors duration-200 rounded-full text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 focus:outline-none focus:bg-orange-600 focus:ring-orange-400"
             >
               <span class="sr-only">Open Notification panel</span>
               <svg
@@ -415,16 +292,7 @@
 
             <!-- Search button -->
             <button
-              class="
-                p-2
-                transition-colors
-                duration-200
-                rounded-full
-                text-orange-600
-                bg-slate-100
-                hover:text-slate-50 hover:bg-orange-600
-                focus:outline-none focus:bg-orange-600 focus:ring-orange-400
-              "
+              class="p-2 transition-colors duration-200 rounded-full text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 focus:outline-none focus:bg-orange-600 focus:ring-orange-400"
             >
               <span class="sr-only">Open search panel</span>
               <svg
@@ -446,16 +314,7 @@
 
             <!-- Settings button -->
             <button
-              class="
-                p-2
-                transition-colors
-                duration-200
-                rounded-full
-                text-orange-600
-                bg-slate-100
-                hover:text-slate-50 hover:bg-orange-600
-                focus:outline-none focus:bg-orange-600 focus:ring-orange-400
-              "
+              class="p-2 transition-colors duration-200 rounded-full text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 focus:outline-none focus:bg-orange-600 focus:ring-orange-400"
             >
               <span class="sr-only">Open settings panel</span>
               <svg
@@ -487,17 +346,7 @@
                 type="button"
                 aria-haspopup="true"
                 :aria-expanded="open ? 'true' : 'false'"
-                class="
-                  transition-opacity
-                  duration-200
-                  w-10
-                  h-10
-                  rounded-full
-                  text-orange-600
-                  bg-slate-100
-                  hover:text-slate-50 hover:bg-orange-600
-                  focus:outline-none focus:bg-orange-600 focus:ring-orange-400
-                "
+                class="transition-opacity duration-200 w-10 h-10 rounded-full text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 focus:outline-none focus:bg-orange-600 focus:ring-orange-400"
               >
                 <span class="sr-only">User menu</span>
                 <ion-icon name="person" class="w-6 h-6"></ion-icon>
@@ -513,19 +362,7 @@
                 x-transition:leave="transition-all transform ease-in"
                 x-transition:leave-start="translate-y-0 opacity-100"
                 x-transition:leave-end="translate-y-1/2 opacity-0"
-                class="
-                  hidden
-                  absolute
-                  right-0
-                  w-48
-                  py-1
-                  bg-white
-                  rounded-md
-                  shadow-lg
-                  top-12
-                  ring-1 ring-black ring-opacity-5
-                  focus:outline-none
-                "
+                class="hidden absolute right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 focus:outline-none"
                 tabindex="-1"
                 role="menu"
                 aria-orientation="vertical"
@@ -534,45 +371,21 @@
                 <a
                   href="#"
                   role="menuitem"
-                  class="
-                    block
-                    px-4
-                    py-2
-                    text-sm text-orange-600
-                    transition-colors
-                    hover:bg-slate-100
-                    dark:text-light dark:hover:bg-orange
-                  "
+                  class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                 >
                   Your Profile
                 </a>
                 <a
                   href="#"
                   role="menuitem"
-                  class="
-                    block
-                    px-4
-                    py-2
-                    text-sm text-orange-600
-                    transition-colors
-                    hover:bg-slate-100
-                    dark:text-light dark:hover:bg-orange
-                  "
+                  class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                 >
                   Settings
                 </a>
                 <a
                   href="#"
                   role="menuitem"
-                  class="
-                    block
-                    px-4
-                    py-2
-                    text-sm text-orange-600
-                    transition-colors
-                    hover:bg-slate-100
-                    dark:text-light dark:hover:bg-orange
-                  "
+                  class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                 >
                   Logout
                 </a>
@@ -590,33 +403,13 @@
             x-transition:leave-start="translate-y-0 opacity-100"
             x-transition:leave-end="-translate-y-full opacity-0"
             x-show="isMobileSubMenuOpen"
-            class="
-              absolute
-              items-center
-              p-4
-              bg-white
-              rounded-md
-              shadow-lg
-              dark:bg-darker
-              top-16
-              inset-x-4
-              hidden
-            "
+            class="absolute items-center p-4 bg-white rounded-md shadow-lg dark:bg-darker top-16 inset-x-4 hidden"
             aria-label="Secondary"
           >
             <div class="space-x-2">
               <!-- Notification button -->
               <button
-                class="
-                  p-2
-                  transition-colors
-                  duration-200
-                  rounded-full
-                  text-orange-600
-                  bg-slate-100
-                  hover:text-slate-50 hover:bg-orange-600
-                  focus:outline-none focus:bg-orange-600 focus:ring-orange-400
-                "
+                class="p-2 transition-colors duration-200 rounded-full text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 focus:outline-none focus:bg-orange-600 focus:ring-orange-400"
               >
                 <span class="sr-only">Open notifications panel</span>
                 <svg
@@ -638,16 +431,7 @@
 
               <!-- Search button -->
               <button
-                class="
-                  p-2
-                  transition-colors
-                  duration-200
-                  rounded-full
-                  text-orange-600
-                  bg-slate-100
-                  hover:text-slate-50 hover:bg-orange-600
-                  focus:outline-none focus:bg-orange-600 focus:ring-orange-400
-                "
+                class="p-2 transition-colors duration-200 rounded-full text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 focus:outline-none focus:bg-orange-600 focus:ring-orange-400"
               >
                 <span class="sr-only">Open search panel</span>
                 <svg
@@ -669,16 +453,7 @@
 
               <!-- Settings button -->
               <button
-                class="
-                  p-2
-                  transition-colors
-                  duration-200
-                  rounded-full
-                  text-orange-600
-                  bg-slate-100
-                  hover:text-slate-50 hover:bg-orange-600
-                  focus:outline-none focus:bg-orange-600 focus:ring-orange-400
-                "
+                class="p-2 transition-colors duration-200 rounded-full text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 focus:outline-none focus:bg-orange-600 focus:ring-orange-400"
               >
                 <span class="sr-only">Open settings panel</span>
                 <svg
@@ -711,17 +486,7 @@
                   type="button"
                   aria-haspopup="true"
                   :aria-expanded="open ? 'true' : 'false'"
-                  class="
-                    transition-opacity
-                    duration-200
-                    w-10
-                    h-10
-                    rounded-full
-                    text-orange-600
-                    bg-slate-100
-                    hover:text-slate-50 hover:bg-orange-600
-                    focus:outline-none focus:bg-orange-600 focus:ring-orange-400
-                  "
+                  class="transition-opacity duration-200 w-10 h-10 rounded-full text-orange-600 bg-slate-100 hover:text-slate-50 hover:bg-orange-600 focus:outline-none focus:bg-orange-600 focus:ring-orange-400"
                 >
                   <span class="sr-only">User menu</span>
                   <ion-icon name="person" class="w-6 h-6"></ion-icon>
@@ -737,19 +502,7 @@
                   x-transition:leave="transition-all transform ease-in"
                   x-transition:leave-start="translate-y-0 opacity-100"
                   x-transition:leave-end="translate-y-1/2 opacity-0"
-                  class="
-                    hidden
-                    absolute
-                    right-0
-                    w-48
-                    py-1
-                    bg-white
-                    rounded-md
-                    shadow-lg
-                    top-12
-                    ring-1 ring-black ring-opacity-5
-                    focus:outline-none
-                  "
+                  class="hidden absolute right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 focus:outline-none"
                   tabindex="-1"
                   role="menu"
                   aria-orientation="vertical"
@@ -758,45 +511,21 @@
                   <a
                     href="#"
                     role="menuitem"
-                    class="
-                      block
-                      px-4
-                      py-2
-                      text-sm text-orange-600
-                      transition-colors
-                      hover:bg-slate-100
-                      dark:text-light dark:hover:bg-orange
-                    "
+                    class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                   >
                     Your Profile
                   </a>
                   <a
                     href="#"
                     role="menuitem"
-                    class="
-                      block
-                      px-4
-                      py-2
-                      text-sm text-orange-600
-                      transition-colors
-                      hover:bg-slate-100
-                      dark:text-light dark:hover:bg-orange
-                    "
+                    class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                   >
                     Settings
                   </a>
                   <a
                     href="#"
                     role="menuitem"
-                    class="
-                      block
-                      px-4
-                      py-2
-                      text-sm text-orange-600
-                      transition-colors
-                      hover:bg-slate-100
-                      dark:text-light dark:hover:bg-orange
-                    "
+                    class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                   >
                     Logout
                   </a>
@@ -811,19 +540,7 @@
                 x-transition:leave="transition-all transform ease-in"
                 x-transition:leave-start="translate-y-0 opacity-100"
                 x-transition:leave-end="translate-y-1/2 opacity-0"
-                class="
-                  hidden
-                  absolute
-                  right-0
-                  w-48
-                  py-1
-                  origin-top-right
-                  bg-white
-                  rounded-md
-                  shadow-lg
-                  top-12
-                  ring-1 ring-black ring-opacity-5
-                "
+                class="hidden absolute right-0 w-48 py-1 origin-top-right bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5"
                 role="menu"
                 aria-orientation="vertical"
                 aria-label="User menu"
@@ -831,45 +548,21 @@
                 <a
                   href="#"
                   role="menuitem"
-                  class="
-                    block
-                    px-4
-                    py-2
-                    text-sm text-orange-600
-                    transition-colors
-                    hover:bg-slate-100
-                    dark:text-light dark:hover:bg-orange
-                  "
+                  class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                 >
                   Your Profile
                 </a>
                 <a
                   href="#"
                   role="menuitem"
-                  class="
-                    block
-                    px-4
-                    py-2
-                    text-sm text-orange-600
-                    transition-colors
-                    hover:bg-slate-100
-                    dark:text-light dark:hover:bg-orange
-                  "
+                  class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                 >
                   Settings
                 </a>
                 <a
                   href="#"
                   role="menuitem"
-                  class="
-                    block
-                    px-4
-                    py-2
-                    text-sm text-orange-600
-                    transition-colors
-                    hover:bg-slate-100
-                    dark:text-light dark:hover:bg-orange
-                  "
+                  class="block px-4 py-2 text-sm text-orange-600 transition-colors hover:bg-slate-100 dark:text-light dark:hover:bg-orange"
                 >
                   Logout
                 </a>
@@ -882,334 +575,334 @@
       <!-- Main content -->
       <main class="text-orange-600">
         <!-- Content -->
-        <div class="m-4">
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
-            <div class="lg:col-span-2 grid grid-rows-2 gap-4 text-slate-700">
-              <div
-                class="
-                  px-4
-                  py-6
-                  bg-slate-50
-                  rounded-lg
-                  shadow-md
-                  transform
-                  transition
-                  duration-500
-                "
-              >
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-12 h-12 mb-3 inline-block"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8 17l4 4 4-4m-4-5v9"></path>
-                  <path
-                    d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"
-                  ></path>
-                </svg>
-                <h2 class="title-font font-medium text-3xl">2.7K</h2>
-                <p class="leading-relaxed">Exercises</p>
-              </div>
-              <div
-                class="
-                  px-4
-                  py-6
-                  bg-slate-50
-                  rounded-lg
-                  shadow-md
-                  transform
-                  transition
-                  duration-500
-                "
-              >
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-12 h-12 mb-3 inline-block"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8 17l4 4 4-4m-4-5v9"></path>
-                  <path
-                    d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"
-                  ></path>
-                </svg>
-                <h2 class="title-font font-medium text-3xl">2.7K</h2>
-                <p class="leading-relaxed">Workouts</p>
-              </div>
-            </div>
-            <div class="lg:col-span-2">
-              <div class="w-full h-full">
+        <div class="p-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
+          <div class="w-full h-full">
+            <div
+              class="rounded-3xl bg-gradient-to-t from-orange-600 to-orange-500 shadow-md h-80 md:h-96"
+            >
+              <div class="h-14 w-full font-semibold p-4 text-sm text-orange-50">
+                <span class="float-left p-2 text-base">Overview</span>
                 <div
-                  class="
-                    mb-4
-                    rounded-lg
-                    bg-slate-50
-                    shadow-md
-                    relative
-                    overflow-hidden
-                    h-full
-                  "
+                  class="float-right border-2 border-orange-50 text-center w-32 flex p-2 rounded-full"
                 >
-                  <div class="px-3 pt-8 pb-10 text-center relative z-10">
-                    <h4 class="text-sm uppercase text-gray-500 leading-tight">
-                      Calories
-                    </h4>
-                    <h3
-                      class="
-                        text-3xl text-gray-700
-                        font-semibold
-                        leading-tight
-                        my-3
-                      "
+                  <span class="ml-auto">Monthly</span>
+                  <span aria-hidden="true" class="ml-2 mr-auto">
+                    <svg
+                      class="w-4 h-4 transition-transform transform"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      11,427
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+              <div class="h-32 p-5 md:h-44">
+                <canvas #lineCanvas></canvas>
+              </div>
+              <div
+                class="grid grid-cols-3 gap-0 w-full font-semibold h-24 leading-[96px] text-sm text-orange-50"
+              >
+                <div
+                  class="text-center w-full rounded-r-3xl shadow-md shadow-orange-600/70 bg-gradient-to-r from-orange-500 to-orange-400"
+                >
+                  <span class="inline-block align-middle leading-normal">
+                    <h3 class="font-normal text-xs xl:text-base">Total Time</h3>
+                    <h2 class="font-bold text-sm xl:text-2xl">213 Hrs</h2>
+                    <h3 class="font-normal text-xs xl:text-base">April</h3>
+                  </span>
+                </div>
+
+                <div class="text-center w-full rounded-b-2xl">
+                  <span class="inline-block align-middle leading-normal">
+                    <h3 class="font-semibold text-xs xl:text-lg">
+                      Total Distance
                     </h3>
-                    <p class="text-xs text-red-500 leading-tight">▼ 42.8%</p>
+                    <h2 class="font-extrabold text-base xl:text-5xl">80 km</h2>
+                    <h3 class="font-semibold text-xs xl:text-lg">April</h3>
+                  </span>
+                </div>
+
+                <div
+                  class="text-center w-full rounded-l-3xl bg-gradient-to-l from-orange-500 to-orange-400 shadow-md shadow-orange-600/70"
+                >
+                  <span class="inline-block align-middle leading-normal">
+                    <h3 class="font-normal text-xs xl:text-base">Target</h3>
+                    <h2 class="font-bold text-sm xl:text-2xl">100 km</h2>
+                    <h3 class="font-normal text-xs xl:text-base">April</h3>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+            <div class="w-full h-full">
+              <div
+                class="rounded-3xl p-5 bg-gradient-to-tr from-slate-900 to-slate-800 shadow-md h-64 md:h-96"
+              >
+                <div class="h-24 md:h-44">
+                  <canvas #lineWeight></canvas>
+                </div>
+                <div
+                  class="font-semibold space-y-3 mt-4 h-20 text-sm text-slate-50 md:h-28 md:space-x-4 md:mt-5 md:text-base"
+                >
+                  <div class="w-8 h-8 p-1 rounded-lg float-left bg-slate-50">
+                    <svg class="h-6 w-6 text-slate-900" viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M3 18.34C3 18.34 4 7.09 7 3L12 4L11 7.09H9V14.25H10C12 11.18 16.14 10.06 18.64 11.18C21.94 12.71 21.64 17.32 18.64 19.36C16.24 21 9 22.43 3 18.34Z"
+                      />
+                    </svg>
                   </div>
-                  <div class="absolute bottom-0 inset-x-0">
-                    <canvas #lineCanvas id="chart2"></canvas>
+                  <span class="ml-2 font-bold text-lg">Weight</span>
+                  <h2 class="pl-4 title-font font-medium text-3xl">
+                    55 <span class="text-base">kilograms</span>
+                  </h2>
+                  <div
+                    class="pl-4 text-xs leading-tight font-semibold float-right md:float-none"
+                  >
+                    <div class="bg-slate-50 float-right md:float-left">
+                      <svg
+                        class="w-4 h-4 text-slate-900"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M12,3A4,4 0 0,1 16,7C16,7.73 15.81,8.41 15.46,9H18C18.95,9 19.75,9.67 19.95,10.56C21.96,18.57 22,18.78 22,19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19C2,18.78 2.04,18.57 4.05,10.56C4.25,9.67 5.05,9 6,9H8.54C8.19,8.41 8,7.73 8,7A4,4 0 0,1 12,3M12,5A2,2 0 0,0 10,7A2,2 0 0,0 12,9A2,2 0 0,0 14,7A2,2 0 0,0 12,5M6,11V19H8V16.5L9,17.5V19H11V17L9,15L11,13V11H9V12.5L8,13.5V11H6M15,11C13.89,11 13,11.89 13,13V17C13,18.11 13.89,19 15,19H18V14H16V17H15V13H18V11H15Z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="ml-1">You lost </span>
+                    <span class="mr-1">3 kg this week </span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="grid gap-6 mb-8 md:grid-cols-2 lg:col-span-4">
+            <div class="grid grid-cols-1 gap-5">
               <div
-                class="
-                  min-w-0
-                  rounded-lg
-                  shadow-md
-                  overflow-hidden
-                  bg-slate-50
-                  dark:bg-gray-800
-                "
+                class="p-6 text-orange-50 bg-gradient-to-r from-orange-600 to-orange-500 rounded-3xl shadow-md transform transition duration-500 space-y-5"
               >
-                <div class="p-4 flex items-center">
+                <div
+                  class="w-8 h-8 p-1 bg-orange-50 rounded-lg float-left text-orange-600"
+                >
+                  <svg class="h-6 w-6" viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39M11,14H13V8H11M15,1H9V3H15V1Z"
+                    />
+                  </svg>
+                </div>
+                <span class="ml-2 font-bold text-lg">Cardio</span>
+                <h2 class="pl-4 title-font font-medium text-3xl">
+                  30 <span class="text-base">minutes</span>
+                </h2>
+                <div class="pl-4 text-xs mt-3 leading-tight font-semibold">
                   <div
-                    class="
-                      p-3
-                      rounded-full
-                      text-orange-500
-                      dark:text-orange-100
-                      bg-orange-100
-                      dark:bg-orange-500
-                      mr-4
-                    "
+                    class="w-4 h-4 p-1 rounded-full text-orange-600 bg-orange-50 float-left"
                   >
                     <svg
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      class="w-5 h-5"
+                      class="w-2 h-2 transition-transform"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
                       <path
-                        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
-                      ></path>
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </div>
-                  <div>
-                    <p
-                      class="
-                        mb-2
-                        text-sm
-                        font-medium
-                        text-gray-600
-                        dark:text-gray-400
-                      "
-                    >
-                      Healthy Busy
-                    </p>
-                    <p
-                      class="
-                        text-lg
-                        font-semibold
-                        text-gray-700
-                        dark:text-gray-200
-                      "
-                    >
-                      6389
-                    </p>
-                  </div>
+                  <span class="ml-1">Cardio time </span>
+                  <span>+30 minutes </span>
                 </div>
               </div>
+
               <div
-                class="
-                  min-w-0
-                  rounded-lg
-                  shadow-md
-                  overflow-hidden
-                  bg-slate-50
-                  dark:bg-gray-800
-                "
+                class="p-6 text-orange-50 bg-gradient-to-r from-orange-600 to-orange-500 rounded-3xl shadow-md transform transition duration-500 space-y-5"
               >
-                <div class="p-4 flex items-center">
+                <div class="w-8 h-8 p-1 rounded-lg float-left text-orange-50">
+                  <svg class="h-6 w-6" viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M7.5,4A5.5,5.5 0 0,0 2,9.5C2,10 2.09,10.5 2.22,11H6.3L7.57,7.63C7.87,6.83 9.05,6.75 9.43,7.63L11.5,13L12.09,11.58C12.22,11.25 12.57,11 13,11H21.78C21.91,10.5 22,10 22,9.5A5.5,5.5 0 0,0 16.5,4C14.64,4 13,4.93 12,6.34C11,4.93 9.36,4 7.5,4V4M3,12.5A1,1 0 0,0 2,13.5A1,1 0 0,0 3,14.5H5.44L11,20C12,20.9 12,20.9 13,20L18.56,14.5H21A1,1 0 0,0 22,13.5A1,1 0 0,0 21,12.5H13.4L12.47,14.8C12.07,15.81 10.92,15.67 10.55,14.83L8.5,9.5L7.54,11.83C7.39,12.21 7.05,12.5 6.6,12.5H3Z"
+                    />
+                  </svg>
+                </div>
+                <span class="ml-2 font-bold text-lg">Heart Rate</span>
+                <h2 class="pl-4 title-font font-medium text-3xl">
+                  120 <span class="text-base">bmp</span>
+                </h2>
+                <div class="pl-4 text-xs mt-3 leading-tight font-semibold">
                   <div
-                    class="
-                      p-3
-                      rounded-full
-                      text-green-500
-                      dark:text-green-100
-                      bg-green-100
-                      dark:bg-green-500
-                      mr-4
-                    "
+                    class="w-4 h-4 p-1 rounded-full text-orange-600 bg-orange-50 float-left"
                   >
                     <svg
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      class="w-5 h-5"
+                      class="w-2 h-2 transition-transform"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
-                        d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                        clip-rule="evenodd"
-                      ></path>
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </div>
-                  <div>
-                    <p
-                      class="
-                        mb-2
-                        text-sm
-                        font-medium
-                        text-gray-600
-                        dark:text-gray-400
-                      "
-                    >
-                      Military Push-ups (Daily)
-                    </p>
-                    <p
-                      class="
-                        text-lg
-                        font-semibold
-                        text-gray-700
-                        dark:text-gray-200
-                      "
-                    >
-                      100 Left
-                    </p>
-                  </div>
+                  <span class="ml-1">Heart rate </span>
+                  <span>+30 bmp </span>
                 </div>
               </div>
-              <div
-                class="
-                  min-w-0
-                  rounded-lg
-                  shadow-md
-                  overflow-hidden
-                  bg-slate-50
-                  dark:bg-gray-800
-                "
-              >
-                <div class="p-4 flex items-center">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-4 xl:col-span-2">
+            <div
+              class="h-52 rounded-3xl shadow-md overflow-hidden bg-slate-50 text-slate-900"
+            >
+              <div class="p-5 w-full h-full">
+                <div class="w-full text-center tracking-tight">
+                  <span class="text-2xl font-bold"> Jogging Hero </span>
+                  <br />
+                  <span class="text-sm font-normal text-slate-900">
+                    10km / Month
+                  </span>
+                </div>
+                <div class="relative w-full font-semibold mt-5 h-6 text-sm">
+                  <span class="absolute left-0">Progress</span>
+                  <span class="absolute right-0">100%</span>
+                </div>
+                <div
+                  class="my-2 h-3 relative w-full rounded-full overflow-hidden"
+                >
+                  <div class="w-full h-full bg-slate-50 absolute inset-0"></div>
                   <div
-                    class="
-                      p-3
-                      rounded-full
-                      text-blue-500
-                      dark:text-blue-100
-                      bg-blue-100
-                      dark:bg-blue-500
-                      mr-4
-                    "
+                    id="bar"
+                    class="transition-all ease-out duration-1000 h-full bg-gradient-to-r from-slate-900 to-slate-500 relative w-0"
+                  ></div>
+                </div>
+                <div class="relative w-full font-semibold mt-4 h-10 text-sm">
+                  <span class="absolute left-0 p-2">10 / 10km</span>
+                  <span
+                    class="absolute right-0 bg-gradient-to-r from-slate-900 to-slate-500 text-slate-50 text-center w-28 p-2 rounded-full"
+                    >0 days left</span
                   >
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      class="w-5 h-5"
-                    >
-                      <path
-                        d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p
-                      class="
-                        mb-2
-                        text-sm
-                        font-medium
-                        text-gray-600
-                        dark:text-gray-400
-                      "
-                    >
-                      Jogging
-                    </p>
-                    <p
-                      class="
-                        text-lg
-                        font-semibold
-                        text-gray-700
-                        dark:text-gray-200
-                      "
-                    >
-                      376 Km
-                    </p>
-                  </div>
                 </div>
               </div>
-              <div
-                class="
-                  min-w-0
-                  rounded-lg
-                  shadow-md
-                  overflow-hidden
-                  bg-slate-50
-                  dark:bg-gray-800
-                "
-              >
-                <div class="p-4 flex items-center">
+            </div>
+
+            <div
+              class="h-52 rounded-3xl shadow-md overflow-hidden bg-slate-50 text-orange-600"
+            >
+              <div class="p-5 w-full h-full">
+                <div class="w-full text-center tracking-tight">
+                  <span class="text-2xl font-bold"> Jogging Hero </span>
+                  <br />
+                  <span class="text-sm font-normal text-orange-600">
+                    10km / Month
+                  </span>
+                </div>
+                <div class="relative w-full font-semibold mt-5 h-6 text-sm">
+                  <span class="absolute left-0">Progress</span>
+                  <span class="absolute right-0">100%</span>
+                </div>
+                <div
+                  class="my-2 h-3 relative w-full rounded-full overflow-hidden"
+                >
+                  <div class="w-full h-full bg-slate-50 absolute inset-0"></div>
                   <div
-                    class="
-                      p-3
-                      rounded-full
-                      text-teal-500
-                      dark:text-teal-100
-                      bg-teal-100
-                      dark:bg-teal-500
-                      mr-4
-                    "
+                    id="bar2"
+                    class="transition-all ease-out duration-1000 h-full bg-gradient-to-r from-orange-600 to-orange-500 relative w-0"
+                  ></div>
+                </div>
+                <div class="relative w-full font-semibold mt-4 h-10 text-sm">
+                  <span class="absolute left-0 p-2">10 / 10km</span>
+                  <span
+                    class="absolute right-0 bg-gradient-to-r from-orange-600 to-orange-500 text-orange-50 text-center w-28 p-2 rounded-full"
+                    >0 days left</span
                   >
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      class="w-5 h-5"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p
-                      class="
-                        mb-2
-                        text-sm
-                        font-medium
-                        text-gray-600
-                        dark:text-gray-400
-                      "
-                    >
-                      Bicycle Drill
-                    </p>
-                    <p
-                      class="
-                        text-lg
-                        font-semibold
-                        text-gray-700
-                        dark:text-gray-200
-                      "
-                    >
-                      35%
-                    </p>
-                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="h-52 rounded-3xl shadow-md overflow-hidden bg-slate-50 text-slate-900"
+            >
+              <div class="p-5 w-full h-full">
+                <div class="w-full text-center tracking-tight">
+                  <span class="text-2xl font-bold"> Bicycle Drill </span>
+                  <br />
+                  <span class="text-sm font-normal text-slate-900">
+                    100km / Month
+                  </span>
+                </div>
+                <div class="relative w-full font-semibold mt-5 h-6 text-sm">
+                  <span class="absolute left-0">Progress</span>
+                  <span class="absolute right-0">60%</span>
+                </div>
+                <div
+                  class="my-2 h-3 relative w-full rounded-full overflow-hidden"
+                >
+                  <div class="w-full h-full bg-slate-50 absolute inset-0"></div>
+                  <div
+                    id="bar3"
+                    class="transition-all ease-out duration-1000 h-full bg-gradient-to-r from-slate-900 to-slate-500 relative w-0"
+                  ></div>
+                </div>
+                <div class="relative w-full font-semibold mt-4 h-10 text-sm">
+                  <span class="absolute left-0 p-2">60 / 100km</span>
+                  <span
+                    class="absolute right-0 bg-gradient-to-r from-slate-900 to-slate-500 text-slate-50 text-center w-28 p-2 rounded-full"
+                    >0 days left</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="h-52 rounded-3xl shadow-md overflow-hidden bg-slate-50 text-orange-600"
+            >
+              <div class="p-5 w-full h-full">
+                <div class="w-full text-center tracking-tight">
+                  <span class="text-2xl font-bold"> Bicycle Drill </span>
+                  <br />
+                  <span class="text-sm font-normal text-orange-600">
+                    100km / Month
+                  </span>
+                </div>
+                <div class="relative w-full font-semibold mt-5 h-6 text-sm">
+                  <span class="absolute left-0">Progress</span>
+                  <span class="absolute right-0">60%</span>
+                </div>
+                <div
+                  class="my-2 h-3 relative w-full rounded-full overflow-hidden"
+                >
+                  <div class="w-full h-full bg-slate-50 absolute inset-0"></div>
+                  <div
+                    id="bar4"
+                    class="transition-all ease-out duration-1000 h-full bg-gradient-to-r from-orange-600 to-orange-500 relative w-0"
+                  ></div>
+                </div>
+                <div class="relative w-full font-semibold mt-4 h-10 text-sm">
+                  <span class="absolute left-0 p-2">60 / 100km</span>
+                  <span
+                    class="absolute right-0 bg-gradient-to-r from-orange-600 to-orange-500 text-slate-50 text-center w-28 p-2 rounded-full"
+                    >0 days left</span
+                  >
                 </div>
               </div>
             </div>
@@ -1225,13 +918,7 @@
             role="tab"
             tabindex="0"
             id="tab-button-programs"
-            class="
-              hydrated
-              md
-              tab-selected tab-has-label tab-has-icon tab-layout-icon-top
-              ion-activatable ion-selectable ion-focusable
-              text-center
-            "
+            class="hydrated md tab-selected tab-has-label tab-has-icon tab-layout-icon-top ion-activatable ion-selectable ion-focusable text-center"
             aria-selected="true"
           >
             <ion-icon
@@ -1241,12 +928,7 @@
               aria-label="fitness"
             ></ion-icon
             ><ion-label
-              class="
-                sc-ion-label-md-h sc-ion-label-md-s
-                md
-                hydrated
-                text-orange-600
-              "
+              class="sc-ion-label-md-h sc-ion-label-md-s md hydrated text-orange-600"
               >Programs</ion-label
             >
           </div>
@@ -1255,13 +937,7 @@
             role="tab"
             tabindex="0"
             id="tab-button-workouts"
-            class="
-              hydrated
-              md
-              tab-has-label tab-has-icon tab-layout-icon-top
-              ion-activatable ion-selectable ion-focusable
-              text-center
-            "
+            class="hydrated md tab-has-label tab-has-icon tab-layout-icon-top ion-activatable ion-selectable ion-focusable text-center"
           >
             <ion-icon
               name="fitness"
@@ -1270,12 +946,7 @@
               aria-label="fitness"
             ></ion-icon
             ><ion-label
-              class="
-                sc-ion-label-md-h sc-ion-label-md-s
-                md
-                hydrated
-                text-orange-600
-              "
+              class="sc-ion-label-md-h sc-ion-label-md-s md hydrated text-orange-600"
               >Workouts</ion-label
             >
           </div>
@@ -1284,13 +955,7 @@
             role="tab"
             tabindex="0"
             id="tab-button-history"
-            class="
-              md
-              tab-has-label tab-has-icon tab-layout-icon-top
-              ion-activatable ion-selectable ion-focusable
-              text-center
-              hydrated
-            "
+            class="md tab-has-label tab-has-icon tab-layout-icon-top ion-activatable ion-selectable ion-focusable text-center hydrated"
           >
             <ion-icon
               name="calendar"
@@ -1299,12 +964,7 @@
               aria-label="calendar"
             ></ion-icon
             ><ion-label
-              class="
-                sc-ion-label-md-h sc-ion-label-md-s
-                md
-                hydrated
-                text-orange-600
-              "
+              class="sc-ion-label-md-h sc-ion-label-md-s md hydrated text-orange-600"
               >History</ion-label
             >
           </div>
@@ -1313,14 +973,7 @@
             role="tab"
             tabindex="0"
             id="tab-button-profile"
-            class="
-              text-orange-600
-              md
-              tab-has-label tab-has-icon tab-layout-icon-top
-              ion-activatable ion-selectable ion-focusable
-              text-center
-              hydrated
-            "
+            class="text-orange-600 md tab-has-label tab-has-icon tab-layout-icon-top ion-activatable ion-selectable ion-focusable text-center hydrated"
           >
             <ion-icon
               name="contact"
