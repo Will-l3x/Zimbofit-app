@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -6,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  constructor() {}
+  constructor(public menuCtrl: MenuController) {}
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   ngOnInit() {}
 
   onLogin = () => {
-    location.href = '/dashboard';
+    location.href = '/app';
   };
 }

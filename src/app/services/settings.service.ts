@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Storage } from '@ionic/storage';
-import { take, map, tap } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -39,12 +39,10 @@ export class SettingsService {
       this.storage.get('muscle-groups'),
       this.afs.collection('muscle-groups', ref => ref.orderBy('name', 'asc')).valueChanges().pipe(take(1)).toPromise()
     ]).pipe(
-      map(([storedCats, allCats]) => {
-        return storedCats ? storedCats : allCats.map((cat: any) => {
+      map(([storedCats, allCats]) => storedCats ? storedCats : allCats.map((cat: any) => {
           cat.isChecked = true;
           return cat;
-        });
-      })
+        }))
     );
     // return this.storage.get('muscle-groups');
   }
@@ -55,12 +53,10 @@ export class SettingsService {
       this.storage.get('categories'),
       this.afs.collection('categories', ref => ref.orderBy('name', 'asc')).valueChanges().pipe(take(1)).toPromise()
     ]).pipe(
-      map(([storedCats, allCats]) => {
-        return storedCats ? storedCats : allCats.map((cat: any) => {
+      map(([storedCats, allCats]) => storedCats ? storedCats : allCats.map((cat: any) => {
           cat.isChecked = true;
           return cat;
-        });
-      }),
+        })),
       // tap(data => console.log(data))
     );
     // return this.storage.get('categories');

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  constructor(public menuCtrl: MenuController) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
-
+  ngOnInit() {}
 }

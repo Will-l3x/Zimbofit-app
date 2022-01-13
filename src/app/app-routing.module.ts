@@ -17,13 +17,28 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    path: 'app',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
   },
+  {
+    path: 'categories',
+    loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
+  },
+  {
+    path: 'programs',
+    loadChildren: () => import('./pages/programs/programs.module').then( m => m.ProgramsPageModule)
+  },
+  {
+    path: 'exercises',
+    loadChildren: () => import('./pages/exercises/exercises.module').then( m => m.ExercisesPageModule)
+  },
+
+
+
 ];
 
 @NgModule({

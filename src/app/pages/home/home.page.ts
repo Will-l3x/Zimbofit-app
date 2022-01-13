@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 import { CategoryService } from '../../services/category.service';
 import { TrainerService } from '../../services/trainer.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -14,9 +16,12 @@ export class HomePage implements OnInit {
 
   constructor(
     public categoryService: CategoryService,
-    public trainerService: TrainerService
-  ) {}
+    public trainerService: TrainerService ,
+    public menuCtrl: MenuController) {}
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((res) => {
       console.log(res);

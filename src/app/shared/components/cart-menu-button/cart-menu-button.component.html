@@ -1,0 +1,4 @@
+<ion-button *ngIf="items?.length" [routerLink]="['/app/tabs/cart']" routerLinkActive="router-link-active" >
+  <ion-icon name="cart"></ion-icon>
+  <ion-badge>{{items.length}}</ion-badge>
+</ion-button>

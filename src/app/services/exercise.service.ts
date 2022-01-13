@@ -24,19 +24,7 @@ export class ExerciseService {
     }
 
     getExercises(): Observable<any[]> {
-        return combineLatest([
-            this.exerciseCollection.valueChanges(),
-            this.settingsService.categories
-        ]).pipe(
-            map(([exercises, categories]) => {
-                console.log(categories);
-                return exercises.filter(exercise => {
-                    const category = categories.find(c => c.id === exercise.category_id);
-                    return category && category.isChecked;
-                });
-            }),
-            // tap(data => console.log('Exercises', data))
-        );
+        return this.exerciseCollection.valueChanges();
     }
 
     getExerciseTypes(): Observable<any> {

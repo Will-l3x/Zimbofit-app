@@ -40,7 +40,6 @@ export class DashboardPage implements OnInit, AfterViewInit {
       this.trainers = res;
     });
 
-    const selected = document.querySelector('.selected');
     const bar = document.getElementById('bar');
     const bar2 = document.getElementById('bar2');
     const bar3 = document.getElementById('bar3');
@@ -53,13 +52,6 @@ export class DashboardPage implements OnInit, AfterViewInit {
     bar3.classList.add('w-3/5');
     bar4.classList.remove('w-0');
     bar4.classList.add('w-3/5');
-    selected.classList.remove('text-orange-600');
-    selected.classList.add(
-      'from-orange-600',
-      'to-orange-500',
-      'bg-gradient-to-r',
-      'text-white'
-    );
   }
   ngAfterViewInit(): void {
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {

@@ -1,18 +1,24 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { AppComponent } from './app.component';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { HeaderComponent } from './components/header/header.component';
+import { RouteReuseStrategy } from '@angular/router';
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   entryComponents: [],
@@ -21,6 +27,8 @@ import { HeaderComponent } from './components/header/header.component';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig), // imports firebase/app needed for everything
     AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireDatabaseModule,
@@ -34,8 +42,10 @@ import { HeaderComponent } from './components/header/header.component';
     }),
   ], // imports firebase/storage only needed for storage features],
   exports: [HeaderComponent],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

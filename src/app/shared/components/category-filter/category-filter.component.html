@@ -1,0 +1,39 @@
+<ion-header translucent>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="selectAll(false)">Reset</ion-button>
+      </ion-buttons>
+  
+      <ion-title>
+        Categories Filter
+      </ion-title>
+  
+      <ion-buttons slot="end">
+        <ion-button (click)="applyFilters()" strong>Done</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content fullscreen *ngIf="categories?.length">
+  
+    <ion-list lines="full">
+      <ion-list-header>Categories</ion-list-header>
+  
+      <ion-item *ngFor="let category of categories" [attr.category]="category.name | lowercase">
+        <ion-label>{{category.name}}</ion-label>
+        <ion-checkbox [(ngModel)]="category.isChecked"></ion-checkbox>
+      </ion-item>
+  
+    </ion-list>
+  
+    <!-- <ion-list lines="full">
+      <ion-list-header>Muscles</ion-list-header>
+  
+      <ion-item *ngFor="let muscle of muscles" [attr.muscle]="muscle.name | lowercase">
+        <ion-label>{{muscle.name}}</ion-label>
+        <ion-checkbox [(ngModel)]="muscle.isChecked"></ion-checkbox>
+      </ion-item>
+  
+    </ion-list> -->
+  
+  </ion-content>
