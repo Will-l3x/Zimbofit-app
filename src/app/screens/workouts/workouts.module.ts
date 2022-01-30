@@ -9,7 +9,6 @@ import { WorkoutsPageRoutingModule } from './workouts-routing.module';
 import { WorkoutsPage } from './workouts.page';
 import { CategoryItemModule } from 'src/app/components/category-item/category-item.module';
 import { SearchbarModule } from 'src/app/components/searchbar/searchbar.module';
-import { SwiperModule } from 'swiper/angular';
 import { WorkoutCardModule } from 'src/app/components/workout-card/workout-card.module';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { WorkoutCardModule } from 'src/app/components/workout-card/workout-card.
     WorkoutsPageRoutingModule,
     SearchbarModule,
     CategoryItemModule,
-    SwiperModule,
     WorkoutCardModule
   ],
   declarations: [WorkoutsPage],

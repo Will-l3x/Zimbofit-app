@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-import { SwiperModule } from 'swiper/angular';
 import { ExercisesPageRoutingModule } from './exercises-routing.module';
 
 import { ExercisesPage } from './exercises.page';
@@ -19,7 +18,6 @@ import { ExerciseCardModule } from 'src/app/components/exercise-card/exercise-ca
     ExercisesPageRoutingModule,
     SearchbarModule,
     CategoryItemModule,
-    SwiperModule,
     ExerciseCardModule
   ],
   declarations: [ExercisesPage]

@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CategoryService } from 'src/app/services/category.service';
 import { ExerciseService } from 'src/app/services/exercise.service';
-import SwiperCore, { SwiperOptions } from 'swiper';
 import { Category } from 'src/app/interfaces/category.model';
 import { Exercise } from 'src/app/interfaces/exercise.model';
 import { Router } from '@angular/router';
@@ -19,13 +18,6 @@ import { Router } from '@angular/router';
 export class ExercisesPage implements OnInit, OnDestroy {
   categories$: Category[] = [];
   exercises$: Exercise[] = [];
-  config: SwiperOptions = {
-    slidesPerView: 4,
-    spaceBetween: 15,
-    navigation: false,
-    pagination: { clickable: true },
-    scrollbar: { draggable: true },
-  };
   private unsubscribeCat$ = new Subject<void>();
   private unsubscribeExe$ = new Subject<void>();
   constructor(
@@ -41,15 +33,6 @@ export class ExercisesPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (window.innerWidth <= 320) {
-      this.config = {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        navigation: false,
-        pagination: { clickable: true },
-        scrollbar: { draggable: true },
-      };
-    }
     this.categoryService
       .getCategories()
       .pipe(takeUntil(this.unsubscribeCat$))
@@ -106,9 +89,6 @@ export class ExercisesPage implements OnInit, OnDestroy {
     this.unsubscribeExe$.complete();
   }
 
-  onSwiper(swiper) {
-    console.log(swiper);
-  }
   onSlideChange() {
     console.log('slide change');
   }
