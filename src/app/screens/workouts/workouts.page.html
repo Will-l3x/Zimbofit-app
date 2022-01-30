@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="header">
+    <h1>Workouts</h1>
+    <div class="avatar">
+      <ion-img src="../../../assets/img/man-05.svg"></ion-img>
+    </div>
+  </div>
+  <app-searchbar></app-searchbar>
+  <div class="cat-header">
+    <h1>Categories</h1>
+    <div class="more-cat">
+      <h2>more</h2>
+      <ion-icon name="arrow-forward"></ion-icon>
+    </div>
+  </div>
+  <div class="categories">
+    <div class="scroll" scrollX="true">
+      <app-category-item
+        *ngFor="let item of categories$"
+        [item]="item"
+      ></app-category-item>
+    </div>
+  </div>
+  <div class="list-header">
+    <h1>All</h1>
+    <div class="sort">
+      <h2>Order By</h2>
+      <ion-icon name="funnel-outline"></ion-icon>
+    </div>
+  </div>
+  <app-workout-card
+    *ngFor="let item of workouts$"
+    [item]="item"
+    (clicked)="goToDetailPage(item.id)"
+  ></app-workout-card>
+</ion-content>

@@ -1,0 +1,16 @@
+<div class="container" (click)="clicked.emit()">
+  <div class="container__image">
+    <img src="{{ item.image_url }}" alt="{{ item.image_url }}" />
+  </div>
+
+  <div class="container__text">
+    <div class="pricing">
+      <h2>{{ item.name }}</h2>
+    </div>
+    <div class="likes">
+      <div class="likes-content">
+        <h1><sup>x</sup>{{ item.reps }}</h1>
+      </div>
+    </div>
+  </div>
+</div>

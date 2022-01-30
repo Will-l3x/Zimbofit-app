@@ -1,0 +1,23 @@
+<div class="wrapper" style="background-image: url({{item.image_url}})" (click)="clicked.emit()">
+  <div class="container">
+    <div class="modal">
+      <div class="container__text">
+        <div class="pricing">
+          <h1>{{item.name}}</h1>
+          <h2>Workout</h2>
+        </div>
+        <div class="workoutstats__card">
+          
+          <div class="workoutstats__card__footer">
+            <div class="period">10 days left</div>
+            <div class="percentage">50 %</div>
+          </div>
+          <div class="progress">
+            <ion-progress-bar value="0.5"></ion-progress-bar>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+   

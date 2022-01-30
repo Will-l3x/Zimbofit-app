@@ -1,50 +1,61 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+} from '@angular/fire/compat/firestore';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
+  categoryCollection: AngularFirestoreCollection<any>;
 
-    categoryCollection: AngularFirestoreCollection<any>;
+  constructor(private afs: AngularFirestore, private http: HttpClient) {
+    this.categoryCollection = this.afs.collection('categories', (ref) =>
+      ref.orderBy('name', 'asc')
+    );
+  }
 
-    constructor(private afs: AngularFirestore, private http: HttpClient) {
-        this.categoryCollection = this.afs.collection('categories', ref => ref.orderBy('name', 'asc'));
-    }
+  getFields(): Observable<any> {
+    return this.http.get('./assets/json/category.json');
+  }
 
-    getFields(): Observable<any> {
-        return this.http.get('./assets/json/category.json');
-    }
+  getCategories(): Observable<any[]> {
+    return this.categoryCollection.valueChanges().pipe();
+  }
 
-    getCategories(): Observable<any[]> {
-        return this.categoryCollection.valueChanges().pipe(
-            // tap(data => console.log("Categories", data))
-        );
-    }
+  addNewCategory(category) {
+    category.id = this.afs.createId();
+    category.date_time = new Date().getTime();
+    category.timestamp = new Date().getTime();
 
-    addNewCategory(category) {
-        category.id = this.afs.createId();
-        category.date_time = (new Date()).getTime();
-        category.timestamp = (new Date()).getTime();
+    return this.updateCategory(category);
+  }
 
-        return this.updateCategory(category);
-    }
+  updateCategory(category) {
+    console.log(category);
+    return this.categoryCollection
+      .doc(category.id)
+      .set(category)
+      .then(() => Promise.resolve(category));
+  }
 
-    updateCategory(category) {
-        console.log(category);
-        return this.categoryCollection.doc(category.id).set(category).then(() => Promise.resolve(category));
-    }
+  deleteCategory(category) {
+    return this.categoryCollection
+      .doc(category.id)
+      .delete()
+      .then(() => Promise.resolve(category));
+  }
 
-    deleteCategory(category) {
-        return this.categoryCollection.doc(category.id).delete().then(() => Promise.resolve(category));
-    }
-
-    getCategory(id) {
-        return this.afs.doc(`categories/${id}`).valueChanges().pipe(
-            // tap(data => console.log("Category", data))
-        );
-    }
+  getCategory(id) {
+    return this.afs
+      .doc(`categories/${id}`)
+      .valueChanges()
+      .pipe
+      // tap(data => console.log("Category", data))
+      ();
+  }
 }

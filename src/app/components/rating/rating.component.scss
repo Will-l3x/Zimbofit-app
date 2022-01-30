@@ -1,0 +1,21 @@
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  .container__text__star ion-icon,
+  .container__text__star i,
+  span {
+    font-size: 0.8rem;
+  }
+  .container__text__star ion-icon {
+    color: #ffa800;
+  }
+  span {
+    margin-left: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .hidden {
+    display: none;
+  }
+}

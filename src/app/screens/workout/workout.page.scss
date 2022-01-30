@@ -1,0 +1,113 @@
+ion-content {
+  --padding-start: 2rem;
+  --padding-end: 2rem;
+
+  .header,
+  .list-header,
+  .cat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--ion-color-secondary);
+      margin: 0;
+    }
+
+    .avatar {
+      width: 35px;
+      height: 35px;
+      background-color: var(--ion-color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+
+      ion-img {
+        height: 80%;
+        width: 80%;
+      }
+    }
+  }
+  .cat-header {
+    margin-top: 2rem;
+    margin-bottom: 5px;
+
+    h1 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin: 0;
+      color: var(--ion-color-secondary);
+
+    }
+    .more-cat h2,
+    .more-cat ion-icon {
+      font-weight: 600;
+      font-size: 1rem;
+      margin: 0;
+    }
+    .more-cat h2,
+    .more-cat ion-icon {
+      color: var(--ion-color-primary-shade);
+    }
+    .more-cat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .categories {
+    // border-radius: 1.2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: var(--ion-color-secondary-contrast);
+    width: 100%;
+    overflow: hidden;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .scroll {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+  }
+
+  .list-header {
+    margin-top: 2rem;
+    margin-bottom: 5px;
+
+    h1 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin: 0;
+      color: var(--ion-color-secondary);
+    }
+    .sort h2,
+    .sort ion-icon {
+      font-weight: 600;
+      font-size: 1rem;
+      margin: 0;
+    }
+    .sort h2,
+    .sort ion-icon {
+      color: var(--ion-color-primary-shade);
+    }
+    .sort {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  ion-list {
+    padding-top: 5px;
+    margin-top: 1.2rem;
+    background-color: var(--ion-color-secondary-contrast);
+  }
+}

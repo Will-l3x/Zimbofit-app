@@ -1,7 +1,5 @@
 {
-  "name": "gym-app-v2",
-  "integrations": {
-    "capacitor": {}
-  },
+  "name": "gym-app",
+  "integrations": {},
   "type": "angular"
 }

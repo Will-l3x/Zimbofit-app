@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="header">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home/dashboard">
+        <ion-icon slot="icon-only" color="light" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons>
+      <ion-button>
+        <ion-icon slot="icon-only" color="light" name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </div>
+
+  <div class="card">
+    <div class="image">
+      <img src="{{workout?.image_url}}" />
+    </div>
+
+    <div class="card-content">
+      <div class="card-title">
+        <h1 class="ion-no-margin">{{workout?.name}}</h1>
+      </div>
+
+      <div class="rates">
+        <app-badge icon="timer" text="30m"></app-badge>
+        <app-badge icon="star-outline" text="4.0"></app-badge>
+      </div>
+
+      <div class="instructions">
+        <h1>Instructions</h1>
+        <p>{{exercise?.description}}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

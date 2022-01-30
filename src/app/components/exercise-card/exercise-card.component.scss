@@ -1,0 +1,51 @@
+$border-radius: 8px;
+
+.container {
+  background-color: var(--ion-color-secondary-contrast);
+  display: grid;
+  grid-template-columns: 30% 70%;
+  border-radius: $border-radius;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.356);
+  margin-bottom: 20px;
+
+  .container__image {
+    img {
+      width: 30vw;
+      height: 30vw;
+      border-radius: $border-radius 0 0 $border-radius;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .container__text {
+    padding: 0 10px;
+    h1 {
+      font-weight: 400;
+      font-size: 20px;
+    }
+    .pricing {
+      h2 {
+        font-weight: 600;
+        font-size: 16px;
+      }
+      h1 {
+        font-weight: 400;
+        font-size: 20px;
+        color: #ffa800;
+      }
+    }
+    .likes {
+      font-size: 0.8rem;
+      font-weight: 700;
+      .likes-content {
+        ion-icon {
+          color: #ffa800;
+        }
+      }
+      span {
+        margin-left: 12px;
+      }
+    }
+  }
+}

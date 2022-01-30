@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="header" style="background: url({{workout?.image_url}});">
+    <ion-button routerLink="/home/dashboard">
+        <ion-icon
+          slot="icon-only"
+          color="primary-shade"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button> 
+  </div>
+
+  <div class="container">
+    <div class="main-cards">
+      <div class="card">
+        <app-exercise-card
+          *ngFor="let exercise of exercises$"
+          [item]="exercise"
+          (clicked)="goToExerciseDetailPage(exercise.id)"
+        ></app-exercise-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

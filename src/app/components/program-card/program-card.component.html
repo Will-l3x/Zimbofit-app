@@ -1,0 +1,19 @@
+<div class="wrapper" style="background-image: url({{item.image_url}})" (click)="clicked.emit()">
+  <div class="container">
+    <div class="modal">
+      <div class="container__text">
+        <div class="pricing">
+          <h2>{{item.name}}</h2>
+          <h1><sup>$</sup>{{item.price.toFixed(1)}}</h1>
+        </div>
+        <app-rating [rating]="item.rating"></app-rating>
+        <div class="likes">
+          <div class="likes-content">
+            <ion-icon name="heart-outline"></ion-icon>
+            4.7k
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

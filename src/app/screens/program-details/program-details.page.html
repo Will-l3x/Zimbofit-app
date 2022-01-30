@@ -1,0 +1,54 @@
+<ion-content>
+  <div class="header" style="background: url({{program?.image_url}});">
+    <ion-button routerLink="/home/dashboard">
+      <ion-icon
+        slot="icon-only"
+        color="primary-shade"
+        name="arrow-back"
+      ></ion-icon>
+    </ion-button>
+  </div>
+  <div class="container">
+    <h1>Caramel Cake Pancakes</h1>
+    <div class="container__text__star">
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+    </div>
+    <p>
+      If you're fan of caramel cake, then you'll love our Caramel Cake Pancakes.
+      We Complete these over-the-top pancakes with Caramel Syrup.
+    </p>
+    <div class="container__text__timing">
+      <div class="container__text__timing_time">
+        <h2>Hands-on Time</h2>
+        <p>30 min</p>
+      </div>
+      <div class="container__text__timing_time">
+        <h2>Total Time</h2>
+        <p>40 min</p>
+      </div>
+      <div class="container__text__timing_time">
+        <h2>Yield</h2>
+        <p>40 min</p>
+      </div>
+    </div>
+    <button class="btn" (click)="clicked.emit()">
+      view program<ion-icon name="arrow-forward"></ion-icon>
+    </button>
+    \
+  </div>
+  <div class="content">
+    <div class="main-cards">
+      <div class="card">
+        <app-workout-card
+          *ngFor="let workout of workouts$"
+          [item]="workout"
+          (clicked)="goToWorkoutDetailPage(workout.workout_id)"
+        ></app-workout-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

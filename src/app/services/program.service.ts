@@ -11,10 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProgramService {
   programCollection: AngularFirestoreCollection<any>;
-  constructor(
-    private afs: AngularFirestore,
-    private http: HttpClient
-  ) {
+  constructor(private afs: AngularFirestore, private http: HttpClient) {
     this.programCollection = this.afs.collection('programs', (ref) =>
       ref.orderBy('name', 'asc')
     );
@@ -58,6 +55,9 @@ export class ProgramService {
         );*/
   }
 
+  getProgram(id): Observable<any> {
+    return this.afs.doc(`programs/${id}`).valueChanges();
+  }
   getNewId() {
     return this.afs.createId();
   }

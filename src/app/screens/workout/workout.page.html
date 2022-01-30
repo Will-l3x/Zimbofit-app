@@ -1,0 +1,22 @@
+<ion-content>
+  <div class="header">
+    <h1>Exercises</h1>
+  </div>
+  <app-searchbar></app-searchbar>
+  <div class="list-header">
+    <h1>All</h1>
+    <div class="sort">
+      <h2>Order By</h2>
+      <ion-icon name="funnel-outline"></ion-icon>
+    </div>
+  </div>
+  <div class="main-cards">
+    <div class="card">
+      <app-exercise-card
+        *ngFor="let item of exercises$"
+        [item]="item"
+        (clicked)="goToDetailPage(item.id)"
+      ></app-exercise-card>
+    </div>
+  </div>
+</ion-content>

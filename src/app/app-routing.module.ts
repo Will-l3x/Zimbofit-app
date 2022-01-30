@@ -1,44 +1,52 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    path: 'exercise-details/:id',
+    loadChildren: () =>
+      import('./screens/exercise-details/exercise-details.module').then(
+        (m) => m.ExerciseDetailsPageModule
+      ),
   },
   {
-    path: 'app',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+    path: 'program-details/:id',
+    loadChildren: () =>
+      import('./screens/program-details/program-details.module').then(
+        (m) => m.ProgramDetailsPageModule
+      ),
   },
   {
-    path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+    path: 'workout/:id',
+    loadChildren: () =>
+      import('./screens/workout/workout.module').then(
+        (m) => m.WorkoutPageModule
+      ),
   },
   {
-    path: 'categories',
-    loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
+    path: 'workout-list/:id',
+    loadChildren: () =>
+      import('./screens/workout-list/workout-list.module').then(
+        (m) => m.WorkoutListPageModule
+      ),
   },
   {
-    path: 'programs',
-    loadChildren: () => import('./pages/programs/programs.module').then( m => m.ProgramsPageModule)
+    path: 'exercise-list/:id',
+    loadChildren: () =>
+      import('./screens/exercise-list/exercise-list.module').then(
+        (m) => m.ExerciseListPageModule
+      ),
   },
-  {
-    path: 'exercises',
-    loadChildren: () => import('./pages/exercises/exercises.module').then( m => m.ExercisesPageModule)
-  },
-
-
-
 ];
 
 @NgModule({
@@ -48,8 +56,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-export const routingComponents = [
-  HeaderComponent
-];
-

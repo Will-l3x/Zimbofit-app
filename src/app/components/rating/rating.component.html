@@ -1,0 +1,100 @@
+<div class="rating">
+  <div [ngClass]="rating < 0.5 ? 'container__text__star' : 'hidden'">
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="rating >= 0.5 && rating < 1 ? 'container__text__star' : 'hidden'"
+  >
+    <ion-icon name="star-half"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="rating >= 1 && rating < 1.5 ? 'container__text__star' : 'hidden'"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="rating >= 1.5 && rating < 2 ? 'container__text__star' : 'hidden'"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-half"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="rating >= 2 && rating < 2.5 ? 'container__text__star' : 'hidden'"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="rating >= 2.5 && rating < 3 ? 'container__text__star' : 'hidden'"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-half"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="rating >= 3 && rating < 3.5 ? 'container__text__star' : 'hidden'"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="rating >= 3.5 && rating < 4 ? 'container__text__star' : 'hidden'"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-half"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="rating >= 4 && rating < 4.5 ? 'container__text__star' : 'hidden'"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="[
+      rating >= 4.5 && rating < 5 ? 'container__text__star' : 'hidden'
+    ]"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-half"></ion-icon>
+  </div>
+  <div [ngClass]="rating === 5 ? 'container__text__star' : 'hidden'">
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+  </div>
+  <span><i>{{rating.toFixed(1)}}</i></span>
+</div>

@@ -1,0 +1,41 @@
+.overviewcard {
+  background: var(--ion-color-primary-contrast);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.356);
+  border-radius: 8px;
+  color: var(--ion-color-secondary);
+  .overviewcard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 4px;
+    .overviewcard__title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .metrics {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ion-color-primary-shade);
+    }
+  }
+  .progress {
+    padding: 0 20px;
+    ion-progress-bar {
+      height: 8px;
+      border-radius: 4px;
+    }
+  }
+  .overviewcard-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    .percentage,
+    .period {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}
