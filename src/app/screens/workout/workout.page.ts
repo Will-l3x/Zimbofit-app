@@ -19,7 +19,6 @@ import { WorkoutService } from 'src/app/services/workout.service';
 export class WorkoutPage implements OnInit, OnDestroy {
   id: string;
   workout: Workout;
-  categories$: Category[] = [];
   exercises$: Exercise[] = [];
   private unsubscribeCat$ = new Subject<void>();
   private unsubscribeExe$ = new Subject<void>();
@@ -40,53 +39,17 @@ export class WorkoutPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.categoryService
-      .getCategories()
-      .pipe(takeUntil(this.unsubscribeCat$))
-      .subscribe((res) => {
-        this.categories$ = [
-          {
-            active: true,
-            description: 'all',
-            id: 'all',
-            image_url: 'assets/img/home/exercise.svg',
-            name: 'All',
-            timestamp: parseInt(Date.now().toFixed(), 10),
-            date_time: parseInt(Date.now().toFixed(), 10),
-          },
-        ];
-        const categories = [];
-        for (const category of res) {
-          category.active = false;
-          category.name =
-            category.name.length >= 32
-              ? this.acronym(category.name)
-              : category.name;
-          category.image_url = 'assets/img/home/programs.svg';
-          categories.push(category);
-        }
-        this.categories$ = this.categories$.concat(categories);
-        console.log(categories);
+    this.workoutService.getWorkout(this.id).subscribe((res) => {
+      this.workout = res;
+      res.exercises.map((exercise) => {
+        this.exerciseService
+          .getExercise(exercise.exercise_id)
+          .subscribe((_res) => {
+            exercise = Object.assign(exercise, _res);
+            this.exercises$.push(exercise);
+          });
       });
-    this.exerciseService
-      .getExercises()
-      .pipe(takeUntil(this.unsubscribeExe$))
-      .subscribe((res) => {
-        this.exercises$ = [];
-        const exercises = [];
-        for (const exercise of res) {
-          exercise.name =
-            exercise.name.length >= 32
-              ? this.acronym(exercise.name)
-              : exercise.name;
-          exercise.image_url =
-            exercise.image_url === ''
-              ? 'assets/img/home/category.jpg'
-              : exercise.image_url;
-          exercises.push(exercise);
-        }
-        this.exercises$ = this.exercises$.concat(exercises);
-      });
+    });
   }
 
   ngOnDestroy() {

@@ -27,14 +27,14 @@ export class ProgramDetailsPage implements OnInit {
     this.programService.getProgram(this.id).subscribe((res) => {
       this.program = res;
       console.log(res);
+
       res.workouts.map((workout) => {
-        this.workoutService
-          .getWorkout(workout.exercise_id)
-          .subscribe((_res) => {
-            workout = Object.assign(workout, _res);
-            this.workouts$.push(workout);
-          });
+        this.workoutService.getWorkout(workout.workout_id).subscribe((_res) => {
+          workout = Object.assign(workout, _res);
+          this.workouts$.push(workout);
+        });
       });
+      console.log(this.workouts$);
     });
   }
   goToWorkoutDetailPage(id) {

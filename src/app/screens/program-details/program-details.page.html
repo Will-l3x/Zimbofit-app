@@ -9,45 +9,37 @@
     </ion-button>
   </div>
   <div class="container">
-    <h1>Caramel Cake Pancakes</h1>
-    <div class="container__text__star">
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
+    <div class="pricing">
+      <h2>{{program?.name}}</h2>
+      <h1><sup>$</sup>{{program?.price|number:'1.2'}}</h1>
+      <!-- <h1><sup>$</sup>3.00</h1> -->
     </div>
-    <p>
-      If you're fan of caramel cake, then you'll love our Caramel Cake Pancakes.
-      We Complete these over-the-top pancakes with Caramel Syrup.
-    </p>
+    <h1 class="desc">Description</h1>
+    <p>{{program?.description}}</p>
     <div class="container__text__timing">
-      <div class="container__text__timing_time">
+      <!-- <div class="container__text__timing_time">
         <h2>Hands-on Time</h2>
         <p>30 min</p>
-      </div>
+      </div> -->
       <div class="container__text__timing_time">
         <h2>Total Time</h2>
-        <p>40 min</p>
+        <p>40 days</p>
       </div>
       <div class="container__text__timing_time">
-        <h2>Yield</h2>
-        <p>40 min</p>
+        <h2>kCal</h2>
+        <p>40</p>
       </div>
     </div>
-    <button class="btn" (click)="clicked.emit()">
-      view program<ion-icon name="arrow-forward"></ion-icon>
-    </button>
-    \
   </div>
   <div class="content">
+    <div class="sub-header">Workouts</div>
     <div class="main-cards">
       <div class="card">
-        <app-workout-card
+        <app-workout-card2
           *ngFor="let workout of workouts$"
           [item]="workout"
           (clicked)="goToWorkoutDetailPage(workout.workout_id)"
-        ></app-workout-card>
+        ></app-workout-card2>
       </div>
     </div>
   </div>

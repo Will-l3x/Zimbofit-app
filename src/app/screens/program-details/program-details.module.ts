@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ProgramDetailsPageRoutingModule } from './program-details-routing.module';
 
 import { ProgramDetailsPage } from './program-details.page';
-import { WorkoutCardModule } from 'src/app/components/workout-card/workout-card.module';
+import { WorkoutCard2Module } from 'src/app/components/workout-card2/workout-card2.module';
+import { RatingModule } from 'src/app/components/rating/rating.module';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { WorkoutCardModule } from 'src/app/components/workout-card/workout-card.
     FormsModule,
     IonicModule,
     ProgramDetailsPageRoutingModule,
-    WorkoutCardModule,
+    WorkoutCard2Module,
+    RatingModule,
   ],
-  declarations: [ProgramDetailsPage]
+  declarations: [ProgramDetailsPage],
 })
 export class ProgramDetailsPageModule {}

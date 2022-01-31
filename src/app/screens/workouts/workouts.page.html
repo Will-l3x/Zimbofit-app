@@ -28,9 +28,9 @@
       <ion-icon name="funnel-outline"></ion-icon>
     </div>
   </div>
-  <app-workout-card
+  <app-workout-card2
     *ngFor="let item of workouts$"
     [item]="item"
     (clicked)="goToDetailPage(item.id)"
-  ></app-workout-card>
+  ></app-workout-card2>
 </ion-content>

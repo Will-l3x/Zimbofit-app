@@ -106,7 +106,7 @@ export class DashboardPage implements OnInit, OnDestroy {
     this.menu.open('custom');
   }
   goToProgramPage(id: string) {
-    this.router.navigate(['workout-list', id]);
+    this.router.navigate(['program-details', id]);
   }
   goToWorkoutPage(id: string) {
     this.router.navigate(['workout', id]);

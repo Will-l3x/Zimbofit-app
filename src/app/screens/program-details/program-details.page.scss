@@ -1,14 +1,13 @@
 $primary-color: #fff;
 $border-radius: 5px;
-$black-color: #351897;
 ion-content {
-  --color: var(--ion-color-secondary);
+  --color: var(--ion-color-secondary-shade);
 
   .header {
     display: flex;
     justify-content: space-between;
     padding: 1rem 0.5rem;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 30vh;
@@ -27,8 +26,9 @@ ion-content {
   .content {
     .sub-header {
       font-weight: 600;
-      margin: 20px;
-      font-size: 24px;
+      color: var(--ion-color-primary-shade);
+      margin: 0 20px 20px;
+      font-size: 20px;
     }
     .main-overview {
       display: grid;
@@ -64,13 +64,26 @@ ion-content {
   .container {
     background-color: $primary-color;
     position: relative;
-    display: grid;
-    grid-template-columns: 30% 70%;
     border-radius: $border-radius;
-    padding: 40px 40px 0;
-    h1 {
-      color: $black-color;
-      font-weight: 400;
+    padding: 20px;
+    .desc {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--ion-color-primary-shade);
+    }
+    .pricing {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-weight: 700;
+        font-size: 24px;
+      }
+      h1 {
+        font-weight: 400;
+        font-size: 16px;
+        color: #ffa800;
+      }
     }
     .container__text__star span {
       font-size: 0.8rem;
@@ -90,33 +103,11 @@ ion-content {
         margin-bottom: 5px;
         font-size: 1rem;
         font-weight: 400;
-        color: #818189;
+        color: #ffa800;
       }
       p {
-        color: $black-color;
         font-weight: bold;
         font-size: 1.2rem;
-      }
-    }
-    .btn {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      border: none;
-      outline: none;
-      display: flex;
-      align-items: center;
-      background-color: #fc9400;
-      color: $primary-color;
-      padding: 22px 45px;
-      font-size: 1rem;
-      text-transform: uppercase;
-      border-radius: $border-radius;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.294);
-      i {
-        margin-left: 20px;
-        font-size: 1.5rem;
       }
     }
   }

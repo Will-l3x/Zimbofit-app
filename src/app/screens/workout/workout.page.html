@@ -1,22 +1,46 @@
 <ion-content>
-  <div class="header">
-    <h1>Exercises</h1>
+  <div class="header" style="background: url({{workout?.image_url}});">
+    <ion-button routerLink="/home/dashboard">
+      <ion-icon
+        slot="icon-only"
+        color="primary-shade"
+        name="arrow-back"
+      ></ion-icon>
+    </ion-button>
   </div>
-  <app-searchbar></app-searchbar>
-  <div class="list-header">
-    <h1>All</h1>
-    <div class="sort">
-      <h2>Order By</h2>
-      <ion-icon name="funnel-outline"></ion-icon>
+  <div class="container">
+    <div class="pricing">
+      <h2>{{workout?.name}}</h2>
+      <h1><sup>$</sup>{{workout?.price|number:'1.2'}}</h1>
+      <!-- <h1><sup>$</sup>3.00</h1> -->
+    </div>
+    <h1 class="desc">Description</h1>
+    <p>{{workout?.description}}</p>
+    <div class="container__text__timing">
+      <!-- <div class="container__text__timing_time">
+        <h2>Hands-on Time</h2>
+        <p>30 min</p>
+      </div> -->
+      <div class="container__text__timing_time">
+        <h2>Total Time</h2>
+        <p>40 days</p>
+      </div>
+      <div class="container__text__timing_time">
+        <h2>kCal</h2>
+        <p>40</p>
+      </div>
     </div>
   </div>
-  <div class="main-cards">
-    <div class="card">
-      <app-exercise-card
-        *ngFor="let item of exercises$"
-        [item]="item"
-        (clicked)="goToDetailPage(item.id)"
-      ></app-exercise-card>
+  <div class="content">
+    <div class="sub-header">Exercises</div>
+    <div class="main-cards">
+      <div class="card">
+        <app-exercise-card
+          *ngFor="let item of exercises$"
+          [item]="item"
+          (clicked)="goToDetailPage(item.id)"
+        ></app-exercise-card>
+      </div>
     </div>
   </div>
 </ion-content>

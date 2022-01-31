@@ -64,20 +64,16 @@ export class WorkoutsPage implements OnInit, OnDestroy {
       .getWorkouts()
       .pipe(takeUntil(this.unsubscribeExe$))
       .subscribe((res) => {
-        this.workouts$ = [];
-        const workouts = [];
-        for (const workout of res) {
-          workout.name =
-            workout.name.length >= 32
-              ? this.acronym(workout.name)
-              : workout.name;
-          workout.image_url =
-            workout.image_url === ''
-              ? 'assets/img/home/category.jpg'
-              : workout.image_url;
-          workouts.push(workout);
-        }
-        this.workouts$ = this.workouts$.concat(workouts);
+        /* this.workouts$ = [];
+         const workouts = [];
+          for (const workout of res) {
+            workout.name =
+              workout.name.length >= 32
+                ? this.acronym(workout.name)
+                : workout.name;
+            workouts.push(workout);
+         */
+        this.workouts$ = res;
       });
   }
 
@@ -88,11 +84,7 @@ export class WorkoutsPage implements OnInit, OnDestroy {
     this.unsubscribeExe$.complete();
   }
 
-  onSlideChange() {
-    console.log('slide change');
-  }
-
   goToDetailPage(id: string) {
-    this.router.navigate(['exercise-list', id]);
+    this.router.navigate(['workout', id]);
   }
 }
