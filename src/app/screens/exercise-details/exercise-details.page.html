@@ -1,34 +1,33 @@
 <ion-content>
   <div class="header">
-    <ion-buttons slot="start">
-      <ion-button routerLink="/home/dashboard">
-        <ion-icon slot="icon-only" color="light" name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons>
-      <ion-button>
-        <ion-icon slot="icon-only" color="light" name="heart"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </div>
-
-  <div class="card">
-    <div class="image">
-      <img src="{{exercise?.image_url}}" />
+    <div class="image-bg">
+      <img src="{{exercise?.image_url}}" alt="{{exercise?.name}}" srcset="" />
     </div>
-
-    <div class="card-content">
-      <div class="card-title">
-        <h1 class="ion-no-margin">{{exercise?.name}}</h1>
+    <div class="overlay">
+      <a routerLink="/home/dashboard">
+        <ion-icon slot="start" name="arrow-back"></ion-icon
+      ></a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="pricing">
+      <h2>{{exercise?.name}}</h2>
+      <!-- <h1><sup>$</sup>{{exercise?.price|number:'1.2'}}</h1> -->
+    </div>
+    <h1 class="desc">Description</h1>
+    <p>{{exercise?.description}}</p>
+    <div class="container__text__timing">
+      <!-- <div class="container__text__timing_time">
+        <h2>Hands-on Time</h2>
+        <p>30 min</p>
+      </div> -->
+      <div class="container__text__timing_time">
+        <h2>Reps</h2>
+        <p>{{exercise?.reps}}</p>
       </div>
-
-      <div class="rates">
-        <app-badge icon="timer" text="x{{exercise?.reps}}"></app-badge>
-      </div>
-
-      <div class="instructions">
-        <h1>Instructions</h1>
-        <p>{{exercise?.description}}</p>
+      <div class="container__text__timing_time">
+        <h2>kCal</h2>
+        <p></p>
       </div>
     </div>
   </div>

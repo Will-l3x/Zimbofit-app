@@ -73,6 +73,7 @@ export class WorkoutsPage implements OnInit, OnDestroy {
                 : workout.name;
             workouts.push(workout);
          */
+        console.log(res);
         this.workouts$ = res;
       });
   }

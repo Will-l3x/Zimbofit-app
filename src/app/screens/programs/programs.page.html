@@ -1,10 +1,15 @@
 <ion-content>
-  <div class="sub-header">Programs</div>
-  <div class="main-overview">
-    <app-program-card
-      *ngFor="let program of programs$"
-      [item]="program"
-      (clicked)="goToProgramDetailsPage(program.id)"
-    ></app-program-card>
+  <div class="container">
+    <div class="header">
+      <h1>Programs</h1>
+    </div>
+    <app-searchbar></app-searchbar>
+    <div class="main-overview">
+      <app-program-card
+        *ngFor="let program of programs$"
+        [item]="program"
+        (clicked)="goToProgramDetailsPage(program.id)"
+      ></app-program-card>
+    </div>
   </div>
 </ion-content>

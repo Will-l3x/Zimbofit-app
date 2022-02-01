@@ -1,11 +1,34 @@
-.sub-header {
-  font-weight: 600;
+.container {
   margin: 20px;
-  font-size: 24px;
-}
-.main-overview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-  grid-gap: 20px;
-  margin: 20px;
+  .header {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--ion-color-secondary);
+      margin: 0;
+    }
+
+    .avatar {
+      width: 35px;
+      height: 35px;
+      background-color: var(--ion-color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+
+      ion-img {
+        height: 80%;
+        width: 80%;
+      }
+    }
+  }
+  .main-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    grid-gap: 20px;
+  }
 }

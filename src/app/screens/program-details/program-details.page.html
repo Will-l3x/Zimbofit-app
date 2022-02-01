@@ -1,12 +1,13 @@
 <ion-content>
-  <div class="header" style="background: url({{program?.image_url}});">
-    <ion-button routerLink="/home/dashboard">
-      <ion-icon
-        slot="icon-only"
-        color="primary-shade"
-        name="arrow-back"
-      ></ion-icon>
-    </ion-button>
+ <div class="header">
+    <div class="image-bg">
+      <img src="{{program?.image_url}}" alt="{{program?.name}}" srcset="" />
+    </div>
+    <div class="overlay">
+      <a routerLink="/home/dashboard">
+        <ion-icon slot="start" name="arrow-back"></ion-icon
+      ></a>
+    </div>
   </div>
   <div class="container">
     <div class="pricing">

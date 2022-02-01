@@ -29,6 +29,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'history',
+        loadChildren: () =>
+          import('../screens/history/history.module').then(
+            (m) => m.HistoryPageModule
+          ),
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

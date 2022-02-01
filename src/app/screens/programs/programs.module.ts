@@ -8,6 +8,7 @@ import { ProgramsPageRoutingModule } from './programs-routing.module';
 
 import { ProgramsPage } from './programs.page';
 import { ProgramCardModule } from 'src/app/components/program-card/program-card.module';
+import { SearchbarModule } from 'src/app/components/searchbar/searchbar.module';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { ProgramCardModule } from 'src/app/components/program-card/program-card.
     FormsModule,
     IonicModule,
     ProgramsPageRoutingModule,
-    ProgramCardModule
+    ProgramCardModule,
+    SearchbarModule,
   ],
-  declarations: [ProgramsPage]
+  declarations: [ProgramsPage],
 })
 export class ProgramsPageModule {}
