@@ -14,6 +14,7 @@ export class ProgramDetailsPage implements OnInit {
   id: string;
   program: Program;
   workouts$: Workout[] = [];
+  hover$ = '';
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -27,17 +28,13 @@ export class ProgramDetailsPage implements OnInit {
     this.programService.getProgram(this.id).subscribe((res) => {
       this.program = res;
       console.log(res);
-
-      res.workouts.map((workout) => {
-        this.workoutService.getWorkout(workout.workout_id).subscribe((_res) => {
-          workout = Object.assign(workout, _res);
-          this.workouts$.push(workout);
-        });
-      });
-      console.log(this.workouts$);
+      this.workouts$ = res.wrks;
     });
   }
   goToWorkoutDetailPage(id) {
     this.router.navigate(['workout', id]);
+  }
+  hover() {
+    this.hover$ = this.hover$ === 'hover' ? '' : 'hover';
   }
 }

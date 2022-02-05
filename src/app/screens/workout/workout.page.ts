@@ -19,14 +19,11 @@ import { WorkoutService } from 'src/app/services/workout.service';
 export class WorkoutPage implements OnInit, OnDestroy {
   id: string;
   workout: Workout;
-  exercises$: Exercise[] = [];
   private unsubscribeCat$ = new Subject<void>();
   private unsubscribeExe$ = new Subject<void>();
   constructor(
     private activatedRoute: ActivatedRoute,
     private workoutService: WorkoutService,
-    private categoryService: CategoryService,
-    private exerciseService: ExerciseService,
     private router: Router
   ) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -41,14 +38,7 @@ export class WorkoutPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.workoutService.getWorkout(this.id).subscribe((res) => {
       this.workout = res;
-      res.exercises.map((exercise) => {
-        this.exerciseService
-          .getExercise(exercise.exercise_id)
-          .subscribe((_res) => {
-            exercise = Object.assign(exercise, _res);
-            this.exercises$.push(exercise);
-          });
-      });
+      console.log(this.workout);
     });
   }
 
@@ -63,7 +53,9 @@ export class WorkoutPage implements OnInit, OnDestroy {
     console.log('slide change');
   }
 
-  goToDetailPage(id: string) {
-    this.router.navigate(['exercise-details', id]);
+  goToDetailPage(exercise) {
+    this.router.navigate(['exercise-details', exercise.id], {
+      state: { exercise },
+    });
   }
 }

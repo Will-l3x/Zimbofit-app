@@ -1,1 +1,4 @@
-<ion-searchbar></ion-searchbar>
+<ion-searchbar
+  (ionChange)="searchTextChanged($event)"
+  debounce="500"
+></ion-searchbar>

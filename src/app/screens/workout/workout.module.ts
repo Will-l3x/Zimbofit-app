@@ -10,6 +10,7 @@ import { WorkoutPage } from './workout.page';
 import { CategoryItemModule } from 'src/app/components/category-item/category-item.module';
 import { ExerciseCardModule } from 'src/app/components/exercise-card/exercise-card.module';
 import { SearchbarModule } from 'src/app/components/searchbar/searchbar.module';
+import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { SearchbarModule } from 'src/app/components/searchbar/searchbar.module';
     WorkoutPageRoutingModule,
     SearchbarModule,
     CategoryItemModule,
-    ExerciseCardModule
+    ExerciseCardModule,
+    SharedDirectivesModule
   ],
   declarations: [WorkoutPage]
 })

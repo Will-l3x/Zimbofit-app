@@ -52,12 +52,12 @@ export class PresenceService {
       return this.db.object(`status/${user.phone}`).update({
         status,
         phone: user.phone,
-        timestamp: this.timestamp,
+        timestamp: this.getTimestamp(),
       });
     }
   }
 
-  get timestamp() {
+  getTimestamp() {
     return firebase.database.ServerValue.TIMESTAMP;
   }
 
@@ -84,7 +84,7 @@ export class PresenceService {
             .update({
               status: 'offline',
               phone: user.phone,
-              timestamp: this.timestamp,
+              timestamp: this.getTimestamp()
             });
         }
       })

@@ -19,7 +19,11 @@ ion-content {
     .overlay {
       position: absolute;
       top: 0;
-      margin: 20px;
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       a {
         text-decoration: none;
         color: var(--ion-color-primary-shade);
@@ -92,28 +96,25 @@ ion-content {
       }
     }
     .container__text__star span {
-      font-size: 0.8rem;
+      font-size: 12px;
       color: #ffa800;
       margin: -5px 0 20px;
     }
     p {
-      font-size: 0.9rem;
+      font-size: 12px;
     }
     .container__text__timing {
       display: flex;
       margin: 20px 0 10px;
+      font-size: 12px;
       .container__text__timing_time {
         margin-right: 40px;
       }
       h2 {
         margin-bottom: 5px;
-        font-size: 1rem;
-        font-weight: 400;
+        font-size: 16px;
+        font-weight: 700;
         color: #ffa800;
-      }
-      p {
-        font-weight: bold;
-        font-size: 1.2rem;
       }
     }
   }

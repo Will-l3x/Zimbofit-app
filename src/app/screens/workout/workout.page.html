@@ -1,12 +1,27 @@
 <ion-content>
-<div class="header">
+  <div class="header">
     <div class="image-bg">
       <img src="{{workout?.image_url}}" alt="{{workout?.name}}" srcset="" />
     </div>
     <div class="overlay">
-      <a routerLink="/home/dashboard">
-        <ion-icon slot="start" name="arrow-back"></ion-icon
-      ></a>
+      <ion-buttons slot="start">
+        <ion-button appBackbutton>
+          <ion-icon
+            slot="icon-only"
+            color="primary-shade"
+            name="arrow-back"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons>
+        <ion-button>
+          <ion-icon
+            slot="icon-only"
+            color="primary-shade"
+            name="heart"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </div>
   </div>
   <div class="container">
@@ -23,12 +38,16 @@
         <p>30 min</p>
       </div> -->
       <div class="container__text__timing_time">
-        <h2>Total Time</h2>
-        <p>40 days</p>
+        <h2>Meal Plan</h2>
+        <p *ngIf="workout?.has_meal_plan;else sorry">Yes</p>
+        <ng-template #sorry>
+           <p>No meal plan available!</p>
+        </ng-template>
+
       </div>
-      <div class="container__text__timing_time">
-        <h2>kCal</h2>
-        <p>40</p>
+      <div *ngIf="workout?.has_meal_plan" class="container__text__timing_time">
+        <h2>Meal Plan Price</h2>
+        <span><sup>$</sup>{{workout?.meal_plan_price|number:'1.2'}}</span>
       </div>
     </div>
   </div>
@@ -37,9 +56,9 @@
     <div class="main-cards">
       <div class="card">
         <app-exercise-card
-          *ngFor="let item of exercises$"
+          *ngFor="let item of workout?.ordered_exercises"
           [item]="item"
-          (clicked)="goToDetailPage(item.id)"
+          (clicked)="goToDetailPage(item)"
         ></app-exercise-card>
       </div>
     </div>

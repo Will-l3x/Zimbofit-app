@@ -9,6 +9,8 @@ import { ProgramDetailsPageRoutingModule } from './program-details-routing.modul
 import { ProgramDetailsPage } from './program-details.page';
 import { WorkoutCard2Module } from 'src/app/components/workout-card2/workout-card2.module';
 import { RatingModule } from 'src/app/components/rating/rating.module';
+import { TrainerProfileModule } from 'src/app/components/trainer-profile/trainer-profile.module';
+import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 
 @NgModule({
   imports: [
@@ -17,6 +19,8 @@ import { RatingModule } from 'src/app/components/rating/rating.module';
     IonicModule,
     ProgramDetailsPageRoutingModule,
     WorkoutCard2Module,
+    TrainerProfileModule,
+    SharedDirectivesModule,
     RatingModule,
   ],
   declarations: [ProgramDetailsPage],

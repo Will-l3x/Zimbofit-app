@@ -3,10 +3,10 @@
     <div class="modal">
       <div class="container__text">
         <div class="pricing">
-          <h2>{{item.name}}</h2>
-          <h1><sup>$</sup>{{item.price|number: '1.2'}}</h1>
+          <h1>{{item.name}}</h1>
+          <h2><sup>$</sup>{{item.price|number: '1.2'}}</h2>
         </div>
-        <app-rating [rating]="item.rating"></app-rating>
+        <app-rating [rating]="5"></app-rating>
         <div class="likes">
           <div class="likes-content">
             <ion-icon name="heart-outline"></ion-icon>

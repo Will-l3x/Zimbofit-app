@@ -18,7 +18,11 @@ ion-content {
     .overlay {
       position: absolute;
       top: 0;
-      margin: 20px;
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       a {
         text-decoration: none;
         color: var(--ion-color-primary-shade);
@@ -40,6 +44,10 @@ ion-content {
       grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
       grid-gap: 20px;
       margin: 20px;
+    }
+    .trainer {
+      margin: 0 20px 20px;
+      height: 420px;
     }
     .main-cards {
       column-count: 1;

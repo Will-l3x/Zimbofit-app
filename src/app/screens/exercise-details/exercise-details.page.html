@@ -4,9 +4,24 @@
       <img src="{{exercise?.image_url}}" alt="{{exercise?.name}}" srcset="" />
     </div>
     <div class="overlay">
-      <a routerLink="/home/dashboard">
-        <ion-icon slot="start" name="arrow-back"></ion-icon
-      ></a>
+      <ion-buttons slot="start">
+        <ion-button appBackbutton>
+          <ion-icon
+            slot="icon-only"
+            color="primary-shade"
+            name="arrow-back"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <!-- <ion-buttons>
+        <ion-button>
+          <ion-icon
+            slot="icon-only"
+            color="primary-shade"
+            name="heart"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
     </div>
   </div>
   <div class="container">
@@ -22,13 +37,23 @@
         <p>30 min</p>
       </div> -->
       <div class="container__text__timing_time">
-        <h2>Reps</h2>
-        <p>{{exercise?.reps}}</p>
+        <h2>Total Sets</h2>
+        <p>{{exercise?.totalSets}}</p>
       </div>
       <div class="container__text__timing_time">
-        <h2>kCal</h2>
-        <p></p>
+        <h2 style="text-transform: capitalize">
+          {{exercise?.measurements[0].name}}
+        </h2>
+        <p>
+          {{exercise?.measurements[0].default}}
+          {{exercise?.measurements[0].unit}}
+        </p>
       </div>
     </div>
+    <!-- <div class="start-exercise">
+      <div class="countdown">
+       <app-countdowntimer [time]="0.5" (countdowntimer)="getCountdowntimer($event)"></app-countdowntimer>
+      </div>
+    </div> -->
   </div>
 </ion-content>

@@ -6,6 +6,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { HttpClient } from '@angular/common/http';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class CategoryService {
   }
 
   getCategories(): Observable<any[]> {
-    return this.categoryCollection.valueChanges().pipe();
+    return this.categoryCollection.valueChanges().pipe(take(1));
   }
 
   addNewCategory(category) {

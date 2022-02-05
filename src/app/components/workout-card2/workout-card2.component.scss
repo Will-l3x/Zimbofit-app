@@ -1,9 +1,12 @@
 $border-radius: 8px;
-
+*{
+  margin: 0px;
+}
 .container {
+  background-color: var(--ion-color-secondary-contrast);
   position: relative;
   display: grid;
-  grid-template-columns: 25% 75%;
+ grid-template-columns: 25% 75%;
   border-radius: $border-radius;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.356);
   margin-bottom: 20px;
@@ -21,13 +24,41 @@ $border-radius: 8px;
   }
 
   .container__text {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ion-color-secondary);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+    padding: 8px 16px;
+    .pricing,
+    .likes {
+      display: flex;
+      align-items: center;
+    }
+    .pricing {
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .likes {
+      justify-content: flex-start;
+    }
+    .pricing {
+      h1 {
+        font-weight: 600;
+        font-size: 16px;
+      }
+      h2 {
+        font-weight: 400;
+        font-size: 12px;
+        color: #ffa800;
+      }
+    }
+    .likes {
+      font-size: 12px;
+      font-weight: 700;
+      .likes-content {
+        ion-icon {
+          color: #ffa800;
+        }
+      }
+      span {
+        margin-left: 12px;
+      }
+    }
   }
 }

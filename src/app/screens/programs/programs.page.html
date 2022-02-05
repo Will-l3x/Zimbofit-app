@@ -3,7 +3,7 @@
     <div class="header">
       <h1>Programs</h1>
     </div>
-    <app-searchbar></app-searchbar>
+    <app-searchbar (searchText)="search($event)"></app-searchbar>
     <div class="main-overview">
       <app-program-card
         *ngFor="let program of programs$"

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
@@ -27,6 +28,12 @@ export class UserService {
 
   userCollection: AngularFirestoreCollection<any>;
 
+  private userLogin = new Subject();
+  private userSignup = new Subject();
+  private userLogout = new Subject();
+  // public userLogin$ = this.userLogin.asObservable();
+  // public userSignup$ = this.userSignup.asObservable();
+  // public userLogout$ = this.userLogout.asObservable();
   constructor(
     private afs: AngularFirestore,
     private afAuth: AngularFireAuth,
@@ -34,13 +41,7 @@ export class UserService {
     private storage: Storage,
     private likeService: LikeService,
     private ratingService: RatingService,
-    private http: HttpClient,
-    private userLogin = new Subject(),
-    private userSignup = new Subject(),
-    private userLogout = new Subject(),
-    public userLogin$ = userLogin.asObservable(),
-    public userSignup$ = userSignup.asObservable(),
-    public userLogout$ = userLogout.asObservable()
+    private http: HttpClient
   ) {
     this.userCollection = this.afs.collection('users', (ref) =>
       ref.orderBy('name', 'asc')

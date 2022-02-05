@@ -8,6 +8,8 @@ import { ExerciseDetailsPageRoutingModule } from './exercise-details-routing.mod
 
 import { ExerciseDetailsPage } from './exercise-details.page';
 import { BadgeModule } from 'src/app/components/badge/badge.module';
+import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
+import { CountdowntimerModule } from 'src/app/components/countdowntimer/countdowntimer.modules';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { BadgeModule } from 'src/app/components/badge/badge.module';
     FormsModule,
     IonicModule,
     ExerciseDetailsPageRoutingModule,
-    BadgeModule
+    BadgeModule,
+    SharedDirectivesModule,
+    CountdowntimerModule
   ],
   declarations: [ExerciseDetailsPage]
 })

@@ -1,12 +1,23 @@
 <ion-content>
- <div class="header">
+  <div class="header">
     <div class="image-bg">
       <img src="{{program?.image_url}}" alt="{{program?.name}}" srcset="" />
     </div>
     <div class="overlay">
-      <a routerLink="/home/dashboard">
-        <ion-icon slot="start" name="arrow-back"></ion-icon
-      ></a>
+      <ion-buttons slot="start">
+        <ion-button appBackbutton>
+          <ion-icon
+            slot="icon-only"
+            color="primary-shade"
+            name="arrow-back"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons>
+        <ion-button>
+          <ion-icon slot="icon-only" color="primary-shade" name="heart"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </div>
   </div>
   <div class="container">
@@ -17,29 +28,24 @@
     </div>
     <h1 class="desc">Description</h1>
     <p>{{program?.description}}</p>
-    <div class="container__text__timing">
-      <!-- <div class="container__text__timing_time">
-        <h2>Hands-on Time</h2>
-        <p>30 min</p>
-      </div> -->
-      <div class="container__text__timing_time">
-        <h2>Total Time</h2>
-        <p>40 days</p>
-      </div>
-      <div class="container__text__timing_time">
-        <h2>kCal</h2>
-        <p>40</p>
-      </div>
-    </div>
   </div>
+
   <div class="content">
+    <div class="sub-header">Trainer</div>
+    <div class="trainer">
+      <app-trainer-profile
+        [trainer]="program?.trainer"
+        [hover]="hover$"
+        (clicked)="hover()"
+      ></app-trainer-profile>
+    </div>
     <div class="sub-header">Workouts</div>
     <div class="main-cards">
       <div class="card">
         <app-workout-card2
           *ngFor="let workout of workouts$"
           [item]="workout"
-          (clicked)="goToWorkoutDetailPage(workout.workout_id)"
+          (clicked)="goToWorkoutDetailPage(workout.id)"
         ></app-workout-card2>
       </div>
     </div>

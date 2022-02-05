@@ -1,0 +1,11 @@
+<div class="form-group">
+  <div class="timer" *ngIf="timeLeft$ | async as t; else sorry">
+    <h4>{{t.marks}}</h4>
+    <span id="minutes"> {{ t.minutesTo }} </span>min
+    <span id="seconds"> {{ t.secondsTo }} </span>sec
+  </div>
+
+  <ng-template #sorry>
+    <button (click)="CountdowntimeReady()">start</button>
+  </ng-template>
+</div>

@@ -47,6 +47,10 @@ const routes: Routes = [
         (m) => m.ExerciseListPageModule
       ),
   },
+  {
+    path: 'start-exercise',
+    loadChildren: () => import('./screens/start-exercise/start-exercise.module').then( m => m.StartExercisePageModule)
+  },
 ];
 
 @NgModule({

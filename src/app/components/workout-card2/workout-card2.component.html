@@ -4,6 +4,16 @@
   </div>
 
   <div class="container__text">
-    <h2>{{item?.name}}</h2>
+    <div class="pricing">
+      <h1>{{item?.name}}</h1>
+      <!-- <h2><sup>$</sup>{{item?.price|number:'1.2'}}</h2> -->
+    </div>
+    <app-rating [rating]="5"></app-rating>
+    <div class="likes">
+      <div class="likes-content">
+        <ion-icon name="heart-outline"></ion-icon>
+        4.7k
+      </div>
+    </div>
   </div>
 </div>

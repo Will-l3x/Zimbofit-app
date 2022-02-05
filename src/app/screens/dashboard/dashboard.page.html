@@ -30,38 +30,40 @@
     <header class="header">
       <app-menu-icon (clicked)="sidenavOpen()"></app-menu-icon>
       <div class="avatar">
-        <ion-img src="../../../assets/img/man-05.svg"></ion-img>
+        <ion-img src="assets/img/man-05.svg"></ion-img>
       </div>
     </header>
     <main class="main-content">
-      <div class="main-overview">
-        <app-workout-stats
-          *ngFor="let myworkout of myworkouts$"
-          [item]="myworkout"
-          (clicked)="goToWorkoutPage(myworkout.id)"
-        ></app-workout-stats>
+      <div class="card-container">
+        <app-program-stats
+          *ngFor="let myprogram of myprograms$"
+          [item]="myprogram"
+          (clicked)="goToProgramPage(myprogram.id)"
+        ></app-program-stats>
       </div>
-      <div class="sub-header">Programs</div>
-      <div class="programs">
+      <div class="sub-header">Picks for you</div>
+      <div class="card-container-swipe">
         <div class="scroll">
           <app-program-card
-            *ngFor="let program of programs$"
+            *ngFor="let program of picksForUser$"
             [item]="program"
             (clicked)="goToProgramPage(program.id)"
           ></app-program-card>
         </div>
       </div>
-
-      <div class="sub-header">Picks for you</div>
-      <div class="main-cards">
-        <div class="card">
-          <app-workout-card
-            *ngFor="let workout of workouts$"
-            [item]="workout"
-            (clicked)="goToWorkoutPage(workout.id)"
-          ></app-workout-card>
-        </div>
+      <div class="sub-header">Popular</div>
+      <div class="card-container">
+          <app-program-card
+            *ngFor="let program of programs$"
+            [item]="program"
+            (clicked)="goToProgramPage(program.id)"
+          ></app-program-card>
       </div>
+      <!-- <div class="main-cards">
+        <div class="card">
+        
+        </div>
+      </div> -->
     </main>
   </div>
 </ion-content>

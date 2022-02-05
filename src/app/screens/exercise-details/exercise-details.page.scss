@@ -18,7 +18,11 @@ ion-content {
     .overlay {
       position: absolute;
       top: 0;
-      margin: 20px;
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       a {
         text-decoration: none;
         color: var(--ion-color-primary-shade);
@@ -54,28 +58,72 @@ ion-content {
       }
     }
     .container__text__star span {
-      font-size: 0.8rem;
+      font-size: 12px;
       color: #ffa800;
       margin: -5px 0 20px;
     }
     p {
-      font-size: 0.9rem;
+      font-size: 12px;
     }
     .container__text__timing {
-      display: flex;
+       display: flex;
       margin: 20px 0 10px;
+      font-size: 12px;
       .container__text__timing_time {
         margin-right: 40px;
       }
       h2 {
         margin-bottom: 5px;
-        font-size: 1rem;
-        font-weight: 400;
+        font-size: 16px;
+        font-weight: 700;
         color: #ffa800;
       }
-      p {
-        font-weight: bold;
-        font-size: 1.2rem;
+    }
+    .start-exercise {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      #countdown {
+        position: relative;
+        margin: auto;
+        margin-top: 100px;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+      }
+
+      #countdown-number {
+        color: white;
+        display: inline-block;
+        line-height: 40px;
+      }
+
+      svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        transform: rotateY(-180deg) rotateZ(-90deg);
+      }
+
+      svg circle {
+        stroke-dasharray: 113px;
+        stroke-dashoffset: 0px;
+        stroke-linecap: round;
+        stroke-width: 2px;
+        stroke: white;
+        fill: none;
+        animation: countdown 10s linear infinite forwards;
+      }
+
+      @keyframes countdown {
+        from {
+          stroke-dashoffset: 0px;
+        }
+        to {
+          stroke-dashoffset: 113px;
+        }
       }
     }
   }

@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { HistoryPageRoutingModule } from './history-routing.module';
 
 import { HistoryPage } from './history.page';
+import { OverviewChartModule } from 'src/app/components/overview-chart/overview-chart.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HistoryPageRoutingModule
+    HistoryPageRoutingModule,
+    OverviewChartModule,
   ],
-  declarations: [HistoryPage]
+  declarations: [HistoryPage],
 })
 export class HistoryPageModule {}

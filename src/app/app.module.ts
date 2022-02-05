@@ -14,6 +14,10 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { NavigationService } from './services/navigation.service';
+import { SharedDirectivesModule } from './directives/shared-directives.module';
+import { BackbuttonDirective } from './directives/backbutton.directive';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,8 +33,15 @@ import { environment } from 'src/environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+    SharedDirectivesModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, NavigationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable max-len */
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { WorkoutService } from 'src/app/services/workout.service';
 import { Category } from 'src/app/interfaces/category.model';
@@ -14,11 +12,17 @@ import { Router } from '@angular/router';
   templateUrl: './workouts.page.html',
   styleUrls: ['./workouts.page.scss'],
 })
-export class WorkoutsPage implements OnInit, OnDestroy {
+export class WorkoutsPage implements OnInit {
   categories$: Category[] = [];
   workouts$: Workout[] = [];
-  private unsubscribeCat$ = new Subject<void>();
-  private unsubscribeExe$ = new Subject<void>();
+  activecat =  {
+          description: 'all',
+          id: 'all',
+          image_url: 'assets/img/home/exercise.svg',
+          name: 'All',
+          timestamp: parseInt(Date.now().toFixed(), 10),
+          date_time: parseInt(Date.now().toFixed(), 10),
+        };
   constructor(
     private categoryService: CategoryService,
     private workoutService: WorkoutService,
@@ -32,59 +36,68 @@ export class WorkoutsPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.categoryService
-      .getCategories()
-      .pipe(takeUntil(this.unsubscribeCat$))
-      .subscribe((res) => {
-        this.categories$ = [
-          {
-            active: true,
-            description: 'all',
-            id: 'all',
-            image_url: 'assets/img/home/exercise.svg',
-            name: 'All',
-            timestamp: parseInt(Date.now().toFixed(), 10),
-            date_time: parseInt(Date.now().toFixed(), 10),
-          },
-        ];
-        const categories = [];
-        for (const category of res) {
-          category.active = false;
-          category.name =
-            category.name.length >= 32
-              ? this.acronym(category.name)
-              : category.name;
-          category.image_url = 'assets/img/home/programs.svg';
-          categories.push(category);
-        }
-        this.categories$ = this.categories$.concat(categories);
-        console.log(categories);
-      });
-    this.workoutService
-      .getWorkouts()
-      .pipe(takeUntil(this.unsubscribeExe$))
-      .subscribe((res) => {
-        /* this.workouts$ = [];
-         const workouts = [];
-          for (const workout of res) {
-            workout.name =
-              workout.name.length >= 32
-                ? this.acronym(workout.name)
-                : workout.name;
-            workouts.push(workout);
-         */
-        console.log(res);
-        this.workouts$ = res;
-      });
+    this.categoryService.getCategories().subscribe((res) => {
+      this.categories$ = [
+        {
+          description: 'all',
+          id: 'all',
+          image_url: 'assets/img/home/exercise.svg',
+          name: 'All',
+          timestamp: parseInt(Date.now().toFixed(), 10),
+          date_time: parseInt(Date.now().toFixed(), 10),
+        },
+      ];
+      const categories = [];
+      for (const category of res) {
+        category.active = false;
+        category.name =
+          category.name.length >= 32
+            ? this.acronym(category.name)
+            : category.name;
+        category.image_url = 'assets/img/home/programs.svg';
+        categories.push(category);
+      }
+      this.categories$ = this.categories$.concat(categories);
+      console.log(categories);
+    });
+    this.getWorkouts();
   }
-
-  ngOnDestroy() {
-    this.unsubscribeCat$.next();
-    this.unsubscribeCat$.complete();
-    this.unsubscribeExe$.next();
-    this.unsubscribeExe$.complete();
+  getWorkouts() {
+    this.workoutService.getWorkouts2().subscribe((res) => {
+      this.activecat = {
+        description: 'all',
+        id: 'all',
+        image_url: 'assets/img/home/exercise.svg',
+        name: 'All',
+        timestamp: parseInt(Date.now().toFixed(), 10),
+        date_time: parseInt(Date.now().toFixed(), 10),
+      };
+      this.workouts$ = res;
+    });
   }
-
+  searchCat(item) {
+    if (item.id === 'all') {
+      this.getWorkouts();
+    } else {
+      this.workoutService.getWorkouts2().subscribe((res) => {
+        this.activecat = item;
+        this.workouts$ = res.filter((wrk) =>
+          wrk.category_id.toLowerCase().includes(item.id.toLowerCase())
+        );
+      });
+    }
+  }
+  search(name) {
+    if (name === '') {
+      this.getWorkouts();
+    } else {
+      this.workoutService.getWorkouts2().subscribe((res) => {
+        this.workouts$ = res.filter((wrk) =>
+          wrk.name.toLowerCase().includes(name.toLowerCase())
+        );
+      });
+    }
+  }
   goToDetailPage(id: string) {
     this.router.navigate(['workout', id]);
   }

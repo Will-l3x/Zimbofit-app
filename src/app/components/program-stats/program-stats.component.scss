@@ -1,41 +1,117 @@
-.overviewcard {
-  background: var(--ion-color-primary-contrast);
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.356);
-  border-radius: 8px;
-  color: var(--ion-color-secondary);
-  .overviewcard-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    margin-bottom: 4px;
-    .overviewcard__title {
-      font-size: 20px;
-      font-weight: 700;
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  height: 165px;
+  box-shadow: inset 0px -20px 100px 10px rgba(0, 0, 0, 0.7);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.modal {
+  //background-color: rgba(51, 65, 85, 0.25);
+  color: var(--ion-color-secondary-contrast);
+  font-family: sans-serif;
+  line-height: 1.5;
+  width: 100%;
+  padding: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  .container__text {
+    .pricing {
+      h2 {
+        font-weight: 500;
+        font-size: 12px;
+        //color: #ffa800;
+        color: var(--ion-color-primary);
+      }
+      h1 {
+        font-weight: 700;
+        font-size: 20px;
+        text-transform: uppercase;
+      }
     }
-    .metrics {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--ion-color-primary-shade);
-    }
-  }
-  .progress {
-    padding: 0 20px;
-    ion-progress-bar {
-      height: 8px;
-      border-radius: 4px;
-    }
-  }
-  .overviewcard-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    .percentage,
-    .period {
-      font-size: 14px;
-      font-weight: 400;
+    .workoutstats__card {
+      border-radius: 5px;
+      color: #fff;
+
+      .progress {
+        ion-progress-bar {
+          --background: rgba(51, 65, 85, 0.15);
+          --progress-background: var(--ion-color-primary);
+          height: 8px;
+          // border-radius: 4px;
+        }
+      }
+      .workoutstats__card__footer {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 10px 0;
+
+        .percentage {
+          font-size: 12px;
+          font-weight: 500;
+        }
+        .period {
+          font-size: 12px;
+          font-weight: 700;
+        }
+      }
     }
   }
 }
+
+// .overviewcard {
+//   background: var(--ion-color-primary-contrast);
+//   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.356);
+//   border-radius: 8px;
+//   color: var(--ion-color-secondary);
+//   .overviewcard-header {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 20px;
+//     margin-bottom: 4px;
+//     .overviewcard__title {
+//       font-size: 20px;
+//       font-weight: 700;
+//     }
+//     .metrics {
+//       font-size: 14px;
+//       font-weight: 400;
+//       color: var(--ion-color-primary-shade);
+//     }
+//   }
+//   .progress {
+//     padding: 0 20px;
+//     ion-progress-bar {
+//       height: 8px;
+//       border-radius: 4px;
+//     }
+//   }
+//   .overviewcard-footer {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 10px 20px;
+//     margin-bottom: 20px;
+//     .percentage,
+//     .period {
+//       font-size: 14px;
+//       font-weight: 400;
+//     }
+//   }
+// }

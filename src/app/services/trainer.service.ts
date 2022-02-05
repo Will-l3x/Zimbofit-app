@@ -21,9 +21,7 @@ export class TrainerService {
     }
 
     getTrainers(): Observable<any[]> {
-        return this.trainerCollection.valueChanges().pipe(
-            tap(data => console.log('Trainers', data))
-        );
+        return this.trainerCollection.valueChanges().pipe();
     }
 
     getNewId() {
