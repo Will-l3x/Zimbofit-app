@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/app/tabs/programs/program/{{program?.id}}"></ion-back-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{program?.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onReset()">Reset</ion-button>
+      <ion-button (click)="onSave()">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!offline" style="
+    background: url('assets/img/speakers/badu-live.png');
+    width: 100%;
+    height: 190px;
+    background-position: center;"
+    [style.background]="program?.image_url ? 'url('+program.image_url+')' : 'url(assets/img/speakers/badu-live.png)'">
+  </div>
+
+  <div style="margin-top: -50px">
+    <ion-card style="background: #ffffff">
+      <ion-item lines="none">
+        <ion-label>Repeat</ion-label>
+        <ion-select [(ngModel)]="repeat" (ionChange)="onRepeat()">
+          <ion-select-option *ngFor="let rpt of repeats" [value]="rpt">
+            {{rpt.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+    <ion-card *ngFor="let workout of program?.wrks" style="background: #ffffff">
+      <ion-card-header>
+        {{workout?.name}}
+        <ion-note style="float: right" [class.text-danger]="isPast(workout)">
+          {{getFromNow(workout)}}
+        </ion-note>
+      </ion-card-header>
+
+      <!-- <ion-item *ngIf="editDays">
+          <ion-icon name="calendar" slot="start"></ion-icon>
+          <ion-label>Day</ion-label>
+          <p>{{workout.day}}</p>
+          <ion-select [(ngModel)]="workout.day" (ionChange)="onDay()">
+              <ion-select-option *ngFor="let day of days" [value]="day">
+                {{day}}
+              </ion-select-option>
+            </ion-select>
+        </ion-item> -->
+
+      <ion-item>
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="DD MMM YYYY (HH:mm)" [min]="min" [max]="max" minuteValues="0,15,30,45" 
+          [(ngModel)]="workout.schedule" (ionChange)="onDate(workout.schedule)"></ion-datetime>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-icon name="clock" slot="start"></ion-icon>
+        <ion-label>Time</ion-label>
+        <ion-datetime displayFormat="HH:mm" [min]="min" [max]="max" minuteValues="0,15,30,45" [(ngModel)]="workout.schedule"
+          (ionChange)="onDate()">
+        </ion-datetime>
+      </ion-item> -->
+
+    </ion-card>
+  </div>
+</ion-content>

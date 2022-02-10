@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form *ngIf="model" [formGroup]="form" (ngSubmit)="submit(model)">
+    <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+    <ion-button type="submit" [disabled]="!form.valid" class="btn btn-primary">Update</ion-button>
+  </form>
+</ion-content>

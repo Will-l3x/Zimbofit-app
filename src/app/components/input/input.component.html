@@ -1,0 +1,13 @@
+<ion-item class="ion-margin-bottom">
+  <ion-label *ngIf="label">{{ label }}</ion-label>
+  <ion-input
+    [type]="type"
+    [placeholder]="placeholder"
+    formControlName="phonenum"
+    minlength="7"
+    maxlength="15"
+    [(ngModel)]="text"
+    (ionChange)="inputChanged()"
+    required
+  ></ion-input>
+</ion-item>

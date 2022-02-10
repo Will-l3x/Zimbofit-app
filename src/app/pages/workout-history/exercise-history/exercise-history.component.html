@@ -1,0 +1,16 @@
+<app-workout-chart *ngIf="exercises?.length > 1" [session_exercises]="exercises">
+</app-workout-chart>
+
+<ion-card>
+  <ion-list>
+    <ng-container *ngFor="let session_exercise of exercises">
+      <ion-item-divider>
+        {{session_exercise.timestamp | date}} 
+        <!-- {{session_exercise.exercise_name}} -->
+      </ion-item-divider>
+      <ion-item *ngFor="let set of session_exercise.sets" lines="full">
+        <ion-chip *ngFor="let measurement of set.measurements">{{measurement.value}} {{measurement.unit || measurement.name}}</ion-chip>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-card>

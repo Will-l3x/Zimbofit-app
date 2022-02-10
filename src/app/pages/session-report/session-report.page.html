@@ -1,0 +1,63 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/app/tabs/history"></ion-back-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Workout Report
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/app/tabs/history/{{session?.workout_id}}">
+        <ion-icon name="stats"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-group *ngFor="let exercise of session?.session_exercises">
+      <ion-item-divider class="ion-text-center">
+        {{exercise?.exercise_name}}
+      </ion-item-divider>
+      <ion-item *ngFor="let set of exercise?.sets; let i = index" lines="none">
+        <ion-note slot="start">{{i + 1}}</ion-note>
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let measurement of set.measurements">
+              <ng-container [ngSwitch]="measurement.name">
+                <ion-chip *ngSwitchCase="'time'">{{measurement.value || '0'}}/{{measurement.default}}
+                  {{measurement.unit}}</ion-chip>
+                <ion-chip *ngSwitchCase="'reps'">{{measurement.value || '0'}}/{{measurement.default}} Reps</ion-chip>
+                <ion-chip *ngSwitchCase="'weight'">{{getWorkload(set)}} W</ion-chip>
+                <ion-chip *ngSwitchCase="'distance'">{{measurement.value || '0'}}/{{measurement.default}}
+                  {{measurement.unit}}</ion-chip>
+              </ng-container>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>
+    <ion-fab-button>
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="vimeo" (click)="openSocial('Vimeo', fab)">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="google" (click)="openSocial('Google+', fab)">
+        <ion-icon name="logo-googleplus"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="twitter" (click)="openSocial('Twitter', fab)">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="facebook" (click)="openSocial('Facebook', fab)">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

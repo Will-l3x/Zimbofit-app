@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="!myWorkouts || !myWorkouts.length">Workouts</ion-title>
+    <ion-segment *ngIf="myWorkouts?.length" [(ngModel)]="segment" (ionChange)="updateList()">
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="mine">
+        Personal
+      </ion-segment-button>
+    </ion-segment>
+    <ion-buttons slot="end">
+      <cart-menu-button></cart-menu-button>
+      <ion-button (click)="onAddWorkout()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+      <ion-button (click)="presentFilter()">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [ngSwitch]="segment">
+  <ng-container *ngSwitchCase="'mine'">
+    <my-workout-list></my-workout-list>
+  </ng-container>
+
+  <ng-container *ngSwitchDefault>
+    <my-workout-list></my-workout-list>
+  </ng-container>
+</ion-content>

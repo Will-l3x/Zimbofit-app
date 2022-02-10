@@ -1,0 +1,13 @@
+<ion-card class="ion-padding" [color]="set.completed ? 'primary' : 'light'">
+  <div class="measurements-container" (click)="onSetAdjust()" 
+    [ngStyle]="{'border-color': set.completed ? '#f4f5f8' : '#aaaaaa'}">
+    <p *ngFor="let measurement of set.measurements" class="ion-text-center">
+      {{measurement.name | titlecase}} : {{measurement.value || measurement.default}}
+      <span *ngIf="measurement.unit">{{measurement.unit}}</span>
+    </p>
+  </div>
+  <ion-button fill="outline" (click)="onSetComplete()" size="block"
+    [color]="set.completed ? 'light' : 'primary'">
+    {{set.completed ? 'Completed' : 'Complete'}}
+  </ion-button>
+</ion-card>

@@ -51,6 +51,12 @@ app-category-item {
   flex: 0 0 auto;
   margin-right: 20px;
 }
+app-rating,
+app-like {
+  display: flex;
+  align-items: center;
+}
+
 .filter-orange {
   filter: invert(56%) sepia(25%) saturate(5625%) hue-rotate(350deg)
     brightness(98%) contrast(98%);

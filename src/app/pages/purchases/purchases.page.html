@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Purchases</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let purchase of purchases">
+    {{purchase?.name || purchase?.item?.name}}
+    <ion-note slot="end">{{purchase?.item?.price | currency}}</ion-note>
+    <ion-buttons slot="end">
+      <ion-icon name="trash" (click)="removeItem(item)"></ion-icon>
+    </ion-buttons>
+  </ion-item>
+</ion-content>

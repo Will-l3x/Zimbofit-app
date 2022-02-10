@@ -1,0 +1,20 @@
+<div>
+  <ion-card-header class="ion-text-center">Adjusting Set</ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item-group *ngFor="let measurement of measurements">
+        <ion-item-divider lines="none">
+          <ion-note slot="start">{{measurement.value}}{{measurement.unit}} {{measurement.name | titlecase}}</ion-note>
+        </ion-item-divider>
+        <ion-item>
+          <ion-range min="0" [max]="measurement.default" step="1" [(ngModel)]="measurement.value" color="primary"
+            style="padding-left:0; padding-right: 0">
+            <ion-icon size="small" slot="start" name="remove" (click)="decrease(measurement)"></ion-icon>
+            <ion-icon slot="end" name="add" (click)="increase(measurement)"></ion-icon>
+          </ion-range>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+    <ion-button size="block" (click)="onDismiss()">Save</ion-button>
+  </ion-card-content>
+</div>

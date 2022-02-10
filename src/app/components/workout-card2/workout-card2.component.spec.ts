@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { WorkoutCard2Component } from './workout-card2.component';
 
-describe('WorkoutCardComponent', () => {
+describe('WorkoutCard2Component', () => {
   let component: WorkoutCard2Component;
   let fixture: ComponentFixture<WorkoutCard2Component>;
 

@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TrainerProfileComponent implements OnInit {
   @Input() trainer: object;
-  @Input() hover: string;
+  @Input() hover: object;
   @Output() clicked = new EventEmitter();
   window = window;
   constructor() {}

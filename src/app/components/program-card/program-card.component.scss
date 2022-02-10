@@ -47,9 +47,9 @@
       h2 {
         font-weight: 500;
         font-size: 12px;
-        //color: #ffa800;
+        //color: var(--ion-color-warning);
 
-        color: #ffa800;
+        color: var(--ion-color-warning);
       }
       h1 {
         font-weight: 700;
@@ -62,7 +62,7 @@
       font-weight: 700;
       .likes-content {
         ion-icon {
-          color: #ffa800;
+          color: var(--ion-color-warning);
         }
       }
       span {

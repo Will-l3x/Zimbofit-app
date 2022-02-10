@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Subject } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -12,16 +11,15 @@ export class UserData {
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
+  userLogin = new Subject();
+  userSignup = new Subject();
+  userLogout = new Subject();
 
-  constructor(
-    private userLogin = new Subject(),
-    private userSignup = new Subject(),
-    private userLogout = new Subject(),
-    public userLogin$ = userLogin.asObservable(),
-    public userSignup$ = userSignup.asObservable(),
-    public userLogout$ = userLogout.asObservable(),
-    public storage: Storage
-  ) {}
+  public userLogin$ = this.userLogin.asObservable();
+  public userSignup$ = this.userSignup.asObservable();
+  public userLogout$ = this.userLogout.asObservable();
+
+  constructor(public storage: Storage) {}
   publishUserLogin() {
     this.userLogin.next('user:login');
   }

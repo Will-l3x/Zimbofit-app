@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/app/tabs/workouts"></ion-back-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title><span *ngIf="!edit">Create </span><span *ngIf="edit">Edit </span> Workout</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="form?.valid && fields?.length" (click)="submit(model)">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="model" [formGroup]="form" (ngSubmit)="submit(model)">
+    <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+    <!-- <ion-button type="submit" [disabled]="!form.valid" class="btn btn-primary">Update</ion-button> -->
+  </form>
+</ion-content>

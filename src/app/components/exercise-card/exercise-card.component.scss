@@ -3,20 +3,18 @@ $border-radius: 8px;
   margin: 0px;
 }
 .container {
-  background-color: var(--ion-color-secondary-contrast);
+  background-color: var(--ion-color-light);
   position: relative;
   display: grid;
-  grid-template-columns: 25% 75%;
+  height: 100px;
+  grid-template-columns: 30% 70%;
   border-radius: $border-radius;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.356);
   margin-bottom: 20px;
-
   .container__image {
-    width: 25vw;
-    height: 25vw;
     img {
       width: 100%;
-      height: 100%;
+      height: 100px;
       border-radius: $border-radius 0 0 $border-radius;
       object-fit: cover;
       object-position: center;
@@ -24,14 +22,17 @@ $border-radius: 8px;
   }
 
   .container__text {
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
+   display: flex;
+   align-items: center;
+   padding: 12px;
+   width: 100%;
+   height: 100%;
     .pricing {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 8px;
       h1 {
         font-weight: 600;
         font-size: 20px;
@@ -39,21 +40,7 @@ $border-radius: 8px;
       h2 {
         font-weight: 400;
         font-size: 14px;
-        width: 50px;
-        color: #ffa800;
-      }
-    }
-    .likes {
-      font-size: 12px;
-      font-weight: 700;
-      .likes-content {
-        padding: 1px 0;
-        ion-icon {
-          color: #ffa800;
-        }
-      }
-      span {
-        margin-left: 12px;
+        color: var(--ion-color-warning);
       }
     }
   }

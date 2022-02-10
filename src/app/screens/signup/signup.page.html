@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="onClick()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" routerLink="/signin"> Signin </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div class="container">
+      <div id="header">
+        <h1>
+          Create your <br />
+          Account
+        </h1>
+      </div>
+      <form action="" id="form">
+        <app-input type="" placeholder="Country select"></app-input>
+        <app-input type="" placeholder="Your Name"></app-input>
+        <app-input type="password" placeholder="Password"></app-input>
+        <ion-button (click)="onClick()" expand="block" shape="round">
+          Signup
+        </ion-button>
+      </form>
+
+      <p>
+        By clicking 'Signup' you agree to <br />
+        our terms and conditions
+      </p>
+    </div>
+  </div>
+</ion-content>

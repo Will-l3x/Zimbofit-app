@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Checkout</ion-title>
+    <ion-buttons slot="end">
+      <cart-menu-button></cart-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of items">
+    {{item.name}}
+    <ion-note slot="end">{{item.price | currency}}</ion-note>
+    <ion-note slot="end">{{item.price*rate | currency}} ZWL</ion-note>
+  </ion-item>
+  <ion-item *ngIf="items?.length">
+    <strong>Total</strong>
+    <ion-note slot="end"><strong>{{total | currency}}</strong></ion-note>
+    <ion-note slot="end"><strong>{{total*rate | currency}} ZWL</strong></ion-note>
+  </ion-item>
+  <ion-button *ngIf="items?.length" size="block" (click)="presentModal()">Pay With</ion-button>
+  <!-- <ion-button *ngIf="items?.length" size="block" (click)="purchaseEcocash()">Pay with Ecocash</ion-button>
+  <ion-button *ngIf="items?.length" size="block" (click)="purchaseOnemoney()">Pay with OneMoney</ion-button> -->
+  <ion-card *ngIf="!items?.length" padding>
+    <ion-card-title>Empty Cart</ion-card-title>
+    <ion-card-content>You don't have anything in the cart</ion-card-content>
+  </ion-card>
+</ion-content>

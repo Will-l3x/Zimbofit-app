@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Schedule: {{workout?.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onSave()">Save</ion-button>
+      <ion-button (click)="onCancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label position="stacked">Date</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY" max="2056" [(ngModel)]="workout.schedule"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="clock" slot="start"></ion-icon>
+      <ion-label position="stacked">Time</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="workout.schedule"></ion-datetime>
+    </ion-item>
+
+  </ion-card>
+</ion-content>

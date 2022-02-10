@@ -1,0 +1,44 @@
+$categories: (
+  ionic: var(--ion-color-primary),
+  cardio: #ac282b,
+  crossfit: #8e8d93,
+  tooling: #fe4c52,
+  services: #fd8b2d,
+  design: #fed035,
+  workshop: #69bb7b,
+  food: #3bc7c4,
+  documentation: #b16be3,
+  strength-training: #6600cc,
+);
+
+@each $track, $value in map-remove($categories) {
+  ion-item-sliding[track="#{$track}"] ion-label {
+    border-left: 2px solid $value;
+    padding-left: 10px;
+  }
+}
+
+.ion-text-danger {
+  color: red;
+}
+
+ion-list {
+  padding: 20px;
+  ion-item-sliding {
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+    ion-item {
+      --padding-start: 0px;
+      --inner-padding-end: 0px;
+    }
+    ion-item-options {
+      overflow: hidden;
+      background: #f8fafc;
+      ion-item-option {
+        background: #f8fafc;
+      }
+    }
+  }
+}

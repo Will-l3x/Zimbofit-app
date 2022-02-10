@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, map, switchMap } from 'rxjs/operators';
-import orderBy from 'lodash/orderBy';
+import orderBy from 'lodash-es/orderBy';
 import { UserService } from './user.service';
 import { Session } from '../interfaces/session';
 

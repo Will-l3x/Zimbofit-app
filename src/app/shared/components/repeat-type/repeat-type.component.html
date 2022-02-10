@@ -1,0 +1,21 @@
+<ion-item *ngIf="to?.title && field?.fieldGroup?.length" lines="none">
+  {{to?.title}}
+</ion-item>
+<ion-card style="border: 2px solid #aaa; border-radius: 0; box-shadow: none;"
+  *ngFor="let field of field.fieldGroup; let i = index;">
+  <ion-row>
+    <ion-col size="12">
+      <formly-field [field]="field"></formly-field>
+    </ion-col>
+  </ion-row>
+  <div class="ion-text-right">
+    <ion-button color="danger" (click)="remove(i)">
+      <ion-icon name="remove"></ion-icon>
+    </ion-button>
+  </div>
+</ion-card>
+<div padding>
+  <ion-button (click)="add()">
+    <ion-icon name="add"></ion-icon> {{ to.addText }}
+  </ion-button>
+</div>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, combineLatest } from 'rxjs';
 import { map, groupBy, tap } from 'rxjs/operators';
-import cloneDeep from 'lodash/cloneDeep';
+import cloneDeep from 'lodash-es/cloneDeep';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

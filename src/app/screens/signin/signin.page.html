@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="onClick()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" routerLink="/signup"> Signup </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div class="container">
+      <div id="header">
+        <h1>Signin</h1>
+        <img src="assets/img/128 icon.png" alt="logo" />
+      </div>
+      <form action="" id="form">
+        <app-input type="" placeholder="Country select"></app-input>
+        <app-input type="password" placeholder="Password"></app-input>
+        <ion-button (click)="onClick()" expand="block" shape="round">
+          Signin
+        </ion-button>
+      </form>
+    </div>
+  </div>
+</ion-content>

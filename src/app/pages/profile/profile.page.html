@@ -1,0 +1,82 @@
+<ion-header>
+  <!-- <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar> -->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-segment [(ngModel)]="top_segment">
+      <ion-segment-button value="info-tab">
+        User Info
+      </ion-segment-button>
+      <ion-segment-button value="likes-tab">
+        Likes & Reviews
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="top_segment == 'info-tab'" padding class="outer-content">
+  <div class="ion-padding-top ion-text-center">
+    <img *ngIf="!offline" [src]="user?.image_url || 'assets/img/speakers/mouse.jpg'" alt="avatar">
+    <ion-card style="background: #ffffff; padding-top: 1.5rem">
+      <ion-segment [(ngModel)]="segment">
+        <ion-segment-button value="info">
+          Basic Info
+        </ion-segment-button>
+        <ion-segment-button value="goals">
+          Goals
+        </ion-segment-button>
+      </ion-segment>
+      <ion-list *ngIf="segment == 'info'">
+        <ion-item>
+          <ion-icon slot="start" name="star"></ion-icon>{{user?.name}}
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="star"></ion-icon>{{user?.phone}}
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="star"></ion-icon>{{user?.dob | date}}
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="star"></ion-icon>{{user?.height}}m height
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="star"></ion-icon>{{user?.weight}}kg weight
+        </ion-item>
+      </ion-list>
+      <ion-list *ngIf="segment == 'goals'">
+        <ion-item *ngFor="let cat of user?.categories; let i = index"
+          [lines]="i == (user?.categories?.length - 1) ? 'none' : ''">
+          <ion-icon slot="start" name="star"></ion-icon>{{cat.name}}
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="top_segment == 'likes-tab'" padding class="outer-content">
+  <div class="ion-padding-top ion-text-center">
+    <ion-icon class="header-icon" name="thumbs-up"></ion-icon>
+    <ion-card style="background: #ffffff;">
+      <ion-segment [(ngModel)]="reviews_segment">
+        <ion-segment-button value="likes">
+          Likes
+        </ion-segment-button>
+        <ion-segment-button value="reviews">
+          Reviews
+        </ion-segment-button>
+      </ion-segment>
+      <ion-list *ngIf="reviews_segment == 'likes'">
+        <ion-item *ngFor="let like of likes">
+          <ion-icon (click)="deleteLike(like)" name="thumbs-up" slot="start"></ion-icon>
+          <ion-label>{{like.name}} &nbsp; <span style="color: #aaaaaa">({{like.type | titlecase}})</span></ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+</ion-content>

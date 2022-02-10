@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Exercises</ion-title>
+    <!-- <ion-segment [(ngModel)]="segment" (ionChange)="updateList()">
+      <ion-segment-button value="all">
+        All Exercises
+      </ion-segment-button>
+      <ion-segment-button value="favorites">
+        Favorites
+      </ion-segment-button>
+    </ion-segment> -->
+
+    <ion-buttons slot="end">
+      <ion-button (click)="presentFilter()">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-searchbar
+    (searchText)="onSearch($event)"
+    [placeholder]="Search"
+  ></app-searchbar>
+  <app-exercise-card
+    *ngFor="let exercise of exercises"
+    [item]="exercise"
+    (clicked)="goToDetailPage(exercise.id)"
+  ></app-exercise-card>
+</ion-content>

@@ -1,15 +1,13 @@
 ion-searchbar {
   --box-shadow: none;
-  --background: var(--ion-color-primary-contrast);
   --border-radius: 1.2rem;
   --placeholder-font-weight: 600;
   --placeholder-opacity: 0.2;
   --color: var(--ion-color-secondary);
+  --background: #f1f5f9;
   --icon-color: var(--ion-color-secondary);
   --cancel-button-color: var(--ion-color-secondary);
   --clear-button-color: var(--ion-color-secondary);
-
   padding: 0;
   margin-bottom: 2rem;
-
 }

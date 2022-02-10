@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <app-searchbar
+    (searchText)="onSearch($event)"
+    [placeholder]="Search"
+  ></app-searchbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        *ngFor="let workout of workouts"
+        size-lg="6"
+        size-md="6"
+        size-sm="12"
+        size="12"
+      >
+        <my-workout-list-item
+          (delete)="handleDelete($event)"
+          [workout]="workout"
+        ></my-workout-list-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>

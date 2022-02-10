@@ -1,6 +1,6 @@
 <div class="container" (click)="clicked.emit()">
   <div class="container__image">
-    <img src="{{ item.image_url }}" alt="{{ item.image_url }}" />
+    <img src="{{ item.image_url || 'assets/img/dashboard.png' }}" alt="{{ item.image_url }}" />
   </div>
 
   <div class="container__text">

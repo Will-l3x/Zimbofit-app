@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/app/tabs/programs"></ion-back-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{program?.name}}</ion-title>
+    <ion-buttons slot="end">
+      <cart-menu-button></cart-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header">
+    <div class="image-bg">
+      <img
+        src="{{program?.image_url || 'assets/img/dashboard.png'}}"
+        alt="{{program?.name}}"
+        srcset=""
+      />
+    </div>
+  </div>
+  <div class="container">
+    <div class="pricing">
+      <h1>{{program?.name}}</h1>
+      <h2>
+        <span *ngIf="!program?.price">Free</span>
+        <span *ngIf="program?.price">{{ program?.price | currency }}</span>
+      </h2>
+    </div>
+
+    <div class="container__text__timing">
+      <ion-button
+        *ngIf="program.purchased || !program.price"
+        routerLink="/session/{{program.id}}"
+      >
+        <ion-icon name="play"></ion-icon>
+        Start
+      </ion-button>
+      <ion-button
+        *ngIf="program.purchased || !program.price"
+        (click)="onSchedule()"
+      >
+        <ion-icon name="calendar"></ion-icon>
+        Schedule
+      </ion-button>
+      <add-to-cart-button
+        *ngIf="!program.purchased && program.price"
+        [item]="purchase"
+      ></add-to-cart-button>
+    </div>
+
+    <h1 class="desc">Description</h1>
+    <p>{{program?.description}}</p>
+    <div class="container__text__timing">
+      <div class="container__text__timing_time">
+        <app-rating
+          [targetId]="program?.id"
+          targetType="program"
+          [targetName]="program?.name"
+        ></app-rating>
+      </div>
+      <div class="container__text__timing_time">
+        <app-like
+          [targetId]="program?.id"
+          targetType="program"
+          [targetName]="program?.name"
+        ></app-like>
+      </div>
+    </div>
+    <div class="container__text__timing">
+      <div class="container__text__timing_time">
+        <h2>Meal Plan</h2>
+        <meal-plan-request-button
+          *ngIf="program.has_meal_plan;else sorry"
+          [item]="mealPlanPurchase"
+        ></meal-plan-request-button>
+        <ng-template #sorry>
+          <p>No meal plan available!</p>
+        </ng-template>
+      </div>
+    </div>
+    <h1 class="desc">Trainer</h1>
+    <p>{{ program?.trainer?.name || "Takunda Mujuru" }}</p>
+    <div class="trainer" *ngIf="program?.trainer">
+      <app-trainer-profile
+        [trainer]="program?.trainer"
+        [hover]="hover$"
+        (clicked)="hover(program?.trainer.id)"
+      ></app-trainer-profile>
+    </div>
+    <div class="container__text__timing">
+      <ion-row
+        *ngIf="program?.user"
+        style="margin-top: 1rem"
+        routerLink="/app/tabs/users/user/{{program.user.id}}"
+      >
+        <ion-col size="2">
+          <ion-avatar
+            *ngIf="!offline"
+            style="width: 3rem; height: 3rem; border: 2px solid #c4bbbb"
+          >
+            <img [src]="program.user.image_url" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col>
+          <h3>{{program.user.name}}</h3>
+          <p>User Authored</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div class="content" *ngIf="program?.wrks?.length">
+    <div class="sub-header">Workouts</div>
+    <div class="main-cards">
+      <div class="card">
+        <app-workout-list-item
+          *ngFor="let workout of program?.wrks; let i = index"
+          [workout]="workout"
+          (clicked)="gotoWorkoutDetail(workout)"
+          [priceTag]="false"
+        ></app-workout-list-item>
+      </div>
+    </div>
+  </div>
+</ion-content>

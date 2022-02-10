@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/app/tabs/checkout"></ion-back-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Paypal Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button *ngIf="approval_url" size="block" target="_blank" [href]="approval_url">Pay with Paypal</ion-button>
+  <!-- <ion-button *ngIf="approval_url" size="block" (click)="onPurchase()">Pay with Paypal</ion-button> -->
+</ion-content>

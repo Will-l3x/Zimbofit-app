@@ -12,8 +12,8 @@ $border-radius: 8px;
   margin-bottom: 20px;
 
   .container__image {
-    width: 25vw;
-    height: 25vw;
+    width: 100%;
+    min-height: 25vw;
     img {
       width: 100%;
       height: 100%;
@@ -45,7 +45,7 @@ $border-radius: 8px;
       h2 {
         font-weight: 400;
         font-size: 12px;
-        color: #ffa800;
+        color: var(--ion-color-warning);
       }
     }
     .likes {
@@ -53,7 +53,7 @@ $border-radius: 8px;
       font-weight: 700;
       .likes-content {
         ion-icon {
-          color: #ffa800;
+          color: var(--ion-color-warning);
         }
       }
       span {

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/app/tabs/trainers"></ion-back-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{trainer?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="outer-content">
+  <div *ngIf="trainer?.id" class="ion-text-center">
+    <ion-avatar *ngIf="!offline" class="avatar">
+      <img [src]="trainer?.image_url" [alt]="trainer?.name">
+    </ion-avatar>
+    <ion-card style="background: #ffffff; padding-top: 1.5rem">
+      <ion-list>
+        <ion-item>
+          <ion-icon slot="start" name="star"></ion-icon>
+          <popularity [targetId]="trainer?.id"></popularity>&nbsp;Popularity Score
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="call"></ion-icon>{{trainer?.phone}}
+        </ion-item>
+        <ion-item *ngIf="trainer?.facebook">
+          <ion-icon slot="start" name="logo-facebook"></ion-icon><a [href]="'https://' + trainer?.facebook">{{trainer?.facebook}}</a>
+        </ion-item>
+        <ion-item *ngIf="trainer?.twitter">
+          <ion-icon slot="start" name="logo-twitter"></ion-icon><a [href]="'https://' + trainer?.twitter">{{trainer?.twitter}}</a>
+        </ion-item>
+        <ion-item *ngIf="trainer?.instagram">
+          <ion-icon slot="start" name="logo-instagram"></ion-icon><a [href]="'https://' + trainer?.instagram">{{trainer?.instagram}}</a>
+        </ion-item>
+        <ion-item lines="none" class="item-text-wrap">
+          <ion-icon slot="start" name="book"></ion-icon>
+          <p>{{trainer?.description}}</p>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card style="background: #ffffff;">
+      <ion-row padding class="ion-justify-content-center" style="border-top: 1px solid #dddddd;">
+        <ion-col size="6" class="ion-text-left">
+          <app-rating [targetId]="trainer?.id" targetType="trainer" [targetName]="trainer?.name"></app-rating>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
+          <app-like [targetId]="trainer?.id" targetType="trainer" [targetName]="trainer?.name"></app-like>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </div>
+</ion-content>

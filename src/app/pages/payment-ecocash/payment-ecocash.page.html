@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/app/tabs/checkout"></ion-back-button> -->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>EcoCash Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-margin">
+    <form [formGroup]="form" (ngSubmit)="onPurchase()">
+    <ion-card-header>
+      <ion-card-subtitle><strong>{{total | currency}}</strong></ion-card-subtitle>
+      <ion-card-title>Mobile Number</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input type="number" 
+        formControlName="phone"
+        placeholder="Enter Number"></ion-input>
+    </ion-card-content>
+
+    <ion-button type="submit" class="ion-margin"
+      [disabled]="!form.valid || !invoice?.items?.length"
+      size="block">Pay</ion-button>
+  </form>
+  </ion-card>
+</ion-content>

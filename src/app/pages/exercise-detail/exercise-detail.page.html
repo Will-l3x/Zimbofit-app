@@ -1,0 +1,63 @@
+<ion-content>
+  <div class="header">
+    <div class="image-bg">
+      <img
+        src="{{exercise?.image_url || 'assets/img/dashboard.png'}}"
+        alt="{{exercise?.name}}"
+        srcset=""
+      />
+    </div>
+    <div class="overlay">
+      <ion-buttons slot="start">
+        <ion-button appBackbutton>
+          <ion-icon
+            slot="icon-only"
+            color="primary"
+            name="arrow-back"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+  <div class="container">
+    <div class="pricing">
+      <h2>{{exercise?.name}}</h2>
+      <!-- <h1><sup>$</sup>{{exercise?.price|number:'1.2'}}</h1> -->
+    </div>
+    <h1 class="desc">Description</h1>
+    <div class="container__text" style="padding-left: 30px; padding-right: 20px;">
+      <div
+        *ngIf="!offline && exercise?.image_url"
+        style="
+          height: 200px;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        "
+        [style.background-image]="'url('+exercise?.image_url+')'"
+      ></div>
+
+      <ng-container
+        *ngFor="let description of exercise?.descriptions; let i = index"
+      >
+        <p>{{description}}</p>
+        <hr *ngIf="exercise?.descriptions?.length !== (i+1)" />
+      </ng-container>
+    </div>
+    <h1 class="desc">Muscle Groups</h1>
+    <div class="container__text">
+      <ion-item>
+        <ion-icon name="star" slot="start"></ion-icon>
+        {{exercise?.muscle?.name}} &nbsp;
+        <span *ngIf="exercise?.muscles?.length" style="color: #999999"
+          >(Primary)</span
+        >
+      </ion-item>
+
+      <ion-item *ngFor="let muscle of exercise?.muscles">
+        <ion-icon name="star" slot="start"></ion-icon>
+        {{muscle.name}}
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

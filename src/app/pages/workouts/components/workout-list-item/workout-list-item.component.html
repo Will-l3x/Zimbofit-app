@@ -1,0 +1,32 @@
+<div class="container" (click)="clicked.emit()">
+  <div class="container__image">
+    <img
+      src="{{ workout?.image_url || 'assets/img/placeholder.png' }}"
+      alt="{{ workout?.name }}"
+    />
+  </div>
+
+  <div class="container__text">
+    <div class="pricing">
+      <h1>{{ workout?.name }}</h1>
+      <h2 *ngIf="priceTag">
+        <span *ngIf="!workout?.price">Free</span>
+        <span *ngIf="workout?.price">{{ workout?.price | currency }}</span>
+      </h2>
+      <!-- <h1><sup>$</sup>3.00</h1> -->
+    </div>
+    <app-rating
+      [targetId]="workout?.id"
+      targetType="workout"
+      [targetName]="workout?.name"
+      (disabledPage)="true"
+    ></app-rating>
+    <br />
+    <app-like
+      [targetId]="workout?.id"
+      targetType="workout"
+      [targetName]="workout?.name"
+      (disabledPage)="true"
+    ></app-like>
+  </div>
+</div>

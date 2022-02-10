@@ -34,7 +34,7 @@
       h2 {
         font-weight: 500;
         font-size: 12px;
-        //color: #ffa800;
+        //color: var(--ion-color-warning);
         color: var(--ion-color-primary);
       }
       h1 {
@@ -92,7 +92,7 @@
 //     .metrics {
 //       font-size: 14px;
 //       font-weight: 400;
-//       color: var(--ion-color-primary-shade);
+//       color: var(--ion-color-primary);
 //     }
 //   }
 //   .progress {

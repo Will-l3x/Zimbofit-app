@@ -1,0 +1,21 @@
+img {
+    border-radius: 50%;
+    z-index: 1;
+    margin-bottom: -3.5rem;
+    position: relative;
+    border: 2px solid #bbbbbb;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  ion-icon.header-icon.md.hydrated {
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 1rem;
+    border: 2px solid #bbb;
+    border-radius: 50%;
+    background: #ffffff;
+    position: relative;
+    margin-bottom: -3rem;
+    z-index: 1;
+}

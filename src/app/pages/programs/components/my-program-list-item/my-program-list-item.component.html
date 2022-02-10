@@ -1,0 +1,27 @@
+<div
+  class="wrapper"
+  style="background-image: url({{program?.image_url}})"
+  (click)="clicked.emit()"
+>
+  <div class="container">
+    <div class="modal">
+      <div class="container__text">
+        <div class="pricing">
+          <h1>{{ program?.name }}</h1>
+        </div>
+        <app-rating
+          [targetId]="program?.id"
+          targetType="program"
+          [targetName]="program?.name"
+          (disabledPage)="(true)"
+        ></app-rating>
+        <app-like
+          [targetId]="program?.id"
+          targetType="program"
+          [targetName]="program?.name"
+          (disabledPage)="(true)"
+        ></app-like>
+      </div>
+    </div>
+  </div>
+</div>

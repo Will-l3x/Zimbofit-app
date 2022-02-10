@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{session?.workout_name | titlecase}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!outstandingExercises?.length">Complete</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-divider>Exercises</ion-item-divider>
+    <ion-item *ngFor="let session_exercise of session?.session_exercises">
+      <ion-label>{{session_exercise.exercise_name}}</ion-label>
+      <ion-buttons>
+        <ion-button *ngIf="!session_exercise.completed" color="primary" fill="outline"
+          (click)="onExerciseStart(session_exercise)">Start</ion-button>
+        <ion-button *ngIf="session_exercise.completed" color="success" fill="outline"
+          (click)="onExerciseStart(session_exercise)">Completed</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+  <ion-button class="ion-margin" size="block" *ngIf="!outstandingExercises?.length" (click)="onSessionComplete()">
+    Complete & Save
+  </ion-button>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Start</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list *ngIf="workouts?.length" lines="none">
+    <ion-item-sliding
+      *ngFor="let workout of workouts"
+      #slidingItem
+      [attr.track]="workout?.category_name | lowercase"
+    >
+      <ion-item (click)="onStart(workout)">
+        <app-user-workout-card [item]="workout"></app-user-workout-card>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option color="danger" (click)="onDelete(workout)">
+          <ion-icon color="danger" name="trash-outline" size="large">
+          </ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-card *ngIf="workouts && !workouts?.length">
+    <ion-card-header>
+      <h3 text-center>No Scheduled Workouts Yet</h3>
+    </ion-card-header>
+    <ion-list>
+      <ion-item lines="full" routerLink="/app/tabs/workouts">
+        View Workouts
+      </ion-item>
+      <ion-item lines="full" routerLink="/app/tabs/programs">
+        View Programs
+      </ion-item>
+      <ion-item lines="full" routerLink="/app/tabs/trainers">
+        View Trainers
+      </ion-item>
+      <ion-item lines="none" routerLink="/app/tabs/exercises">
+        View Exercises
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card *ngIf="!user">
+    <ion-card-header>
+      <h3 text-center>Not Logged In</h3>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Please Login to Save and Schedule workouts 💪</p>
+      <ion-button size="block" routerLink="/login"> Login </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

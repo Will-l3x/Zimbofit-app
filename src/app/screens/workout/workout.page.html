@@ -8,18 +8,14 @@
         <ion-button appBackbutton>
           <ion-icon
             slot="icon-only"
-            color="primary-shade"
+            color="primary"
             name="arrow-back"
           ></ion-icon>
         </ion-button>
       </ion-buttons>
       <ion-buttons>
         <ion-button>
-          <ion-icon
-            slot="icon-only"
-            color="primary-shade"
-            name="heart"
-          ></ion-icon>
+          <ion-icon slot="icon-only" color="primary" name="heart"></ion-icon>
         </ion-button>
       </ion-buttons>
     </div>
@@ -27,9 +23,14 @@
   <div class="container">
     <div class="pricing">
       <h2>{{workout?.name}}</h2>
-      <h1><sup>$</sup>{{workout?.price|number:'1.2'}}</h1>
+      <h1 *ngIf="!workout.purchased && workout.price">
+        <span *ngIf="!workout?.price">Free</span>
+        <span *ngIf="workout?.price">{{ workout?.price | currency }}</span>
+      </h1>
       <!-- <h1><sup>$</sup>3.00</h1> -->
     </div>
+    <h1 class="desc">Trainer</h1>
+    <p>{{ workout?.trainer?.name || "Takunda Mujuru" }}</p>
     <h1 class="desc">Description</h1>
     <p>{{workout?.description}}</p>
     <div class="container__text__timing">
@@ -41,9 +42,8 @@
         <h2>Meal Plan</h2>
         <p *ngIf="workout?.has_meal_plan;else sorry">Yes</p>
         <ng-template #sorry>
-           <p>No meal plan available!</p>
+          <p>No meal plan available!</p>
         </ng-template>
-
       </div>
       <div *ngIf="workout?.has_meal_plan" class="container__text__timing_time">
         <h2>Meal Plan Price</h2>

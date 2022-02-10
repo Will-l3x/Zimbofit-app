@@ -1,0 +1,44 @@
+<ion-item-sliding>
+  <ion-item>
+    <div (click)="goToDetailPage(workout.id)" class="container">
+      <div class="container__image">
+        <img
+          src="{{ workout?.image_url || 'assets/img/placeholder.png' }}"
+          alt="{{ workout?.name }}"
+        />
+      </div>
+
+      <div class="container__text">
+        <div class="pricing">
+          <h1>{{ workout?.name }}</h1>
+          <h2>
+            <span *ngIf="!workout?.price">Free</span>
+            <span *ngIf="workout?.price">{{ workout?.price | currency }}</span>
+          </h2>
+          <!-- <h1><sup>$</sup>3.00</h1> -->
+        </div>
+        <app-rating
+          [targetId]="workout?.id"
+          targetType="workout"
+          [targetName]="workout?.name"
+          (disabledPage)="true"
+        ></app-rating>
+        <br />
+        <app-like
+          [targetId]="workout?.id"
+          targetType="workout"
+          [targetName]="workout?.name"
+          (disabledPage)="true"
+        ></app-like>
+      </div>
+    </div>
+  </ion-item>
+  <ion-item-options side="end">
+    <ion-item-option color="secondary" (click)="onCreate(workout)">
+      <ion-icon color="secondary" name="create" size="large"> </ion-icon>
+    </ion-item-option>
+    <ion-item-option color="danger" (click)="onDelete()">
+      <ion-icon color="danger" name="trash-outline" size="large"> </ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>

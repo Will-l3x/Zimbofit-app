@@ -1,6 +1,6 @@
-<div class="card {{hover}}"  *ngIf="trainer; else sorry" (click)="clicked.emit()">
+<div class="card" [ngClass]="{hover: hover.id === trainer.id && hover.active}" (click)="clicked.emit()">
   <div class="image-box">
-    <img src="{{trainer?.image_url}}" />
+    <img src="{{ trainer?.image_url }}" />
   </div>
   <ul class="social-icons">
     <li>
@@ -25,12 +25,21 @@
     </li>
   </ul>
   <div class="card-details">
-    <h1>{{trainer?.name}}<br /><span>Trainer</span></h1>
+    <div class="profile">
+      <h1>{{trainer?.name}}</h1>
+      <a
+        class="visit-profile"
+        href="/app/tabs/trainers/trainer/{{trainer?.id}}"
+      >
+        <h2>profile</h2>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </a>
+    </div>
     <h1 class="desc">Bio:</h1>
     <p>{{trainer?.description}}</p>
   </div>
 </div>
 
-<ng-template #sorry>
+<!-- <ng-template #sorry>
   No trainer available!
-</ng-template>
+</ng-template> -->

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Queries</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let query of queries">
+      <ion-label>{{query.message}}</ion-label>
+      <ion-badge color="dark" slot="end">{{query.resolved ? 'Resolved' : 'Unresolved'}}</ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>
