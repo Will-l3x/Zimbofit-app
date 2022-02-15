@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/tutorial',
+    // redirectTo: '/start',
     pathMatch: 'full',
   },
   {

@@ -19,20 +19,6 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('../../screens/dashboard/dashboard.module').then(
-            (m) => m.DashboardPageModule
-          ),
-      },
-      {
-        path: 'start-exercise',
-        loadChildren: () =>
-          import('../../screens/start-exercise/start-exercise.module').then(
-            (m) => m.StartExercisePageModule
-          ),
-      },
-      {
         path: 'about',
         children: [
           {

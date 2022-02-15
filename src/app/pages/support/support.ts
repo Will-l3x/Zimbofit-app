@@ -1,8 +1,14 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @angular-eslint/component-selector */
 import { Component, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 
-import { AlertController, ToastController } from '@ionic/angular';
+import {
+  AlertController,
+  MenuController,
+  ToastController,
+} from '@ionic/angular';
 import { SupportService } from '../../services/support.service';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
@@ -10,35 +16,97 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'page-support',
   templateUrl: 'support.html',
-  styleUrls: ['./support.scss']
+  styleUrls: ['./support.scss'],
 })
 export class SupportPage {
   submitted = false;
   supportMessage: string;
   user: any;
+  page = 'Support';
+  appPages = [
+    {
+      title: 'Dashboard',
+      url: '/app/tabs/start',
+      icon: 'play',
+      requiresUser: true,
+    },
+    {
+      title: 'Programs',
+      url: '/app/tabs/programs',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Workouts',
+      url: '/app/tabs/workouts',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Exercises',
+      url: '/app/tabs/exercises',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Categories',
+      url: '/app/tabs/categories',
+      icon: 'unlock',
+      count: 0,
+    },
+    {
+      title: 'Trainers',
+      url: '/app/tabs/trainers',
+      icon: 'unlock',
+      count: 0,
+    },
 
+    {
+      title: 'Schedules',
+      url: '/app/tabs/schedule',
+      icon: 'calendar',
+    },
+    {
+      title: 'Speakers',
+      url: '/app/tabs/speakers',
+      icon: 'contacts',
+    },
+    {
+      title: 'Map',
+      url: '/app/tabs/map',
+      icon: 'map',
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle',
+    },
+  ];
   constructor(
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
     private supportService: SupportService,
+    private menu: MenuController,
     private userService: UserService,
     private router: Router
   ) {}
 
   async ionViewDidEnter() {
-    this.userService.getCurrentUser().subscribe(user => (this.user = user));
+    this.userService.getCurrentUser().subscribe((user) => (this.user = user));
     const toast = await this.toastCtrl.create({
       message: 'Thank you for taking time to give us feedback.',
-      duration: 5000
+      duration: 5000,
     });
     await toast.present();
   }
-
+  sidenavOpen() {
+    this.menu.enable(true, 'menu-content-sup');
+    this.menu.open('menu-content-sup');
+  }
   async submit(form: NgForm) {
     this.submitted = true;
 
     if (form.valid) {
-
       console.log(form.value);
       if (this.user) {
         this.supportMessage = '';
@@ -48,14 +116,14 @@ export class SupportPage {
           message: form.value.supportQuestion,
           user_id: this.user.id,
           date: moment(new Date()).format('YYYY-MM-DD'),
-          timestamp: new Date().getTime()
+          timestamp: new Date().getTime(),
         };
 
         this.supportService.updateQuery(query);
 
         const toast = await this.toastCtrl.create({
           message: 'Your feedback message has been sent.',
-          duration: 3000
+          duration: 3000,
         });
 
         await toast.present();
@@ -63,12 +131,11 @@ export class SupportPage {
       } else {
         const toast = await this.toastCtrl.create({
           message: 'Please login first.',
-          duration: 3000
+          duration: 3000,
         });
 
         await toast.present();
       }
-
     }
   }
 

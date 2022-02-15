@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Chart } from 'chart.js';
 import * as moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 import { Session } from '../../../interfaces/session';
-import groupBy from 'lodash/groupBy';
-import orderBy from 'lodash/orderBy';
-import capitalize from 'lodash/capitalize';
+import groupBy from 'lodash-es/groupBy';
+import orderBy from 'lodash-es/orderBy';
+import capitalize from 'lodash-es/capitalize';
 
 @Component({
   selector: 'app-workout-chart',

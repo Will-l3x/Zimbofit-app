@@ -1,11 +1,10 @@
 ion-tab-bar {
   padding: 10px 0;
   --background: var(--ion-color-primary);
-  --color: #f59e0b;
+  --color: var(--ion-color-primary-contrast);
   ion-tab-button {
     font-size: 1.7rem;
-    --background-focused: var(--ion-color-primary-contrast);
-    --color-focused: var(--ion-color-primary-contrast);
-    --color-selected: var(--ion-color-primary-contrast);
+    --color-focused: var(--ion-color-secondary-shade);
+    --color-selected: var(--ion-color-secondary-shade);
   }
 }

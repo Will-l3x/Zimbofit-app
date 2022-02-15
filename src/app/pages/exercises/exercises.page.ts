@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ExerciseService } from '../../services/exercise.service';
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { ExerciseFilterComponent } from './components/exercise-filter/exercise-filter.component';
 import { CategoryService } from '../../services/category.service';
 import { Subscription, combineLatest, BehaviorSubject } from 'rxjs';
@@ -20,7 +20,66 @@ export class ExercisesPage implements OnInit, OnDestroy {
   segment: string;
   queryText: string;
   viewed = false;
+  page = 'Exercises';
+  appPages = [
+    {
+      title: 'Dashboard',
+      url: '/app/tabs/start',
+      icon: 'play',
+      requiresUser: true,
+    },
+    {
+      title: 'Programs',
+      url: '/app/tabs/programs',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Workouts',
+      url: '/app/tabs/workouts',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Exercises',
+      url: '/app/tabs/exercises',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Categories',
+      url: '/app/tabs/categories',
+      icon: 'unlock',
+      count: 0,
+    },
+    {
+      title: 'Trainers',
+      url: '/app/tabs/trainers',
+      icon: 'unlock',
+      count: 0,
+    },
 
+    {
+      title: 'Schedules',
+      url: '/app/tabs/schedule',
+      icon: 'calendar',
+    },
+    {
+      title: 'Speakers',
+      url: '/app/tabs/speakers',
+      icon: 'contacts',
+    },
+    {
+      title: 'Map',
+      url: '/app/tabs/map',
+      icon: 'map',
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle',
+    },
+  ];
   subscription: Subscription;
   search$: BehaviorSubject<string> = new BehaviorSubject('');
 
@@ -28,6 +87,7 @@ export class ExercisesPage implements OnInit, OnDestroy {
     private exerciseService: ExerciseService,
     private viewService: ViewService,
     private categoryService: CategoryService,
+    private menu: MenuController,
     private router: Router,
     public modalCtrl: ModalController
   ) {}
@@ -53,7 +113,10 @@ export class ExercisesPage implements OnInit, OnDestroy {
       }
     });
   }
-
+  sidenavOpen() {
+    this.menu.enable(true, 'menu-content-exe');
+    this.menu.open('menu-content-exe');
+  }
   onSearch(query) {
     this.search$.next(query);
   }

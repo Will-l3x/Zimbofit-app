@@ -3,6 +3,15 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="sidenavOpen()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>About</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="presentPopover($event)">
@@ -11,10 +20,41 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-menu
+  contentId="main-content-about"
+  menuId="menu-content-about"
+  side="start"
+  type="overlay"
+>
+  <ion-content>
+    <div class="sidenav" id="sidenav">
+      <ul>
+        <li class="center user">
+          <img src="assets/img/man-05.svg" alt="User" />
+          <p>John Doe</p>
+        </li>
+        <li class="divider"></li>
+        <li class="title">Links</li>
+        <li
+          *ngFor="let item of appPages"
+          class="item"
+          [ngClass]="item.title === page ? 'active': ''"
+        >
+          <a routerLink="{{item.url}}">{{item.title}}</a>
+        </li>
 
-<ion-content>
+        <!-- <li class="divider"></li>
+        <li class="title">Projects</li>
+        <li class="item"><a href="#">Project 1</a></li>
+        <li class="item"><a href="#">Project 2</a></li>
+        <li class="item"><a href="#">Project 3</a></li> -->
+      </ul>
+    </div>
+  </ion-content>
+</ion-menu>
+<ion-content id="main-content-about">
   <div class="about-header">
-    <img src="assets/img/ionic-logo-white.svg" alt="ionic logo">
+    <img src="assets/img/ionic-logo-white.svg" alt="ionic logo" />
   </div>
   <div class="about-info">
     <h4 class="ion-padding-start">Ionic Conference</h4>
@@ -55,7 +95,9 @@
 
       <ion-chip>
         <ion-avatar>
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          <img
+            src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+          />
         </ion-avatar>
         <ion-label>Avatar Chip</ion-label>
         <ion-icon name="close-circle"></ion-icon>
@@ -65,57 +107,103 @@
     <ion-card padding *ngIf="false">
       <ion-item>
         <ion-label>MMMM</ion-label>
-        <ion-datetime displayFormat="MMMM" value="2012-12-15T13:47:20.789"></ion-datetime>
+        <ion-datetime
+          displayFormat="MMMM"
+          value="2012-12-15T13:47:20.789"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>MM DD YY</ion-label>
-        <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+        <ion-datetime
+          displayFormat="MM DD YY"
+          placeholder="Select Date"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>Disabled</ion-label>
-        <ion-datetime id="dynamicDisabled" displayFormat="MM DD YY" disabled value="1994-12-15"></ion-datetime>
+        <ion-datetime
+          id="dynamicDisabled"
+          displayFormat="MM DD YY"
+          disabled
+          value="1994-12-15"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>YYYY</ion-label>
-        <ion-datetime [pickerOptions]="customPickerOptions" placeholder="Custom Options" displayFormat="YYYY" min="1981"
-          max="2002"></ion-datetime>
+        <ion-datetime
+          [pickerOptions]="customPickerOptions"
+          placeholder="Custom Options"
+          displayFormat="YYYY"
+          min="1981"
+          max="2002"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">MMMM YY</ion-label>
-        <ion-datetime displayFormat="MMMM YY" min="1989-06-04" max="2004-08-23" value="1994-12-15T13:47:20.789">
+        <ion-datetime
+          displayFormat="MMMM YY"
+          min="1989-06-04"
+          max="2004-08-23"
+          value="1994-12-15T13:47:20.789"
+        >
         </ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">MM/DD/YYYY</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" max="2012-12-09" value="2002-09-23T15:03:46.789">
+        <ion-datetime
+          displayFormat="MM/DD/YYYY"
+          min="1994-03-14"
+          max="2012-12-09"
+          value="2002-09-23T15:03:46.789"
+        >
         </ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">MM/DD/YYYY</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" max="2012-12-09"></ion-datetime>
+        <ion-datetime
+          displayFormat="MM/DD/YYYY"
+          min="1994-03-14"
+          max="2012-12-09"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>DDD. MMM DD, YY (custom locale)</ion-label>
-        <ion-datetime value="1995-04-15" min="1990-02" max="2000" [dayShortNames]="customDayShortNames"
-          displayFormat="DDD. MMM DD, YY" monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des">
+        <ion-datetime
+          value="1995-04-15"
+          min="1990-02"
+          max="2000"
+          [dayShortNames]="customDayShortNames"
+          displayFormat="DDD. MMM DD, YY"
+          monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"
+        >
         </ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>D MMM YYYY H:mm</ion-label>
-        <ion-datetime displayFormat="D MMM YYYY H:mm" min="1997" max="2010" value="2005-06-17T11:06Z"></ion-datetime>
+        <ion-datetime
+          displayFormat="D MMM YYYY H:mm"
+          min="1997"
+          max="2010"
+          value="2005-06-17T11:06Z"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>DDDD MMM D, YYYY</ion-label>
-        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005" max="2016" value="2008-09-02"></ion-datetime>
+        <ion-datetime
+          displayFormat="DDDD MMM D, YYYY"
+          min="2005"
+          max="2016"
+          value="2008-09-02"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
@@ -130,19 +218,30 @@
 
       <ion-item>
         <ion-label>hh:mm A (15 min steps)</ion-label>
-        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+        <ion-datetime
+          displayFormat="h:mm A"
+          minuteValues="0,15,30,45"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>Leap years, summer months</ion-label>
-        <ion-datetime displayFormat="MM/YYYY" pickerFormat="MMMM YYYY" monthValues="6,7,8"
-          [yearValues]="customYearValues"></ion-datetime>
+        <ion-datetime
+          displayFormat="MM/YYYY"
+          pickerFormat="MMMM YYYY"
+          monthValues="6,7,8"
+          [yearValues]="customYearValues"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>Specific days/months/years</ion-label>
-        <ion-datetime monthValues="6,7,8" yearValues="2014,2015" dayValues="01,02,03,04,05,06,08,09,10, 11, 12, 13, 14"
-          displayFormat="DD/MMM/YYYY"></ion-datetime>
+        <ion-datetime
+          monthValues="6,7,8"
+          yearValues="2014,2015"
+          dayValues="01,02,03,04,05,06,08,09,10, 11, 12, 13, 14"
+          displayFormat="DD/MMM/YYYY"
+        ></ion-datetime>
       </ion-item>
     </ion-card>
 
@@ -150,14 +249,20 @@
       <ion-item>
         <ion-icon name="calendar" slot="start"></ion-icon>
         <ion-label position="stacked">Date</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY" max="2056" [(ngModel)]="conferenceDate"></ion-datetime>
+        <ion-datetime
+          displayFormat="MMM DD, YYYY"
+          max="2056"
+          [(ngModel)]="conferenceDate"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-icon name="pin" slot="start"></ion-icon>
         <ion-label position="stacked">Location</ion-label>
         <ion-select>
-          <ion-select-option value="madison" selected>Madison, WI</ion-select-option>
+          <ion-select-option value="madison" selected
+            >Madison, WI</ion-select-option
+          >
           <ion-select-option value="austin">Austin, TX</ion-select-option>
           <ion-select-option value="chicago">Chicago, IL</ion-select-option>
           <ion-select-option value="seattle">Seattle, WA</ion-select-option>
@@ -166,12 +271,12 @@
     </ion-list>
 
     <p class="ion-padding-start ion-padding-end">
-      The Ionic Conference is a one-day conference featuring talks from the Ionic team. It is focused on Ionic
-      applications being
-      built with Ionic 2. This includes migrating apps from Ionic 1 to Ionic 2, Angular concepts, Webpack, Sass, and
-      many
-      other technologies used in Ionic 2. Tickets are completely sold out, and we’re expecting more than 1000 developers
-      – making this the largest Ionic conference ever!
+      The Ionic Conference is a one-day conference featuring talks from the
+      Ionic team. It is focused on Ionic applications being built with Ionic 2.
+      This includes migrating apps from Ionic 1 to Ionic 2, Angular concepts,
+      Webpack, Sass, and many other technologies used in Ionic 2. Tickets are
+      completely sold out, and we’re expecting more than 1000 developers –
+      making this the largest Ionic conference ever!
     </p>
   </div>
 </ion-content>

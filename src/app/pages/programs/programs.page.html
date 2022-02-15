@@ -1,10 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="sidenavOpen()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title *ngIf="!myPrograms || !myPrograms?.length">Programs</ion-title>
-    <ion-segment  *ngIf="myPrograms?.length" [(ngModel)]="segment">
+    <ion-segment *ngIf="myPrograms?.length" [(ngModel)]="segment">
       <ion-segment-button value="all"> All </ion-segment-button>
       <ion-segment-button value="mine"> Personal </ion-segment-button>
     </ion-segment>
@@ -19,7 +21,44 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content padding [ngSwitch]="segment">
+<ion-menu
+  contentId="main-content-prog"
+  menuId="menu-content-prog"
+  side="start"
+  type="overlay"
+>
+  <!-- <ion-header>
+    <ion-toolbar>
+      <ion-title>Awesome avocado menu</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <ion-content>
+    <div class="sidenav" id="sidenav">
+      <ul>
+        <li class="center user">
+          <img src="assets/img/man-05.svg" alt="User" />
+          <p>John Doe</p>
+        </li>
+        <li class="divider"></li>
+        <li class="title">Links</li>
+        <li
+          *ngFor="let item of appPages"
+          class="item"
+          [ngClass]="item.title === page ? 'active': ''"
+        >
+          <a routerLink="{{item.url}}">{{item.title}}</a>
+        </li>
+
+        <!-- <li class="divider"></li>
+        <li class="title">Projects</li>
+        <li class="item"><a href="#">Project 1</a></li>
+        <li class="item"><a href="#">Project 2</a></li>
+        <li class="item"><a href="#">Project 3</a></li> -->
+      </ul>
+    </div>
+  </ion-content>
+</ion-menu>
+<ion-content id="main-content-prog" [ngSwitch]="segment">
   <ng-container *ngSwitchCase="'mine'">
     <my-program-list></my-program-list
   ></ng-container>

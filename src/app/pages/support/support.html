@@ -1,8 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="sidenavOpen()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
     </ion-buttons>
+
     <ion-title>Feedback</ion-title>
     <ion-buttons slot="primary">
       <ion-button [routerLink]="['/app/tabs/queries']">
@@ -10,10 +13,40 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-
 </ion-header>
+<ion-menu
+  contentId="main-content-sup"
+  menuId="menu-content-sup"
+  side="start"
+  type="overlay"
+>
+  <ion-content>
+    <div class="sidenav" id="sidenav">
+      <ul>
+        <li class="center user">
+          <img src="assets/img/man-05.svg" alt="User" />
+          <p>John Doe</p>
+        </li>
+        <li class="divider"></li>
+        <li class="title">Links</li>
+        <li
+          *ngFor="let item of appPages"
+          class="item"
+          [ngClass]="item.title === page ? 'active': ''"
+        >
+          <a routerLink="{{item.url}}">{{item.title}}</a>
+        </li>
 
-<ion-content>
+        <!-- <li class="divider"></li>
+        <li class="title">Projects</li>
+        <li class="item"><a href="#">Project 1</a></li>
+        <li class="item"><a href="#">Project 2</a></li>
+        <li class="item"><a href="#">Project 3</a></li> -->
+      </ul>
+    </div>
+  </ion-content>
+</ion-menu>
+<ion-content id="main-content-sup">
   <!-- <div class="support-logo">
     <img src="assets/img/appicon.svg" alt="Ionic Logo">
   </div> -->
@@ -21,13 +54,25 @@
   <form #submitForm="ngForm" novalidate (ngSubmit)="submit(submitForm)">
     <ion-list lines="none">
       <ion-item>
-        <ion-label position="stacked" color="primary">We appreciate your feedback, please leave your message below</ion-label>
-        <ion-textarea [(ngModel)]="supportMessage" name="supportQuestion" #supportQuestion="ngModel" rows="6" required></ion-textarea>
+        <ion-label position="stacked" color="primary"
+          >We appreciate your feedback, please leave your message
+          below</ion-label
+        >
+        <ion-textarea
+          [(ngModel)]="supportMessage"
+          name="supportQuestion"
+          #supportQuestion="ngModel"
+          rows="6"
+          required
+        ></ion-textarea>
       </ion-item>
     </ion-list>
 
     <ion-text color="danger">
-      <p [hidden]="supportQuestion.valid || submitted === false" class="ion-padding-start">
+      <p
+        [hidden]="supportQuestion.valid || submitted === false"
+        class="ion-padding-start"
+      >
         Feedback message is required
       </p>
     </ion-text>

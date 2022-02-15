@@ -1,18 +1,49 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="sidenavOpen()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>History</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-menu
+  contentId="main-content-his"
+  menuId="menu-content-his"
+  side="start"
+  type="overlay"
+>
+  <ion-content>
+    <div class="sidenav" id="sidenav">
+      <ul>
+        <li class="center user">
+          <img src="assets/img/man-05.svg" alt="User" />
+          <p>John Doe</p>
+        </li>
+        <li class="divider"></li>
+        <li class="title">Links</li>
+        <li
+          *ngFor="let item of appPages"
+          class="item"
+          [ngClass]="item.title === page ? 'active': ''"
+        >
+          <a routerLink="{{item.url}}">{{item.title}}</a>
+        </li>
 
-<ion-content>
+        <!-- <li class="divider"></li>
+        <li class="title">Projects</li>
+        <li class="item"><a href="#">Project 1</a></li>
+        <li class="item"><a href="#">Project 2</a></li>
+        <li class="item"><a href="#">Project 3</a></li> -->
+      </ul>
+    </div>
+  </ion-content>
+</ion-menu>
+<ion-content id="main-content-his">
   <ion-item-group *ngFor="let group of sessionGroups">
     <ion-item-divider sticky>
-      <ion-label>
-        {{group.date}}
-      </ion-label>
+      <ion-label> {{group.date}} </ion-label>
     </ion-item-divider>
 
     <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem>
@@ -20,8 +51,12 @@
         <ion-label>
           <h3>{{session?.workout_name}}</h3>
         </ion-label>
-        <ion-button fill="outline" slot="end"
-          routerLink="/session-report/{{session.id}}">Report</ion-button>
+        <ion-button
+          fill="outline"
+          slot="end"
+          routerLink="/session-report/{{session.id}}"
+          >Report</ion-button
+        >
       </ion-item>
       <ion-item-options>
         <ion-item-option color="danger" (click)="onDelete(session)">
@@ -36,48 +71,34 @@
   <ion-list>
     <!-- Default Item -->
     <ion-item>
-      <ion-label>
-        Item
-      </ion-label>
+      <ion-label> Item </ion-label>
     </ion-item>
 
     <!-- Item as a Button -->
     <ion-item (click)="buttonClick()">
-      <ion-label>
-        Button Item
-      </ion-label>
+      <ion-label> Button Item </ion-label>
     </ion-item>
 
     <!-- Item as an Anchor -->
     <ion-item href="https://www.ionicframework.com">
-      <ion-label>
-        Anchor Item
-      </ion-label>
+      <ion-label> Anchor Item </ion-label>
     </ion-item>
 
     <ion-item color="secondary">
-      <ion-label>
-        Secondary Color Item
-      </ion-label>
+      <ion-label> Secondary Color Item </ion-label>
     </ion-item>
   </ion-list>
   <ion-list>
     <ion-item detail>
-      <ion-label>
-        Standard Item with Detail Arrow
-      </ion-label>
+      <ion-label> Standard Item with Detail Arrow </ion-label>
     </ion-item>
 
     <ion-item (click)="buttonClick()" detail>
-      <ion-label>
-        Button Item with Detail Arrow
-      </ion-label>
+      <ion-label> Button Item with Detail Arrow </ion-label>
     </ion-item>
 
     <ion-item detail="false" href="https://www.ionicframework.com">
-      <ion-label>
-        Anchor Item with no Detail Arrow
-      </ion-label>
+      <ion-label> Anchor Item with no Detail Arrow </ion-label>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -137,25 +158,27 @@
   <ion-list>
     <ion-item (click)="testClick()">
       <ion-avatar slot="start">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="
+        />
       </ion-avatar>
-      <ion-label>
-        Avatar Start, Button Item
-      </ion-label>
+      <ion-label> Avatar Start, Button Item </ion-label>
     </ion-item>
 
     <ion-item href="#">
-      <ion-label>
-        Thumbnail End, Anchor Item
-      </ion-label>
+      <ion-label> Thumbnail End, Anchor Item </ion-label>
       <ion-thumbnail slot="end">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="
+        />
       </ion-thumbnail>
     </ion-item>
 
     <ion-item>
       <ion-thumbnail slot="start">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="
+        />
       </ion-thumbnail>
       <ion-label>
         <h2>H2 Title Text</h2>
@@ -166,7 +189,9 @@
 
     <ion-item (click)="testClick()">
       <ion-thumbnail slot="start">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="
+        />
       </ion-thumbnail>
       <ion-label>
         <h3>H3 Title Text</h3>
@@ -178,13 +203,9 @@
 
   <ion-list>
     <ion-item>
-      <ion-button slot="start">
-        Start
-      </ion-button>
+      <ion-button slot="start"> Start </ion-button>
       <ion-label>Button Start/End</ion-label>
-      <ion-button slot="end">
-        End
-      </ion-button>
+      <ion-button slot="end"> End </ion-button>
     </ion-item>
 
     <ion-item>
@@ -212,37 +233,27 @@
 
   <ion-list>
     <ion-item>
-      <ion-label>
-        Icon End
-      </ion-label>
+      <ion-label> Icon End </ion-label>
       <ion-icon name="information-circle" slot="end"></ion-icon>
     </ion-item>
 
     <ion-item>
-      <ion-label>
-        Large Icon End
-      </ion-label>
+      <ion-label> Large Icon End </ion-label>
       <ion-icon name="information-circle" size="large" slot="end"></ion-icon>
     </ion-item>
 
     <ion-item>
-      <ion-label>
-        Small Icon End
-      </ion-label>
+      <ion-label> Small Icon End </ion-label>
       <ion-icon name="information-circle" size="small" slot="end"></ion-icon>
     </ion-item>
 
     <ion-item>
       <ion-icon name="star" slot="start"></ion-icon>
-      <ion-label>
-        Icon Start
-      </ion-label>
+      <ion-label> Icon Start </ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>
-        Two Icons End
-      </ion-label>
+      <ion-label> Two Icons End </ion-label>
       <ion-icon name="checkmark-circle" slot="end"></ion-icon>
       <ion-icon name="shuffle" slot="end"></ion-icon>
     </ion-item>
