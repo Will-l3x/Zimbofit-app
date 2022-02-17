@@ -8,7 +8,7 @@ import { combineLatest, Subscription } from 'rxjs';
 import { LikeService } from '../../services/like.service';
 import { take } from 'rxjs/operators';
 import { OfflineService } from '../../services/offline.service';
-import { PopoverController } from '@ionic/angular';
+import { MenuController, PopoverController } from '@ionic/angular';
 import { LoginPopoverComponent } from '../../shared/components/login-popover/login-popover.component';
 
 @Component({
@@ -25,12 +25,72 @@ export class ProfilePage implements OnInit, OnDestroy {
   offline = true;
   tab = 'Basic Info';
   subscription: Subscription;
+  appPages = [
+    {
+      title: 'Dashboard',
+      url: '/app/tabs/start',
+      icon: 'play',
+      requiresUser: true,
+    },
+    {
+      title: 'Programs',
+      url: '/app/tabs/programs',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Workouts',
+      url: '/app/tabs/workouts',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Exercises',
+      url: '/app/tabs/exercises',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Categories',
+      url: '/app/tabs/categories',
+      icon: 'unlock',
+      count: 0,
+    },
+    {
+      title: 'Trainers',
+      url: '/app/tabs/trainers',
+      icon: 'unlock',
+      count: 0,
+    },
 
+    {
+      title: 'Schedules',
+      url: '/app/tabs/schedule',
+      icon: 'calendar',
+    },
+    {
+      title: 'Speakers',
+      url: '/app/tabs/speakers',
+      icon: 'contacts',
+    },
+    {
+      title: 'Map',
+      url: '/app/tabs/map',
+      icon: 'map',
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle',
+    },
+  ];
+  page = 'Profile';
   constructor(
     private userService: UserService,
     private categoryService: CategoryService,
     private likeService: LikeService,
     private offlineService: OfflineService,
+    private menu: MenuController,
     private popoverCtrl: PopoverController,
     private router: Router
   ) {}
@@ -52,7 +112,7 @@ export class ProfilePage implements OnInit, OnDestroy {
       if (!user) {
         const popover = await this.popoverCtrl.create({
           component: LoginPopoverComponent,
-          componentProps: { title: 'Please login to view profile' }
+          componentProps: { title: 'Please login to view profile' },
         });
         await popover.present();
       }
@@ -72,7 +132,10 @@ export class ProfilePage implements OnInit, OnDestroy {
   tabRoute(tab) {
     this.tab = tab;
   }
-
+  sidenavOpen() {
+    this.menu.enable(true, 'menu-content-prof');
+    this.menu.open('menu-content-prof');
+  }
   deleteLike(like) {
     this.likeService.deleteLike(like);
   }

@@ -1,15 +1,101 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="sidenavOpen()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>Edit Profile</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-menu
+  contentId="main-content-prof-edit"
+  menuId="menu-content-prof-edit"
+  side="start"
+  type="overlay"
+>
+  <ion-content>
+    <div class="sidenav" id="sidenav">
+      <ul>
+        <li class="center user">
+          <img src="assets/img/man-05.svg" alt="User" />
+          <p>John Doe</p>
+        </li>
+        <li class="divider"></li>
+        <li class="title">Links</li>
+        <li
+          *ngFor="let item of appPages"
+          class="item"
+          [ngClass]="item.title === page ? 'active': ''"
+        >
+          <a routerLink="{{item.url}}">{{item.title}}</a>
+        </li>
 
-<ion-content padding>
-  <form *ngIf="model" [formGroup]="form" (ngSubmit)="submit(model)">
-    <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-    <ion-button type="submit" [disabled]="!form.valid" class="btn btn-primary">Update</ion-button>
-  </form>
+        <!-- <li class="divider"></li>
+        <li class="title">Projects</li>
+        <li class="item"><a href="#">Project 1</a></li>
+        <li class="item"><a href="#">Project 2</a></li>
+        <li class="item"><a href="#">Project 3</a></li> -->
+      </ul>
+    </div>
+  </ion-content>
+</ion-menu>
+<ion-content id="main-content-prof-edit">
+  <div class="app">
+    <header class="header" role="banner">
+      <div class="header-item__img">
+        <img [src]="user?.image_url || 'assets/img/dashboard.png'" />
+      </div>
+    </header>
+    <div class="container">
+      <form [formGroup]="form" (ngSubmit)="submit()" id="form">
+        <ion-item *ngFor="let item of fields" class="ion-margin-bottom">
+          <ion-label color="primary"
+            >{{item.templateOptions.label}}:
+          </ion-label>
+          <ion-input
+            *ngIf="item.type === 'input'"
+            [formControlName]="item.key"
+            [type]="item.templateOptions.type"
+            [placeholder]="item.templateOptions.placeholder"
+            (required)="item.templateOptions.required"
+            value=""
+          ></ion-input>
+          <ion-select
+            *ngIf="item.type === 'select'"
+            [formControlName]="item.key"
+            [interfaceOptions]="selectOptions"
+            [placeholder]="item.templateOptions.placeholder"
+            (required)="item.templateOptions.required"
+            value=""
+          >
+            <ng-template *ngIf="item.templateOptions.multiple; else single"
+              ><ion-select-option
+                *ngFor="let option of item.templateOptions.options"
+                [value]="{name: option.name, id: option.id}"
+              >
+                {{ option.name }}
+              </ion-select-option></ng-template
+            >
+
+            <ion-select-option
+              #single
+              *ngFor="let option of item.templateOptions.options"
+              [value]="option.id"
+            >
+              {{ option.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-button
+          type="submit"
+          [disabled]="!form?.valid"
+          shape="round"
+          class="btn btn-primary"
+          >Update</ion-button
+        >
+      </form>
+    </div>
+  </div>
 </ion-content>
