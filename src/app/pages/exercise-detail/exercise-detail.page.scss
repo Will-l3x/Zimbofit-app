@@ -1,6 +1,47 @@
 $border-radius: 5px;
+
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-secondary-contrast);
+
+    ion-buttons {
+      // ion-back-button {
+      //   --color: var(--ion-color-secondary-contrast);
+      //   --color-focused: var(--ion-color-secondary-contrast);
+      //   --color-hover: var(--ion-color-secondary-contrast);
+      // }
+      ion-button,
+      ion-back-button {
+        --background: var(--ion-color-primary);
+        --background-activated: var(--ion-color-primary);
+        --background-activated-opacity: 1;
+        --background-focused: var(--ion-color-primary);
+        --background-focused-opacity: 1;
+        --background-hover: var(--ion-color-primary);
+        --background-hover-opacity: 1;
+        --border-color: var(--ion-color-primary);
+        --border-radius: 8px;
+        --border-style: solid;
+        --border-width: 8px;
+        --color: var(--ion-color-secondary-contrast);
+        --color-activated: var(--ion-color-secondary-shade);
+        --color-focused: var(--ion-color-secondary-shade);
+        --color-hover: var(--ion-color-secondary-shade);
+        --opacity: 1;
+        --padding-bottom: 4px;
+        --padding-end: 4px;
+        --padding-start: 4px;
+        --padding-top: 4px;
+        --ripple-color: var(--ion-color-primary-tint);
+        --transition: background-color 15ms linear;
+      }
+    }
+  }
+}
 ion-content {
   --color: var(--ion-color-secondary);
+  --background-color: var(--ion-color-light);
 
   .header {
     position: relative;
@@ -33,9 +74,10 @@ ion-content {
   }
 
   .container {
-    background-color: var(--ion-color-secondary-contrast);
     position: relative;
+    background-color: var(--ion-color-light);
     border-radius: $border-radius;
+    height: 100%;
     padding: 20px;
     .desc {
       font-weight: 700;
@@ -64,7 +106,7 @@ ion-content {
     p {
       font-size: 12px;
     }
-    .container__text{
+    .container__text {
       margin: 20px 0 10px;
     }
   }

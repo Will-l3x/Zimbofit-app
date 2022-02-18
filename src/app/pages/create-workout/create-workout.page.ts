@@ -1,5 +1,7 @@
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { combineLatest, of, BehaviorSubject, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -36,7 +38,8 @@ export class CreateWorkoutPage implements OnInit, OnDestroy {
     private categoryService: CategoryService,
     private trainerService: TrainerService,
     private userWorkoutService: UserWorkoutService,
-    private muscleGroupService: MuscleGroupService) { }
+    private muscleGroupService: MuscleGroupService
+  ) {}
 
   ngOnInit() {
     let workout$;
@@ -51,50 +54,80 @@ export class CreateWorkoutPage implements OnInit, OnDestroy {
     const fields$ = this.userWorkoutService.getFields();
     const user$ = this.userService.getCurrentUser();
     const exercises$ = this.exerciseService.getExercises();
-
-    this.subscription = combineLatest([workout$, exercises$, fields$, user$]).subscribe(([workout, exercises, fields, user]) => {
+    console.log(fields$);
+    const fctrl = {};
+    this.subscription = combineLatest([
+      workout$,
+      exercises$,
+      fields$,
+      user$,
+    ]).subscribe(([workout, exercises, fields, user]) => {
       if (user) {
         this.exercises = exercises;
         this.exercises$.next(exercises);
         this.fields = fields.map((f) => {
-          if (f.key === 'category_id') { f.templateOptions.options = this.categoryService.getCategories(); }
+          fctrl[f.key] = new FormControl();
+
+          if (f.key === 'category_id') {
+            f.templateOptions.options = this.categoryService.getCategories();
+          }
 
           if (f.key === 'muscleGroup_ids') {
-            f.templateOptions.options = this.muscleGroupService.getMuscleGroups().pipe(take(1));
+            f.templateOptions.options = this.muscleGroupService
+              .getMuscleGroups()
+              .pipe(take(1));
             f.hooks = {
               onInit: () => {
-                f.formControl.valueChanges.subscribe(muscles => {
-                  const exs = this.exercises.filter(exercise => muscles.find(muscle => muscle === exercise.muscleGroup_id));
+                f.formControl.valueChanges.subscribe((muscles) => {
+                  const exs = this.exercises.filter((exercise) =>
+                    muscles.find((muscle) => muscle === exercise.muscleGroup_id)
+                  );
                   this.exercises$.next(exs);
                 });
-              }
+              },
             };
           }
           if (f.key === 'exercises') {
-            f.fieldArray.fieldGroup.map(fg => {
-              if (fg.key === 'exercise_id') { fg.templateOptions.options = this.exercises$; }
+            f.fieldArray.fieldGroup.map((fg) => {
+              if (fg.key === 'exercise_id') {
+                fg.templateOptions.options = this.exercises$;
+              }
               if (fg.key === 'reps') {
                 fg.hideExpression = (model) => {
-                  const exercise = this.exercises.find(e => e.id === model.exercise_id);
-                  return !exercise || (exercise.type !== '2' && exercise.type !== '5');
+                  const exercise = this.exercises.find(
+                    (e) => e.id === model.exercise_id
+                  );
+                  return (
+                    !exercise ||
+                    (exercise.type !== '2' && exercise.type !== '5')
+                  );
                 };
               }
               if (fg.key === 'weight') {
                 fg.hideExpression = (model) => {
-                  const exercise = this.exercises.find(e => e.id === model.exercise_id);
+                  const exercise = this.exercises.find(
+                    (e) => e.id === model.exercise_id
+                  );
                   return !exercise || exercise.type !== '5';
                 };
               }
               if (fg.key === 'distance') {
                 fg.hideExpression = (model) => {
-                  const exercise = this.exercises.find(e => e.id === model.exercise_id);
+                  const exercise = this.exercises.find(
+                    (e) => e.id === model.exercise_id
+                  );
                   return !exercise || exercise.type !== '6';
                 };
               }
               if (fg.key === 'time') {
                 fg.hideExpression = (model) => {
-                  const exercise = this.exercises.find(e => e.id === model.exercise_id);
-                  return !exercise || (exercise.type !== '1' && exercise.type !== '6');
+                  const exercise = this.exercises.find(
+                    (e) => e.id === model.exercise_id
+                  );
+                  return (
+                    !exercise ||
+                    (exercise.type !== '1' && exercise.type !== '6')
+                  );
                 };
               }
 
@@ -111,18 +144,20 @@ export class CreateWorkoutPage implements OnInit, OnDestroy {
         } else {
           this.model = {
             id: this.userWorkoutService.getNewId(),
-            timestamp: (new Date()).getTime(),
+            timestamp: new Date().getTime(),
             user_id: user.id,
           };
         }
 
-        console.log(this.form);
+        console.log(this.fields);
       }
     });
   }
 
   ngOnDestroy() {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   submit(model) {

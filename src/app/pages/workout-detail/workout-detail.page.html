@@ -91,9 +91,8 @@
         (clicked)="hover(workout?.trainer.id)"
       ></app-trainer-profile>
     </div>
-    <div class="container__text__timing">
+    <div class="container__text__timing" *ngIf="workout?.user">
       <ion-row
-        *ngIf="workout?.user"
         style="margin-top: 1rem"
         routerLink="/app/tabs/users/user/{{workout.user.id}}"
       >
@@ -117,14 +116,16 @@
     *ngIf="workout?.ordered_exercises?.length && ( workout.purchased || !workout.price )"
   >
     <div class="sub-header">Exercises</div>
-    <div class="main-cards">
-      <div class="card">
-        <app-exercise-card
-          *ngFor="let item of workout?.ordered_exercises"
-          [item]="item"
-          (clicked)="goToDetailPage(item)"
-        ></app-exercise-card>
-      </div>
-    </div>
+    <ion-list>
+      <ion-item
+        *ngFor="let exercise of workout?.ordered_exercises"
+        (click)="goToDetailPage(exercise)"
+      >
+        <div slot="start" class="image">
+          <img [src]="exercise?.image_url || 'assets/img/dashboard.png'" />
+        </div>
+        <h3>{{exercise?.name}}</h3>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>

@@ -2,18 +2,135 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <!-- <ion-back-button defaultHref="/app/tabs/workouts"></ion-back-button> -->
-      <ion-back-button></ion-back-button>
+      <ion-button appBackbutton>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title><span *ngIf="!edit">Create </span><span *ngIf="edit">Edit </span> Workout</ion-title>
+    <ion-title
+      ><span *ngIf="!edit">Create </span
+      ><span *ngIf="edit">Edit </span> Workout</ion-title
+    >
     <ion-buttons slot="end">
-      <ion-button *ngIf="form?.valid && fields?.length" (click)="submit(model)">Save</ion-button>
+      <ion-button *ngIf="form?.valid && fields?.length" (click)="submit(model)"
+        >Save</ion-button
+      >
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form *ngIf="model" [formGroup]="form" (ngSubmit)="submit(model)">
-    <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-    <!-- <ion-button type="submit" [disabled]="!form.valid" class="btn btn-primary">Update</ion-button> -->
-  </form>
+<ion-content
+  ><div class="app" *ngIf="model">
+    <header class="header" role="banner">
+      <div class="header-item__img">
+        <img [src]="user?.image_url || 'assets/img/dashboard.png'" />
+      </div>
+    </header>
+    <div class="container">
+      <form [formGroup]="form" (ngSubmit)="submit()" id="form">
+        <ion-item *ngFor="let item of fields" class="ion-margin-bottom">
+          <ion-label color="primary"
+            >{{item.templateOptions.label}}:
+          </ion-label>
+          <ion-input
+            *ngIf="item.type === 'input'"
+            [formControlName]="item.key"
+            [type]="item.templateOptions.type"
+            [placeholder]="item.templateOptions.placeholder"
+            (required)="item.templateOptions.required"
+            value=""
+          ></ion-input>
+          <ion-select
+            *ngIf="item.type === 'select'"
+            [formControlName]="item.key"
+            [interfaceOptions]="selectOptions"
+            [placeholder]="item.templateOptions.placeholder"
+            (required)="item.templateOptions.required"
+            value=""
+          >
+            <ng-template *ngIf="item.templateOptions.multiple; else single"
+              ><ion-select-option
+                *ngFor="let option of item.templateOptions.options"
+                [value]="{name: option.name, id: option.id}"
+              >
+                {{ option.name }}
+              </ion-select-option></ng-template
+            >
+
+            <ion-select-option
+              #single
+              *ngFor="let option of item.templateOptions.options"
+              [value]="option.id"
+            >
+              {{ option.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-button
+          type="submit"
+          [disabled]="!form?.valid"
+          shape="round"
+          class="btn btn-primary"
+          >Update</ion-button
+        >
+      </form>
+    </div>
+  </div>
+  <div class="app">
+    <header class="header" role="banner">
+      <div class="header-item__img">
+        <img [src]="user?.image_url || 'assets/img/dashboard.png'" />
+      </div>
+    </header>
+    <div class="container">
+      <form *ngIf="model" [formGroup]="form" (ngSubmit)="submit()" id="form">
+        <ion-item *ngFor="let item of fields" class="ion-margin-bottom">
+          <ion-label color="primary"
+            >{{item.templateOptions.label}}:
+          </ion-label>
+          <ion-input
+            *ngIf="item.type === 'input'"
+            [formControlName]="item.key"
+            [type]="item.templateOptions.type"
+            [placeholder]="item.templateOptions.placeholder"
+            (required)="item.templateOptions.required"
+            value=""
+          ></ion-input>
+          <ion-select
+            *ngIf="item.type === 'select'"
+            [formControlName]="item.key"
+            [interfaceOptions]="selectOptions"
+            [placeholder]="item.templateOptions.placeholder"
+            (required)="item.templateOptions.required"
+            value=""
+          >
+            <ng-template *ngIf="item.templateOptions.multiple; else single"
+              ><ion-select-option
+                *ngFor="let option of item.templateOptions.options"
+                [value]="{name: option.name, id: option.id}"
+              >
+                {{ option.name }}
+              </ion-select-option></ng-template
+            >
+
+            <ion-select-option
+              #single
+              *ngFor="let option of item.templateOptions.options"
+              [value]="option.id"
+            >
+              {{ option.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-button
+          type="submit"
+          [disabled]="!form?.valid"
+          shape="round"
+          class="btn btn-primary"
+          >Update</ion-button
+        >
+      </form>
+    </div>
+  </div>
 </ion-content>

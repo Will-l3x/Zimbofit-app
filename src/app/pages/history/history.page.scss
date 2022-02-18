@@ -1,11 +1,10 @@
-
 $categories: (
   ionic: var(--ion-color-primary),
   cardio: #ac282b,
   crossfit: #8e8d93,
   tooling: #fe4c52,
   services: #fd8b2d,
-  design: #fed035, 
+  design: #fed035,
   workshop: #69bb7b,
   food: #3bc7c4,
   documentation: #b16be3,
@@ -139,9 +138,54 @@ ion-menu {
     }
   }
 }
-
+ion-content {
+  // --background: #ffffff;
+  // --color: #3880ff;
+  // --keyboard-offset: 0px;
+  // --offset-bottom: 0px;
+  // --offset-top: 0px;
+  // --padding-bottom: 0px;
+  // --padding-end: 0px;
+  // --padding-start: 0px;
+  // --padding-top: 0px;
+  ion-item-group {
+    ion-item-divider {
+      --background: var(--ion-color-light);
+      --color: var(--ion-color-secondary)
+    }
+    ion-item-sliding {
+      ion-item {
+        .image {
+          height: 80px;
+          width: 80px;
+          margin: 12px 12px 12px 0;
+          border-radius: 8px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 28px 0px,
+            rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            object-fit: center;
+          }
+        }
+        h3 {
+          margin: 0;
+          font-size: 24px;
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+        ion-button {
+          --background: var(--ion-color-primary);
+          --color: var(--ion-color-primary-contrast);
+        }
+      }
+    }
+  }
+}
 @each $track, $value in map-remove($categories) {
-  ion-item-sliding[track='#{$track}'] ion-label {
+  ion-item-sliding[track="#{$track}"] ion-label {
     border-left: 2px solid $value;
     padding-left: 10px;
   }

@@ -9,6 +9,7 @@ import { ProgramDetailPage } from './program-detail.page';
 import { SharedModule } from '../../shared/shared.module';
 import { WorkoutListItemModule } from '../workouts/components/workout-list-item/workout-list-item.module';
 import { TrainerProfileModule } from 'src/app/components/trainer-profile/trainer-profile.module';
+import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
     SharedModule,
     WorkoutListItemModule,
     TrainerProfileModule,
+    SharedDirectivesModule,
   ],
   declarations: [ProgramDetailPage],
 })

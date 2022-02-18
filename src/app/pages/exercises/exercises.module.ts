@@ -10,7 +10,6 @@ import { ExercisesPage } from './exercises.page';
 import { CategoryFilterComponent } from '../../shared/components/category-filter/category-filter.component';
 import { SharedModule } from '../../shared/shared.module';
 import { SearchbarModule } from 'src/app/components/searchbar/searchbar.module';
-import { ExerciseCardModule } from 'src/app/components/exercise-card/exercise-card.module';
 
 const routes: Routes = [
   {
@@ -27,7 +26,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule,
     SearchbarModule,
-    ExerciseCardModule,
   ],
   declarations: [ExercisesPage, ExerciseFilterComponent],
   entryComponents: [CategoryFilterComponent],

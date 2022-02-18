@@ -73,8 +73,8 @@ export class ProgramDetailPage implements OnInit, OnDestroy {
   hover(id) {
     this.hover$ = { id, active: this.hover$.active === true ? false : true };
   }
-  gotoWorkoutPageDetail(workout) {
-    this.router.navigate(['/app/tabs/workouts/workout'], workout.id);
+  gotoWorkoutDetailPage(workout) {
+    this.router.navigate(['/app/tabs/workouts/workout', workout.id]);
   }
   ngOnDestroy() {
     if (this.subscription) {

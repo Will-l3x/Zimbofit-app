@@ -1,38 +1,36 @@
 <ion-item-sliding>
-  <ion-item>
-    <div (click)="goToDetailPage(workout.id)" class="container">
-      <div class="container__image">
-        <img
-          src="{{ workout?.image_url || 'assets/img/placeholder.png' }}"
-          alt="{{ workout?.name }}"
-        />
+  <ion-item (click)="goToDetailPage(workout.id)" class="container">
+    <div slot="start" class="image">
+      <img
+        src="{{ workout?.image_url || 'assets/img/placeholder.png' }}"
+        alt="{{ workout?.name }}"
+      />
+    </div>
+    <div class="container">
+      <div class="title">
+        <h1>{{ workout?.name }}</h1>
+        <h2>
+          <span>Owned</span>
+        </h2>
       </div>
 
-      <div class="container__text">
-        <div class="pricing">
-          <h1>{{ workout?.name }}</h1>
-          <h2>
-            <span *ngIf="!workout?.price">Free</span>
-            <span *ngIf="workout?.price">{{ workout?.price | currency }}</span>
-          </h2>
-          <!-- <h1><sup>$</sup>3.00</h1> -->
-        </div>
+      <div class="reviews">
         <app-rating
           [targetId]="workout?.id"
           targetType="workout"
           [targetName]="workout?.name"
-          (disabledPage)="true"
+          (disabledPage)="(true)"
         ></app-rating>
-        <br />
         <app-like
           [targetId]="workout?.id"
           targetType="workout"
           [targetName]="workout?.name"
-          (disabledPage)="true"
+          (disabledPage)="(true)"
         ></app-like>
       </div>
     </div>
   </ion-item>
+
   <ion-item-options side="end">
     <ion-item-option color="secondary" (click)="onCreate(workout)">
       <ion-icon color="secondary" name="create" size="large"> </ion-icon>

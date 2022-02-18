@@ -1,5 +1,7 @@
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject, of, combineLatest, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,7 +21,6 @@ import { UserProgramService } from '../../services/user-program.service';
   styleUrls: ['./create-program.page.scss'],
 })
 export class CreateProgramPage implements OnInit, OnDestroy {
-
   form = new FormGroup({});
   model: any;
   fields: FormlyFieldConfig[] = [];
@@ -34,7 +35,8 @@ export class CreateProgramPage implements OnInit, OnDestroy {
     private categoryService: CategoryService,
     private workoutService: WorkoutService,
     private programService: ProgramService,
-    private userProgramService: UserProgramService) { }
+    private userProgramService: UserProgramService
+  ) {}
 
   ngOnInit() {
     let program$;
@@ -49,49 +51,57 @@ export class CreateProgramPage implements OnInit, OnDestroy {
     const fields$ = this.programService.getFields();
     const user$ = this.userService.getCurrentUser();
 
-    this.subscription = combineLatest([program$, fields$, user$]).subscribe(([workout, fields, user]) => {
-      if (user) {
-        this.fields = fields.map(f => {
-          if(f.key === "category_id"){
-            f.templateOptions.options = this.categoryService.getCategories();
+    this.subscription = combineLatest([program$, fields$, user$]).subscribe(
+      ([workout, fields, user]) => {
+        const fctrl = {};
+        if (user) {
+          this.fields = fields.map((f) => {
+            fctrl[f.key] = new FormControl();
+
+            if (f.key === 'category_id') {
+              f.templateOptions.options = this.categoryService.getCategories();
+            }
+            if (f.key === 'workouts') {
+              f.fieldArray.fieldGroup.map((fg) => {
+                if (fg.key === 'workout_id') {
+                  fg.templateOptions.options = combineLatest([
+                    this.userService.getAuthoredWorkouts(),
+                    this.workoutService.getWorkouts(),
+                  ]).pipe(
+                    take(1),
+                    map(([myWorkouts, workouts]) => myWorkouts.concat(workouts))
+                  );
+                }
+
+                return fg;
+              });
+            }
+            return f;
+          });
+          if (workout) {
+            this.model = workout;
+          } else {
+            this.model = {
+              id: this.programService.getNewId(),
+              timestamp: new Date().getTime(),
+              user_id: user.id,
+            };
           }
-          if(f.key === "workouts"){
-            f.fieldArray.fieldGroup.map(fg => {
-              if(fg.key === "workout_id"){
-                fg.templateOptions.options = 
-                combineLatest([this.userService.getAuthoredWorkouts(), this.workoutService.getWorkouts()]).pipe(
-                  take(1),
-                  map(([myWorkouts, workouts]) => myWorkouts.concat(workouts))
-                );
-              }
-  
-              return fg;
-            })
-          }
-          return f;
-        });
-        if (workout) {
-          this.model = workout;
-        } else {
-          this.model = {
-            id: this.programService.getNewId(),
-            timestamp: (new Date()).getTime(),
-            user_id: user.id
-          };
         }
-
-        console.log(this.form);
+        console.log(this.fields);
       }
-    });
+    );
   }
 
-  ngOnDestroy(){
-    if(this.subscription) this.subscription.unsubscribe();
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
-  submit(model) {
-    console.log(model);
-    this.userProgramService.updateProgram(model);
-    this.router.navigateByUrl(`app/tabs/programs/program/${model.id}`);
+  submit() {
+    this.model = this.form.controls.a.value;
+    this.userProgramService.updateProgram(this.model);
+    this.router.navigateByUrl(`app/tabs/programs/program/${this.model.id}`);
   }
 }

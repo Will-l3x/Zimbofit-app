@@ -48,9 +48,10 @@
 
     <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem>
       <ion-item>
-        <ion-label>
-          <h3>{{session?.workout_name}}</h3>
-        </ion-label>
+        <div slot="start" class="image">
+          <img [src]="session?.image_url || 'assets/img/dashboard.png'" />
+        </div>
+        <h3>{{session?.workout_name}}</h3>
         <ion-button
           fill="outline"
           slot="end"
@@ -59,7 +60,7 @@
         >
       </ion-item>
       <ion-item-options>
-        <ion-item-option color="danger" (click)="onDelete(session)">
+        <ion-item-option color="primary" (click)="onDelete(session)">
           Delete
         </ion-item-option>
       </ion-item-options>

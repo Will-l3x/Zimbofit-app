@@ -1,6 +1,112 @@
-<ion-button size="small" color="warning" (click)="openRating()">
-  <ion-icon [class.like]="rating" name="star"></ion-icon>
-</ion-button>
-<ion-button fill="clear" class="button-label" size="small" color="warning">
-  {{average | number: '1.0-1'}}/5 Rating
-</ion-button>
+<div (click)="openRating()" class="rating">
+  <div
+    [ngClass]="average < 0.5 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average >= 0.5 && average < 1 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star-half"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average >= 1 && average < 1.5 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average >= 1.5 && average < 2 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-half"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average >= 2 && average < 2.5 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average >= 2.5 && average < 3 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-half"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average >= 3 && average < 3.5 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average >= 3.5 && average < 4 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-half"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average >= 4 && average < 4.5 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </div>
+  <div [ngClass]="[average >= 4.5 && average < 5 ? 'block' : 'hidden']">
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-half"></ion-icon>
+  </div>
+  <div
+    [ngClass]="average === 5 ? 'block' : 'hidden'"
+    class="container__text__star"
+  >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+  </div>
+  <span
+    ><i>{{ average | number: "1.0-1" }}/5 Rating</i></span
+  >
+</div>

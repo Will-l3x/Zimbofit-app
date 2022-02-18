@@ -69,7 +69,7 @@ export class WorkoutListComponent implements OnInit, OnDestroy {
     }, 500);
   }
   goToDetailPage(id: string) {
-    this.router.navigate(['/app/tabs/workouts/workout/', id]);
+    this.router.navigate(['/tabs/workouts/workout', id]);
   }
   ngOnDestroy() {
     if (this.subscription) {

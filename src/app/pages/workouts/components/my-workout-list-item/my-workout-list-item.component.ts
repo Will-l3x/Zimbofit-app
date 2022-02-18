@@ -9,6 +9,7 @@ import { UserService } from '../../../../services/user.service';
   styleUrls: ['./my-workout-list-item.component.scss'],
 })
 export class MyWorkoutListItemComponent implements OnInit {
+  @Input() priceTag = true;
   @Input() workout: any;
   collapsed = false;
   exercises = [];

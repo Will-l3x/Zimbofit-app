@@ -1,11 +1,8 @@
-<!-- <p>
-  <ion-icon name='thumbs-up' (click)="onLike()" style="font-size: 1.3em;" [class.like]="like"></ion-icon>
-  &nbsp; <span>{{likes?.length}} Likes</span>
-</p> -->
 
-<ion-button size="small" color="warning" (click)="onLike()">
-  <ion-icon [class.like]="like" name="thumbs-up"></ion-icon>
-</ion-button>
-<ion-button fill="clear" class="button-label" size="small" color="warning">
-  <ion-label>{{likes?.length}} <span *ngIf="!small"> &nbsp; Likes</span></ion-label>
-</ion-button>
+<div (click)="onLike()" *ngIf="likes" class="likes">
+  <div class="like-icon">
+    <ion-icon [class.like]="like" name="thumbs-up"></ion-icon>
+  </div>
+
+  <h1>{{ likes?.length }} <span *ngIf="!small"> &nbsp; Likes</span></h1>
+</div>

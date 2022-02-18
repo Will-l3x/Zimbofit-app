@@ -2,7 +2,10 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <!-- <ion-back-button defaultHref="/app/tabs/programs"></ion-back-button> -->
-      <ion-back-button></ion-back-button>
+      <!-- s -->
+       <ion-button appBackbutton>
+        <ion-icon slot="icon-only"  name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>{{program?.name}}</ion-title>
     <ion-buttons slot="end">
@@ -32,21 +35,21 @@
 
     <div class="container__text__timing">
       <ion-button
-        *ngIf="program.purchased || !program.price"
-        routerLink="/session/{{program.id}}"
+        *ngIf="program?.purchased || !program?.price"
+        routerLink="/session/{{program?.id}}"
       >
         <ion-icon name="play"></ion-icon>
         Start
       </ion-button>
       <ion-button
-        *ngIf="program.purchased || !program.price"
+        *ngIf="program?.purchased || !program?.price"
         (click)="onSchedule()"
       >
         <ion-icon name="calendar"></ion-icon>
         Schedule
       </ion-button>
       <add-to-cart-button
-        *ngIf="!program.purchased && program.price"
+        *ngIf="!program?.purchased && program?.price"
         [item]="purchase"
       ></add-to-cart-button>
     </div>
@@ -73,7 +76,7 @@
       <div class="container__text__timing_time">
         <h2>Meal Plan</h2>
         <meal-plan-request-button
-          *ngIf="program.has_meal_plan;else sorry"
+          *ngIf="program?.has_meal_plan;else sorry"
           [item]="mealPlanPurchase"
         ></meal-plan-request-button>
         <ng-template #sorry>
@@ -94,18 +97,18 @@
       <ion-row
         *ngIf="program?.user"
         style="margin-top: 1rem"
-        routerLink="/app/tabs/users/user/{{program.user.id}}"
+        routerLink="/app/tabs/users/user/{{program?.user.id}}"
       >
         <ion-col size="2">
           <ion-avatar
             *ngIf="!offline"
             style="width: 3rem; height: 3rem; border: 2px solid #c4bbbb"
           >
-            <img [src]="program.user.image_url" />
+            <img [src]="program?.user.image_url" />
           </ion-avatar>
         </ion-col>
         <ion-col>
-          <h3>{{program.user.name}}</h3>
+          <h3>{{program?.user.name}}</h3>
           <p>User Authored</p>
         </ion-col>
       </ion-row>
@@ -118,7 +121,7 @@
         <app-workout-list-item
           *ngFor="let workout of program?.wrks; let i = index"
           [workout]="workout"
-          (clicked)="gotoWorkoutDetail(workout)"
+          (clicked)="gotoWorkoutDetailPage(workout)"
           [priceTag]="false"
         ></app-workout-list-item>
       </div>

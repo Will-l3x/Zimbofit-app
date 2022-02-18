@@ -10,12 +10,13 @@ import { SharedModule } from '../../shared/shared.module';
 import { FormlyModule } from '@ngx-formly/core';
 import { RepeatTypeComponent } from '../../shared/components/repeat-type/repeat-type.component';
 import { FormlyIonicModule } from '@ngx-formly/ionic';
+import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: CreateProgramPage
-  }
+    component: CreateProgramPage,
+  },
 ];
 
 @NgModule({
@@ -25,14 +26,13 @@ const routes: Routes = [
     ReactiveFormsModule,
     SharedModule,
     FormlyModule.forRoot({
-      types: [
-        { name: 'repeat', component: RepeatTypeComponent },
-      ],
+      types: [{ name: 'repeat', component: RepeatTypeComponent }],
     }),
     IonicModule,
     FormlyIonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedDirectivesModule,
   ],
-  declarations: [CreateProgramPage]
+  declarations: [CreateProgramPage],
 })
 export class CreateProgramPageModule {}

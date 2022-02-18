@@ -58,13 +58,22 @@
   </ion-content>
 </ion-menu>
 <ion-content id="main-content-exe">
-  <app-searchbar
-    (searchText)="onSearch($event)"
-    [placeholder]="Search"
-  ></app-searchbar>
-  <app-exercise-card
-    *ngFor="let exercise of exercises"
-    [item]="exercise"
-    (clicked)="goToDetailPage(exercise.id)"
-  ></app-exercise-card>
+  <div class="searchbar">
+    <app-searchbar
+      (searchText)="onSearch($event)"
+      [placeholder]="Search"
+    ></app-searchbar>
+  </div>
+
+  <ion-list>
+    <ion-item
+      *ngFor="let exercise of exercises"
+      (click)="goToDetailPage(exercise.id)"
+    >
+      <div slot="start" class="image">
+        <img [src]="exercise?.image_url || 'assets/img/dashboard.png'" />
+      </div>
+      <h3>{{exercise?.name}}</h3>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -101,7 +101,7 @@ export class WorkoutDetailPage implements OnInit, OnDestroy {
     }
   }
   goToDetailPage(exercise) {
-    this.router.navigate(['exercise-details', exercise.id], {
+    this.router.navigate(['/app/tabs/exercises/exercise', exercise.id], {
       state: { exercise },
     });
   }

@@ -1,0 +1,26 @@
+.likes {
+  color: var(--ion-color-warning);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  .icon ion-icon,
+  .icon i,
+  span {
+    font-size: 0.8rem;
+  }
+  .icon ion-icon {
+    color: var(--ion-color-warning);
+  }
+  h1 {
+    margin: 0;
+    margin-left: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+.hidden {
+  display: none;
+}
+.flex {
+  display: flex;
+}

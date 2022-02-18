@@ -1,23 +1,6 @@
-<div class="container" (click)="clicked.emit()">
-  <div class="container__image">
-    <img src="{{ item.image_url || 'assets/img/dashboard.png' }}" alt="{{ item.image_url }}" />
+<ion-item (click)="clicked.emit()">
+  <div slot="start" class="image">
+    <img [src]="item?.image_url || 'assets/img/dashboard.png'" />
   </div>
-
-  <div class="container__text">
-    <div class="pricing">
-      <h1>{{ item?.name }}</h1>
-      <h2><ion-icon name="repeat"></ion-icon> {{ item.totalSets }}</h2>
-      <!-- <h2><sup>$</sup>{{item?.price|number:'1.2'}}</h2> -->
-    </div>
-    <!-- <div class="likes">
-      <div class="likes-content">
-        <ion-icon name="repeat"></ion-icon>
-        {{item.totalSets}}
-      </div>
-      <div class="likes-content">
-        <ion-icon name="hourglass"></ion-icon>
-        {{item.measurements[0].default}}
-      </div>
-    </div> -->
-  </div>
-</div>
+  <h3>{{ item?.name }}</h3>
+</ion-item>
