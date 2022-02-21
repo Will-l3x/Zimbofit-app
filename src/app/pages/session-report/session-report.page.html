@@ -1,15 +1,18 @@
-<ion-header translucent>
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <!-- <ion-back-button defaultHref="/app/tabs/history"></ion-back-button> -->
-      <ion-back-button></ion-back-button>
+      <!-- <ion-back-button></ion-back-button> -->
+        <ion-button appBackbutton>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>
       Workout Report
     </ion-title>
     <ion-buttons slot="end">
       <ion-button routerLink="/app/tabs/history/{{session?.workout_id}}">
-        <ion-icon name="stats"></ion-icon>
+        <ion-icon slot="icon-only" name="analytics"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

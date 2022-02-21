@@ -9,12 +9,13 @@ import { SessionPage } from './session.page';
 import { SessionExerciseComponent } from '../session-exercise/session-exercise.component';
 import { SessionExerciseSetComponent } from '../session-exercise-set/session-exercise-set.component';
 import { SessionExerciseSetAdjustComponent } from '../session-exercise-set-adjust/session-exercise-set-adjust.component';
+import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 
 const routes: Routes = [
   {
     path: ':workoutId',
-    component: SessionPage
-  }
+    component: SessionPage,
+  },
 ];
 
 @NgModule({
@@ -22,17 +23,18 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedDirectivesModule,
   ],
   declarations: [
     SessionPage,
     SessionExerciseComponent,
     SessionExerciseSetComponent,
-    SessionExerciseSetAdjustComponent
+    SessionExerciseSetAdjustComponent,
   ],
   entryComponents: [
     SessionExerciseComponent,
-    SessionExerciseSetAdjustComponent
-  ]
+    SessionExerciseSetAdjustComponent,
+  ],
 })
 export class SessionPageModule {}

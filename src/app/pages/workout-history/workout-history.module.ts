@@ -8,12 +8,13 @@ import { IonicModule } from '@ionic/angular';
 import { WorkoutHistoryPage } from './workout-history.page';
 import { WorkoutChartComponent } from './workout-chart/workout-chart.component';
 import { ExerciseHistoryComponent } from './exercise-history/exercise-history.component';
+import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: WorkoutHistoryPage
-  }
+    component: WorkoutHistoryPage,
+  },
 ];
 
 @NgModule({
@@ -21,12 +22,13 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedDirectivesModule,
   ],
   declarations: [
     WorkoutHistoryPage,
     WorkoutChartComponent,
-    ExerciseHistoryComponent
-  ]
+    ExerciseHistoryComponent,
+  ],
 })
-export class WorkoutHistoryPageModule { }
+export class WorkoutHistoryPageModule {}
