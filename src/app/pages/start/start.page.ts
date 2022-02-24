@@ -17,7 +17,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { ViewService } from '../../services/view.service';
 import { UserLocationService } from '../../services/user-location.service';
 import { ScheduledWorkoutService } from '../../services/scheduled-workout.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { LoginPopoverComponent } from '../../shared/components/login-popover/login-popover.component';
 
 @Component({
@@ -43,24 +43,6 @@ export class StartPage implements OnInit, OnDestroy {
       title: 'Programs',
       url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
@@ -100,7 +82,9 @@ export class StartPage implements OnInit, OnDestroy {
     private menu: MenuController,
     private scheduledWorkoutService: ScheduledWorkoutService,
     private router: Router
-  ) {}
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   ngOnInit() {
     this.userService

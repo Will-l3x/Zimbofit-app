@@ -17,12 +17,11 @@
   <ion-content>
     <div class="sidenav" id="sidenav">
       <ul>
-        <li class="center user">
-          <img src="assets/img/man-05.svg" alt="User" />
-          <p>John Doe</p>
+         <li class="center user">
+          <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
+          <p>{{user?.name || 'John Doe'}}</p>
         </li>
         <li class="divider"></li>
-        <li class="title">Links</li>
         <li
           *ngFor="let item of appPages"
           class="item"
@@ -30,12 +29,6 @@
         >
           <a routerLink="{{item.url}}">{{item.title}}</a>
         </li>
-
-        <!-- <li class="divider"></li>
-        <li class="title">Projects</li>
-        <li class="item"><a href="#">Project 1</a></li>
-        <li class="item"><a href="#">Project 2</a></li>
-        <li class="item"><a href="#">Project 3</a></li> -->
       </ul>
     </div>
   </ion-content>
@@ -67,21 +60,44 @@
         <div class="main__panel  {{tab === 'Basic Info'? 'flex': 'none'}}">
           <ion-list>
             <ion-item>
-              <ion-icon slot="start" color="medium" name="information-circle-outline"></ion-icon>{{user?.name}}
+              <ion-icon
+                slot="start"
+                color="medium"
+                name="information-circle-outline"
+              ></ion-icon
+              >{{user?.name}}
             </ion-item>
             <ion-item>
-              <ion-icon slot="start" color="medium" name="information-circle-outline"></ion-icon>{{user?.phone}}
+              <ion-icon
+                slot="start"
+                color="medium"
+                name="information-circle-outline"
+              ></ion-icon
+              >{{user?.phone}}
             </ion-item>
             <ion-item>
-              <ion-icon slot="start" color="medium" name="information-circle-outline"></ion-icon>{{user?.dob | date}}
+              <ion-icon
+                slot="start"
+                color="medium"
+                name="information-circle-outline"
+              ></ion-icon
+              >{{user?.dob | date}}
             </ion-item>
             <ion-item>
-              <ion-icon slot="start" color="medium" name="information-circle-outline"></ion-icon>{{user?.height}}m
-              height
+              <ion-icon
+                slot="start"
+                color="medium"
+                name="information-circle-outline"
+              ></ion-icon
+              >{{user?.height}}m height
             </ion-item>
             <ion-item lines="none">
-              <ion-icon slot="start" color="medium" name="information-circle-outline"></ion-icon>{{user?.weight}}kg
-              weight
+              <ion-icon
+                slot="start"
+                color="medium"
+                name="information-circle-outline"
+              ></ion-icon
+              >{{user?.weight}}kg weight
             </ion-item>
           </ion-list>
           <div class="main__panel--footer">Basic Info</div>
@@ -92,7 +108,12 @@
               *ngFor="let cat of user?.categories; let i = index"
               [lines]="i === (user?.categories?.length - 1) ? 'none' : ''"
             >
-              <ion-icon slot="start" color="medium" name="information-circle-outline"></ion-icon>{{cat.name}}
+              <ion-icon
+                slot="start"
+                color="medium"
+                name="information-circle-outline"
+              ></ion-icon
+              >{{cat.name}}
             </ion-item>
           </ion-list>
           <div class="main__panel--footer">Goals</div>

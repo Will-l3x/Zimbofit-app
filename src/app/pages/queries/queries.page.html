@@ -6,7 +6,6 @@
       </ion-button>
     </ion-buttons>
     <ion-title>My Queries</ion-title>
-    
   </ion-toolbar>
 </ion-header>
 <ion-menu
@@ -19,11 +18,10 @@
     <div class="sidenav" id="sidenav">
       <ul>
         <li class="center user">
-          <img src="assets/img/man-05.svg" alt="User" />
-          <p>John Doe</p>
+          <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
+          <p>{{user?.name || 'John Doe'}}</p>
         </li>
         <li class="divider"></li>
-        <li class="title">Links</li>
         <li
           *ngFor="let item of appPages"
           class="item"
@@ -31,12 +29,6 @@
         >
           <a routerLink="{{item.url}}">{{item.title}}</a>
         </li>
-
-        <!-- <li class="divider"></li>
-        <li class="title">Projects</li>
-        <li class="item"><a href="#">Project 1</a></li>
-        <li class="item"><a href="#">Project 2</a></li>
-        <li class="item"><a href="#">Project 3</a></li> -->
       </ul>
     </div>
   </ion-content>
@@ -45,7 +37,9 @@
   <ion-list>
     <ion-item *ngFor="let query of queries">
       <ion-label>{{query.message}}</ion-label>
-      <ion-badge color="dark" slot="end">{{query.resolved ? 'Resolved' : 'Unresolved'}}</ion-badge>
+      <ion-badge color="dark" slot="end"
+        >{{query.resolved ? 'Resolved' : 'Unresolved'}}</ion-badge
+      >
     </ion-item>
   </ion-list>
 </ion-content>

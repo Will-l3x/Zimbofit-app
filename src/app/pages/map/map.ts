@@ -2,6 +2,8 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ConferenceData } from '../../providers/conference-data';
 import { MenuController, Platform } from '@ionic/angular';
+import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'page-map',
@@ -22,24 +24,6 @@ export class MapPage implements AfterViewInit {
       title: 'Programs',
       url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
@@ -70,11 +54,15 @@ export class MapPage implements AfterViewInit {
       icon: 'information-circle',
     },
   ];
+  user;
   constructor(
     public confData: ConferenceData,
     public platform: Platform,
-    private menu: MenuController
-  ) {}
+    private menu: MenuController,
+    private userService: UserService
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
   sidenavOpen() {
     this.menu.enable(true, 'menu-content-maps');
     this.menu.open('menu-content-maps');

@@ -35,11 +35,10 @@
     <div class="sidenav" id="sidenav">
       <ul>
         <li class="center user">
-          <img src="assets/img/man-05.svg" alt="User" />
-          <p>John Doe</p>
+          <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
+          <p>{{user?.name || 'John Doe'}}</p>
         </li>
         <li class="divider"></li>
-        <li class="title">Links</li>
         <li
           *ngFor="let item of appPages"
           class="item"

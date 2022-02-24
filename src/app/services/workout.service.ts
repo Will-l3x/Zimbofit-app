@@ -42,61 +42,61 @@ export class WorkoutService {
   }
 
   getWorkouts(): Observable<any[]> {
-    return this.workoutCollection.valueChanges().pipe(take(1));
-    // const exercises$ = this.exerciseCollection.valueChanges();
-    // const myCategories$ = this.settingsService.categories;
-    // const purchases$ = this.purchasesService.getPurchases();
+    const  workouts$ = this.workoutCollection.valueChanges().pipe(take(1));
+    const exercises$ = this.exerciseCollection.valueChanges();
+    const myCategories$ = this.settingsService.categories;
+    const purchases$ = this.purchasesService.getPurchases();
 
-    // return combineLatest([
-    //   workouts$,
-    //   exercises$,
-    //   myCategories$,
-    //   purchases$,
-    // ]).pipe(
-    //   take(1),
-    //   map(([workouts, exercises, myCategories, purchases]) =>
-    //     workouts
-    //       .filter((w) =>
-    //         myCategories
-    //           .filter((m) => m.isChecked)
-    //           .find((cat) => cat.id === w.category_id)
-    //       )
-    //       .map((workout) => {
-    //         const exs = groupBy(workout.exercises, (ex) => ex.exercise_id);
-    //         const exercises1 = [];
-    //         const deleted_exercises = [];
-    //         if (exs) {
-    //           for (const key in exs) {
-    //             if (key) {
-    //               const exercise = cloneDeep(
-    //                 exercises.find((exerc) => exerc.id === key)
-    //               );
-    //               if (exercise) {
-    //                 exercise.sets = exs[key];
-    //                 this.setupMeasurements(exercise);
-    //                 exercise.totalSets = exercise.sets.length;
-    //                 exercises1.push(exercise);
-    //               } else {
-    //                 const del_ex: any = { id: key, sets: exs[key] };
-    //                 deleted_exercises.push(del_ex);
-    //               }
-    //             }
-    //           }
-    //         }
-    //         workout.ordered_exercises = exercises1;
-    //         workout.deleted_exercises = deleted_exercises;
+    return combineLatest([
+      workouts$,
+      exercises$,
+      myCategories$,
+      purchases$,
+    ]).pipe(
+      take(1),
+      map(([workouts, exercises, myCategories, purchases]) =>
+        workouts
+          .filter((w) =>
+            myCategories
+              .filter((m) => m.isChecked)
+              .find((cat) => cat.id === w.category_id)
+          )
+          .map((workout) => {
+            const exs = groupBy(workout.exercises, (ex) => ex.exercise_id);
+            const exercises1 = [];
+            const deleted_exercises = [];
+            if (exs) {
+              for (const key in exs) {
+                if (key) {
+                  const exercise = cloneDeep(
+                    exercises.find((exerc) => exerc.id === key)
+                  );
+                  if (exercise) {
+                    exercise.sets = exs[key];
+                    this.setupMeasurements(exercise);
+                    exercise.totalSets = exercise.sets.length;
+                    exercises1.push(exercise);
+                  } else {
+                    const del_ex: any = { id: key, sets: exs[key] };
+                    deleted_exercises.push(del_ex);
+                  }
+                }
+              }
+            }
+            workout.ordered_exercises = exercises1;
+            workout.deleted_exercises = deleted_exercises;
 
-    //         if (purchases && purchases.length) {
-    //           const purchase = purchases.find((p) => p.item_id === workout.id);
-    //           if (purchase) {
-    //             workout.purchased = true;
-    //           }
-    //         }
+            if (purchases && purchases.length) {
+              const purchase = purchases.find((p) => p.item_id === workout.id);
+              if (purchase) {
+                workout.purchased = true;
+              }
+            }
 
-    //         return workout;
-    //       })
-    //   )
-    // );
+            return workout;
+          })
+      )
+    );
   }
   getWorkouts2(): Observable<any[]> {
     return this.workoutCollection.valueChanges().pipe(take(1));

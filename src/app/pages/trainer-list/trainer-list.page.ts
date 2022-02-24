@@ -5,6 +5,8 @@ import { Subscription, combineLatest } from 'rxjs';
 import { OfflineService } from '../../services/offline.service';
 import { ViewService } from '../../services/view.service';
 import { MenuController } from '@ionic/angular';
+import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'trainer-list',
@@ -29,24 +31,6 @@ export class TrainerListPage implements OnInit, OnDestroy {
       title: 'Programs',
       url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
@@ -77,12 +61,16 @@ export class TrainerListPage implements OnInit, OnDestroy {
       icon: 'information-circle',
     },
   ];
+  user;
   constructor(
     private trainerService: TrainerService,
     private menu: MenuController,
     private viewService: ViewService,
-    private offlineService: OfflineService
-  ) {}
+    private offlineService: OfflineService,
+    private userService: UserService
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   ngOnInit() {
     this.subscription = combineLatest([

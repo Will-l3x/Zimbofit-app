@@ -25,11 +25,10 @@
     <div class="sidenav" id="sidenav">
       <ul>
         <li class="center user">
-          <img src="assets/img/man-05.svg" alt="User" />
-          <p>John Doe</p>
+          <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
+          <p>{{user?.name || 'John Doe'}}</p>
         </li>
         <li class="divider"></li>
-        <li class="title">Links</li>
         <li
           *ngFor="let item of appPages"
           class="item"
@@ -37,12 +36,6 @@
         >
           <a routerLink="{{item.url}}">{{item.title}}</a>
         </li>
-
-        <!-- <li class="divider"></li>
-        <li class="title">Projects</li>
-        <li class="item"><a href="#">Project 1</a></li>
-        <li class="item"><a href="#">Project 2</a></li>
-        <li class="item"><a href="#">Project 3</a></li> -->
       </ul>
     </div>
   </ion-content>
@@ -85,13 +78,15 @@
     </ion-list>
   </ion-card>
 
-  <ion-card *ngIf="!user">
+  <ion-card *ngIf="!user" id="login">
     <ion-card-header>
       <h3 text-center>Not Logged In</h3>
     </ion-card-header>
     <ion-card-content>
       <p>Please Login to Save and Schedule workouts 💪</p>
-      <ion-button size="block" routerLink="/login"> Login </ion-button>
+      <ion-button shape="round" size="block" routerLink="/login">
+        Login
+      </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

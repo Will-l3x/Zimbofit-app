@@ -1,9 +1,12 @@
+/* eslint-disable @angular-eslint/component-selector */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TrainerService } from '../../services/trainer.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, combineLatest } from 'rxjs';
 import { OfflineService } from '../../services/offline.service';
 import { ViewService } from '../../services/view.service';
+import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'trainer-detail',
@@ -15,11 +18,58 @@ export class TrainerDetailPage implements OnInit, OnDestroy {
   subscription: Subscription;
   trainer;
   viewed = false;
+  page = 'Trainer Details';
+  appPages = [
+    {
+      title: 'Dashboard',
+      url: '/app/tabs/start',
+      icon: 'play',
+      requiresUser: true,
+    },
+    {
+      title: 'Programs',
+      url: '/app/tabs/programs',
+      icon: 'fitness',
+      count: 0,
+    },
+    {
+      title: 'Trainers',
+      url: '/app/tabs/trainers',
+      icon: 'unlock',
+      count: 0,
+    },
 
-  constructor(private route: ActivatedRoute,
+    {
+      title: 'Schedules',
+      url: '/app/tabs/schedule',
+      icon: 'calendar',
+    },
+    {
+      title: 'Speakers',
+      url: '/app/tabs/speakers',
+      icon: 'contacts',
+    },
+    {
+      title: 'Map',
+      url: '/app/tabs/map',
+      icon: 'map',
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle',
+    },
+  ];
+  user;
+  constructor(
+    private route: ActivatedRoute,
     private offlineService: OfflineService,
+    private userService: UserService,
     private viewService: ViewService,
-    private trainerService: TrainerService) { }
+    private trainerService: TrainerService
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('trainerId');
@@ -37,6 +87,8 @@ export class TrainerDetailPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.subscription) this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

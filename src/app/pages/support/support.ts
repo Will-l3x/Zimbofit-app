@@ -12,6 +12,7 @@ import {
 import { SupportService } from '../../services/support.service';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'page-support',
@@ -34,24 +35,6 @@ export class SupportPage {
       title: 'Programs',
       url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
@@ -89,7 +72,9 @@ export class SupportPage {
     private menu: MenuController,
     private userService: UserService,
     private router: Router
-  ) {}
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   async ionViewDidEnter() {
     this.userService.getCurrentUser().subscribe((user) => (this.user = user));

@@ -38,24 +38,6 @@ export class ProgramsPage implements OnInit, OnDestroy {
       count: 0,
     },
     {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
-      count: 0,
-    },
-    {
       title: 'Trainers',
       url: '/app/tabs/trainers',
       icon: 'unlock',
@@ -83,13 +65,16 @@ export class ProgramsPage implements OnInit, OnDestroy {
       icon: 'information-circle',
     },
   ];
+  user;
   constructor(
     private userService: UserService,
     private popoverCtrl: PopoverController,
     private menu: MenuController,
     private router: Router,
     public modalCtrl: ModalController
-  ) {}
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   ngOnInit() {
     this.subscription = this.userService

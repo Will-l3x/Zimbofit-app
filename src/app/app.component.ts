@@ -14,6 +14,7 @@ import { UserLocationService } from './services/user-location.service';
 import { UserService } from './services/user.service';
 import { WorkoutService } from './services/workout.service';
 import { Storage } from '@ionic/storage';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -26,61 +27,43 @@ export class AppComponent implements OnInit, OnDestroy {
   appPages = [
     {
       title: 'Dashboard',
-      url: '/app/home/dashboard',
+      url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,
     },
     {
       title: 'Programs',
-      url: '/app/home/programs',
+      url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/home/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/home/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/home/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
       title: 'Trainers',
-      url: '/app/home/trainers',
+      url: '/app/tabs/trainers',
       icon: 'unlock',
       count: 0,
     },
 
-    // {
-    //   title: 'Schedules',
-    //   url: '/app/home/schedule',
-    //   icon: 'calendar'
-    // },
-    // {
-    //   title: 'Speakers',
-    //   url: '/app/home/speakers',
-    //   icon: 'contacts'
-    // },
-    // {
-    //   title: 'Map',
-    //   url: '/app/home/map',
-    //   icon: 'map'
-    // },
-    // {
-    //   title: 'About',
-    //   url: '/app/home/about',
-    //   icon: 'information-circle'
-    // }
+    {
+      title: 'Schedules',
+      url: '/app/tabs/schedule',
+      icon: 'calendar',
+    },
+    {
+      title: 'Speakers',
+      url: '/app/tabs/speakers',
+      icon: 'contacts',
+    },
+    {
+      title: 'Map',
+      url: '/app/tabs/map',
+      icon: 'map',
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle',
+    },
   ];
   loggedIn = false;
 
@@ -104,6 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private trainerService: TrainerService,
     private userLocationService: UserLocationService
   ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
     this.initializeApp();
   }
 

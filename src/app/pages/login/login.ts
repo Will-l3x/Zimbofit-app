@@ -101,7 +101,7 @@ export class LoginPage implements OnInit {
     const auth = await this.windowRef.confirmationResult.confirm(
       this.verificationCode
     );
-    console.log(auth);
+    // console.log(auth);
     this.user = auth.user;
     await this.processUser(auth);
   }
@@ -111,7 +111,7 @@ export class LoginPage implements OnInit {
       .getCurrentUser()
       .pipe(take(1))
       .toPromise();
-    console.log(user);
+    // console.log(user);
     if (user && user.profile_complete) {
       this.userLocationService.updateUserlocation();
       this.router.navigateByUrl('/app/tabs/start');

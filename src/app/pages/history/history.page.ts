@@ -10,6 +10,7 @@ import { CategoryService } from '../../services/category.service';
 import { ViewService } from '../../services/view.service';
 import { LoginPopoverComponent } from '../../shared/components/login-popover/login-popover.component';
 import { WorkoutSessionService } from '../../services/workout-session.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'history',
@@ -33,24 +34,6 @@ export class HistoryPage implements OnInit {
       title: 'Programs',
       url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
@@ -81,6 +64,7 @@ export class HistoryPage implements OnInit {
       icon: 'information-circle',
     },
   ];
+  user;
   constructor(
     private workoutService: WorkoutSessionService,
     private userService: UserService,
@@ -88,7 +72,9 @@ export class HistoryPage implements OnInit {
     private popoverCtrl: PopoverController,
     private menu: MenuController,
     private viewService: ViewService
-  ) {}
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(async (user) => {
@@ -118,14 +104,16 @@ export class HistoryPage implements OnInit {
       ([sessions, categories]) => {
         this.sessions = sessions;
 
-        const groups = groupBy(this.sessions, (session) => moment(session.timestamp).calendar(null, {
+        const groups = groupBy(this.sessions, (session) =>
+          moment(session.timestamp).calendar(null, {
             sameDay: '[Today]',
             nextDay: '[Tomorrow]',
             nextWeek: 'dddd',
             lastDay: '[Yesterday]',
             lastWeek: '[Last] dddd',
             sameElse: 'DD/MM/YYYY',
-          }));
+          })
+        );
 
         this.sessionGroups = [];
         for (const key in groups) {

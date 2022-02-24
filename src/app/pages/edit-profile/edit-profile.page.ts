@@ -37,24 +37,6 @@ export class EditProfilePage implements OnInit, OnDestroy {
       count: 0,
     },
     {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
-      count: 0,
-    },
-    {
       title: 'Trainers',
       url: '/app/tabs/trainers',
       icon: 'unlock',
@@ -82,13 +64,16 @@ export class EditProfilePage implements OnInit, OnDestroy {
       icon: 'information-circle',
     },
   ];
+  user;
   page = 'Edit Profile';
   constructor(
     private userService: UserService,
     private categoryService: CategoryService,
     private menu: MenuController,
     private router: Router
-  ) {}
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
   ngOnInit() {
     this.userSubscription = this.userService
       .getCurrentUser()

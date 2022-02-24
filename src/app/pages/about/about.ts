@@ -2,6 +2,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { MenuController, PopoverController } from '@ionic/angular';
+import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { take } from 'rxjs/operators';
 
 import { PopoverPage } from '../about-popover/about-popover';
 
@@ -23,24 +25,6 @@ export class AboutPage {
       title: 'Programs',
       url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
@@ -71,11 +55,15 @@ export class AboutPage {
       icon: 'information-circle',
     },
   ];
+  user;
   page = 'About';
   constructor(
     public popoverCtrl: PopoverController,
-    private menu: MenuController
-  ) {}
+    private menu: MenuController,
+    private userService: UserService
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
   sidenavOpen() {
     this.menu.enable(true, 'menu-content-about');
     this.menu.open('menu-content-about');

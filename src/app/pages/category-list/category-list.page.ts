@@ -5,6 +5,8 @@ import { WorkoutService } from '../../services/workout.service';
 import { combineLatest, Subscription } from 'rxjs';
 import { ViewService } from '../../services/view.service';
 import { MenuController } from '@ionic/angular';
+import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'category-list',
@@ -27,24 +29,6 @@ export class CategoryListPage implements OnInit, OnDestroy {
       title: 'Programs',
       url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
@@ -75,12 +59,16 @@ export class CategoryListPage implements OnInit, OnDestroy {
       icon: 'information-circle',
     },
   ];
+  user;
   constructor(
     private categoryService: CategoryService,
     private menu: MenuController,
     private workoutService: WorkoutService,
-    private viewService: ViewService
-  ) {}
+    private viewService: ViewService,
+    private userService: UserService
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   ngOnInit() {
     const categories$ = this.categoryService.getCategories();

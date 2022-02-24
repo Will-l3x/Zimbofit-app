@@ -39,24 +39,6 @@ export class ProfilePage implements OnInit, OnDestroy {
       count: 0,
     },
     {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
-      count: 0,
-    },
-    {
       title: 'Trainers',
       url: '/app/tabs/trainers',
       icon: 'unlock',
@@ -93,7 +75,9 @@ export class ProfilePage implements OnInit, OnDestroy {
     private menu: MenuController,
     private popoverCtrl: PopoverController,
     private router: Router
-  ) {}
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   ngOnInit() {
     const user$ = this.userService.getCurrentUser();

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { SupportService } from '../../services/support.service';
 import { Subscription } from 'rxjs';
 import { MenuController } from '@ionic/angular';
+import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'queries',
@@ -24,24 +26,6 @@ export class QueriesPage implements OnInit {
       title: 'Programs',
       url: '/app/tabs/programs',
       icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Workouts',
-      url: '/app/tabs/workouts',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Exercises',
-      url: '/app/tabs/exercises',
-      icon: 'fitness',
-      count: 0,
-    },
-    {
-      title: 'Categories',
-      url: '/app/tabs/categories',
-      icon: 'unlock',
       count: 0,
     },
     {
@@ -72,11 +56,14 @@ export class QueriesPage implements OnInit {
       icon: 'information-circle',
     },
   ];
-
+  user;
   constructor(
     private supportService: SupportService,
-    private menu: MenuController
-  ) {}
+    private menu: MenuController,
+    private userService: UserService
+  ) {
+    this.user = this.userService.getCurrentUser().pipe(take(1)).toPromise();
+  }
 
   ngOnInit() {
     this.subscription = this.supportService
