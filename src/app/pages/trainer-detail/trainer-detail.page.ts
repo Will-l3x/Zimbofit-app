@@ -4,8 +4,8 @@ import { TrainerService } from '../../services/trainer.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, combineLatest } from 'rxjs';
 import { OfflineService } from '../../services/offline.service';
-import { ViewService } from '../../services/view.service';
-import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { ViewService } from '../../services/view.service';import { UserService } from '../../services/user.service';
+
 import { take } from 'rxjs/operators';
 
 @Component({

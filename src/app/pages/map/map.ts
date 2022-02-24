@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ConferenceData } from '../../providers/conference-data';
-import { MenuController, Platform } from '@ionic/angular';
-import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { MenuController, Platform } from '@ionic/angular';import { UserService } from '../../services/user.service';
+
 import { take } from 'rxjs/operators';
 
 @Component({

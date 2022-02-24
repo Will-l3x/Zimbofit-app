@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { MenuController, PopoverController } from '@ionic/angular';
-import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { MenuController, PopoverController } from '@ionic/angular';import { UserService } from '../../services/user.service';
+
 import { take } from 'rxjs/operators';
 
 import { PopoverPage } from '../about-popover/about-popover';

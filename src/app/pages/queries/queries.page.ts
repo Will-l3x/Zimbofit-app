@@ -2,8 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SupportService } from '../../services/support.service';
 import { Subscription } from 'rxjs';
-import { MenuController } from '@ionic/angular';
-import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { MenuController } from '@ionic/angular';import { UserService } from '../../services/user.service';
+
 import { take } from 'rxjs/operators';
 
 @Component({

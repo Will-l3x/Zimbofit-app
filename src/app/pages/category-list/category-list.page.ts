@@ -5,7 +5,7 @@ import { WorkoutService } from '../../services/workout.service';
 import { combineLatest, Subscription } from 'rxjs';
 import { ViewService } from '../../services/view.service';
 import { MenuController } from '@ionic/angular';
-import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { UserService } from '../../services/user.service';
 import { take } from 'rxjs/operators';
 
 @Component({

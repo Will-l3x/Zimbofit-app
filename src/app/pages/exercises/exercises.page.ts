@@ -7,8 +7,8 @@ import { CategoryService } from '../../services/category.service';
 import { Subscription, combineLatest, BehaviorSubject } from 'rxjs';
 import { CategoryFilterComponent } from '../../shared/components/category-filter/category-filter.component';
 import { ViewService } from '../../services/view.service';
-import { Router } from '@angular/router';
-import { UserService } from 'android/app/build/intermediates/merged_assets/debug/out/public/app/services/user.service';
+import { Router } from '@angular/router';import { UserService } from '../../services/user.service';
+
 import { take } from 'rxjs/operators';
 
 @Component({
