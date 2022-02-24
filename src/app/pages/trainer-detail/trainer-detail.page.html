@@ -39,11 +39,39 @@
   </ion-content>
 </ion-menu>
 <ion-content id="main-content-tra" padding class="outer-content">
+  <div class="trainer" *ngIf="trainer?.id">
+    <div class="card">
+      <div class="image-box">
+        <img src="{{ trainer?.image_url }}" />
+      </div>
+    </div>
+  </div>
   <div *ngIf="trainer?.id" class="ion-text-center">
+    <ion-card>
+      <ion-row
+        class="ion-justify-content-center"
+        style="border-top: 1px solid #dddddd; padding: 20px"
+      >
+        <ion-col size="6" class="ion-text-left">
+          <app-rating
+            [targetId]="trainer?.id"
+            targetType="trainer"
+            [targetName]="trainer?.name"
+          ></app-rating>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
+          <app-like
+            [targetId]="trainer?.id"
+            targetType="trainer"
+            [targetName]="trainer?.name"
+          ></app-like>
+        </ion-col>
+      </ion-row>
+    </ion-card>
     <ion-avatar *ngIf="!offline" class="avatar">
       <img [src]="trainer?.image_url" [alt]="trainer?.name" />
     </ion-avatar>
-    <ion-card style="background: #ffffff; padding-top: 1.5rem">
+    <ion-card style="padding-top: 1.5rem">
       <ion-list>
         <ion-item>
           <ion-icon slot="start" name="star"></ion-icon>
@@ -72,29 +100,6 @@
           <p>{{trainer?.description}}</p>
         </ion-item>
       </ion-list>
-    </ion-card>
-
-    <ion-card style="background: #ffffff">
-      <ion-row
-        padding
-        class="ion-justify-content-center"
-        style="border-top: 1px solid #dddddd"
-      >
-        <ion-col size="6" class="ion-text-left">
-          <app-rating
-            [targetId]="trainer?.id"
-            targetType="trainer"
-            [targetName]="trainer?.name"
-          ></app-rating>
-        </ion-col>
-        <ion-col size="6" class="ion-text-center">
-          <app-like
-            [targetId]="trainer?.id"
-            targetType="trainer"
-            [targetName]="trainer?.name"
-          ></app-like>
-        </ion-col>
-      </ion-row>
     </ion-card>
   </div>
 </ion-content>
