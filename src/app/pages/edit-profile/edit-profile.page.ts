@@ -23,9 +23,14 @@ export class EditProfilePage implements OnInit, OnDestroy {
   CURRENT_USER = 'current_user';
   userSubscription: Subscription;
   fieldsSubscription: Subscription;
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,

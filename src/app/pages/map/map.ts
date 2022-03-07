@@ -13,9 +13,14 @@ import { take } from 'rxjs/operators';
 export class MapPage implements AfterViewInit {
   @ViewChild('mapCanvas', { static: true }) mapElement: ElementRef;
   page = 'Maps';
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,

@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProgramService } from '../../../../services/program.service';
 import { Subscription, BehaviorSubject, combineLatest } from 'rxjs';
 import { ViewService } from '../../../../services/view.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'program-list',
@@ -16,26 +16,28 @@ export class ProgramListComponent implements OnInit, OnDestroy {
   search$: BehaviorSubject<string> = new BehaviorSubject('');
   subscription: Subscription;
   viewed = false;
-
+  categoryId;
   constructor(
     private programService: ProgramService,
+    private route: ActivatedRoute,
     private viewService: ViewService,
-    private router: Router,
-  ) {}
+    private router: Router
+  ) {
+    this.categoryId = this.route.snapshot.paramMap.get('categoryId');
+  }
 
   ngOnInit() {
     this.subscription = combineLatest([
       this.programService.getPrograms(),
       this.search$,
     ]).subscribe(([programs, search]) => {
+      this.programs = programs.filter((w) => w.category_id === this.categoryId);
+
       if (search && search.trim()) {
-        this.programs = programs.filter((program) =>
+        this.programs = this.programs.filter((program) =>
           program.name.toLowerCase().includes(search.toLowerCase())
         );
-      } else {
-        this.programs = programs;
       }
-
       if (!this.viewed) {
         this.viewService.viewItems('programs');
         this.viewed = true;
@@ -51,7 +53,7 @@ export class ProgramListComponent implements OnInit, OnDestroy {
     this.search$.next(query);
   }
   goToDetailPage(id: string) {
-    this.router.navigate(['/app/tabs/programs/program/', id]);
+    this.router.navigate([`/app/tabs/programs/${this.categoryId}/program/`, id]);
   }
 
   presentFilter() {}

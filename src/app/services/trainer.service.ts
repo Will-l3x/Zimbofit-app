@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +21,7 @@ export class TrainerService {
     }
 
     getTrainers(): Observable<any[]> {
-        return this.trainerCollection.valueChanges().pipe();
+        return this.trainerCollection.valueChanges().pipe(take(1));
     }
 
     getNewId() {

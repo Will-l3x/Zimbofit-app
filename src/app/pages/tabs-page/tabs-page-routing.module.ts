@@ -9,6 +9,13 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('../dashboard/dashboard.module').then(
+            (m) => m.DashboardPageModule
+          ),
+      },
+      {
         path: 'map',
         children: [
           {
@@ -29,7 +36,7 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'programs',
+        path: 'programs/:categoryId',
         children: [
           {
             path: '',

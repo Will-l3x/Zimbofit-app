@@ -31,9 +31,11 @@ ion-header {
     }
 
     .avatar {
-      width: 35px;
-      height: 35px;
-      background-color: var(--ion-color-light);
+      width: 28px;
+      height: 28px;
+      background-color: var(--ion-color-secondary-contrast);
+      float: right;
+      margin-right: 20px;
       border-radius: 50%;
       display: flex;
       align-items: flex-end;
@@ -126,101 +128,6 @@ ion-menu {
     }
   }
 }
-
-ion-content#main-content-cat {
-  //gallery boxs
-  .box:hover {
-    box-shadow: 15px 15px 13px rgba($color: #555, $alpha: 0.3);
-    transition: 0.4s;
-    transform: translate(-1%, -1%);
-  }
-  .box {
-    position: relative;
-    height: 250px;
-    box-shadow: 3px 3px 10px rgba($color: #555, $alpha: 0.5);
-    border-radius: 8px;
-    margin-bottom: 7%;
-    transition: 1s;
-
-    a:hover .box__title {
-      height: 35%;
-      transition: 1s;
-
-      p {
-        opacity: 1;
-      }
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .box__title {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 25%;
-      background-color: #f6f6f6;
-      border-radius: 0 0 8px 8px;
-      vertical-align: middle;
-      transition: 0.5s;
-      transition-timing-function: ease-out;
-
-      p {
-        opacity: 0;
-        text-align: center;
-        font-size: 0.8em;
-        margin: 0;
-        transition-delay: 0.2s;
-        transition: 0.2s;
-        transition-timing-function: ease-out;
-      }
-
-      h6 {
-        text-align: center;
-        text-transform: uppercase;
-        margin: 7% 0 0 0;
-        font-size: 16px;
-      }
-    }
-  }
-
-  //add new box
-  .add_box {
-    @extend.box;
-    background-color: #f9f9f9;
-
-    div {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    svg {
-      display: block;
-      margin: auto;
-      margin-top: 23.5%;
-      transition: 0.3s;
-      transition-timing-function: ease-out;
-    }
-
-    .add_box__title {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 60%;
-
-      h6 {
-        text-transform: uppercase;
-      }
-    }
-
-    div:hover svg {
-      margin-top: 21.5%;
-    }
-  }
+ion-content#main-content-dash{
+  
 }

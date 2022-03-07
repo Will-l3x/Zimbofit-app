@@ -21,7 +21,8 @@
           <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
           <p>{{user?.name || 'John Doe'}}</p>
         </li>
-        <li class="divider"></li>=
+        <li class="divider"></li>
+        =
         <li
           *ngFor="let item of appPages"
           class="item"
@@ -32,21 +33,37 @@
 
         <!-- <li class="divider"></li>
         <li class="title">Projects</li>
-        <li class="item"><a href="#">Project 1</a></li>
-        <li class="item"><a href="#">Project 2</a></li>
-        <li class="item"><a href="#">Project 3</a></li> -->
+        <li class="item"><div class="w-full h-full">Project 1</div></li>
+        <li class="item"><div class="w-full h-full">Project 2</div></li>
+        <li class="item"><div class="w-full h-full">Project 3</div></li> -->
       </ul>
     </div>
   </ion-content>
 </ion-menu>
 <ion-content id="main-content-cat">
-  <ion-list>
-    <ion-item *ngFor="let category of categories">
-      <ion-note slot="start"> {{category.workouts?.length}} </ion-note>
-      <ion-label>{{category.name}}</ion-label>
-      <!-- <ion-badge color="secondary" *ngIf="category.workouts.length">
-        {{category.workouts?.length}}
-      </ion-badge> -->
-    </ion-item>
-  </ion-list>
+  <div class="grid grid-cols-1 gap-5 p-5">
+    <div *ngFor="let category of categories" class="box">
+      <a href="/app/tabs/programs/{{category.id}}">
+        <img src="assets/img/home/Lifestyle 05.jpg" alt="" />
+        <div class="box__title">
+          <h6 class="capitalize text-slate-900">{{category.name}}</h6>
+          <p class="text-primary"> {{category.programs?.length}} programs</p>
+        </div>
+      </a>
+    </div>
+    <!-- <div class="add_box">
+      <div class="w-full h-full">
+        <svg width="40px" height="40px">
+          <path
+            fill-rule="evenodd"
+            fill="rgb(170, 170, 170)"
+            d="M22.000,10.000 L18.000,10.000 L18.000,18.000 L10.000,18.000 L10.000,22.000 L18.000,22.000 L18.000,30.000 L22.000,30.000 L22.000,22.000 L30.000,22.000 L30.000,18.000 L22.000,18.000 L22.000,10.000 ZM20.000,-0.000 C8.960,-0.000 -0.000,8.960 -0.000,20.000 C-0.000,31.040 8.960,40.000 20.000,40.000 C31.040,40.000 40.000,31.040 40.000,20.000 C40.000,8.960 31.040,-0.000 20.000,-0.000 ZM20.000,36.000 C11.180,36.000 4.000,28.820 4.000,20.000 C4.000,11.180 11.180,4.000 20.000,4.000 C28.820,4.000 36.000,11.180 36.000,20.000 C36.000,28.820 28.820,36.000 20.000,36.000 Z"
+          />
+        </svg>
+        <div class="add_box__title">
+          <h6>Add category</h6>
+        </div>
+      </div>
+    </div> -->
+  </div>
 </ion-content>

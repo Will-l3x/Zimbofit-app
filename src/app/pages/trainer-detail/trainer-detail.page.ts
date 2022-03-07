@@ -19,9 +19,14 @@ export class TrainerDetailPage implements OnInit, OnDestroy {
   trainer;
   viewed = false;
   page = 'Trainer Details';
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,

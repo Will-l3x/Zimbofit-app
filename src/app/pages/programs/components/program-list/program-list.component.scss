@@ -1,10 +1,69 @@
 .wrapper {
   margin: 20px;
-}
-ion-grid,
-ion-col{
-  padding: 0 ;
-}
-ion-col{
-  margin-bottom: 12px;
+
+  .card {
+    width: 100%;
+    display: flex;
+    .card_image {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      box-shadow: 1px 1px 6px 1.2px rgba(0, 0, 0, 0.25),
+        -1px -1px 6px 1.2px rgba(0, 0, 0, 0.22);
+      cursor: pointer;
+      transition: 0.4s;
+      img {
+        width: inherit;
+        height: inherit;
+        border-radius: 20px;
+        object-fit: cover;
+      }
+    }
+    .card_text {
+      margin-top: 20px;
+      margin-left: 20px;
+      .pricing,
+      .likes {
+        display: flex;
+        align-items: center;
+      }
+      .pricing {
+        justify-content: space-between;
+      }
+      .likes {
+        justify-content: flex-start;
+      }
+      .pricing {
+        h2 {
+          margin-right: 12px;
+          font-weight: 500;
+          font-size: 12px;
+          //color: var(--ion-color-warning);
+
+          color: var(--ion-color-warning);
+        }
+        h1 {
+          font-weight: 700;
+          font-size: 14px;
+        }
+      }
+      .likes {
+        font-size: 12px;
+        font-weight: 700;
+        .likes-content {
+          ion-icon {
+            color: var(--ion-color-warning);
+          }
+        }
+        span {
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+  .card-image:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+      -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+  }
 }

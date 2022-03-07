@@ -1,11 +1,11 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button *ngIf="user" tab="start">
-      <ion-icon name="play"></ion-icon>
+    <ion-tab-button tab="categories">
+      <ion-icon name="home"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="programs">
-      <ion-icon name="fitness"></ion-icon>
+    <ion-tab-button *ngIf="user" tab="start">
+      <ion-icon name="play"></ion-icon>
     </ion-tab-button>
 
     <ion-tab-button tab="history">

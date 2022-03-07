@@ -17,9 +17,14 @@ export class CartPage implements OnInit {
   total = 0;
   rate = 1;
   page = 'Cart';
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,

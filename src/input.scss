@@ -1,0 +1,242 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  * {
+    font-family: "Plex";
+  }
+
+  ion-searchbar {
+    .searchbar-input-container {
+      height: 56px !important;
+      input {
+        padding-top: 14px !important;
+        padding-left: 40px !important;
+        padding-bottom: 12px !important;
+        font-size: 18px !important;
+      }
+      .searchbar-search-icon {
+        top: 15px !important;
+        left: 10px !important;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+
+  app-category-item {
+    flex: 0 0 auto;
+    margin-right: 20px;
+  }
+  app-rating,
+  app-like {
+    display: flex;
+    align-items: center;
+  }
+
+  .filter-orange {
+    filter: invert(56%) sepia(25%) saturate(5625%) hue-rotate(350deg)
+      brightness(98%) contrast(98%);
+  }
+  .filter-orange-contrast {
+    filter: invert(89%) sepia(13%) saturate(1195%) hue-rotate(325deg)
+      brightness(102%) contrast(99%);
+  }
+  .filter-orange-light {
+    filter: invert(61%) sepia(75%) saturate(689%) hue-rotate(333deg)
+      brightness(102%) contrast(97%);
+  }
+  .filter-orange-dark {
+    filter: invert(38%) sepia(78%) saturate(1260%) hue-rotate(354deg)
+      brightness(92%) contrast(100%);
+  }
+  .filter-slate {
+    filter: invert(19%) sepia(54%) saturate(360%) hue-rotate(174deg)
+      brightness(98%) contrast(85%);
+  }
+  .filter-slate-contrast {
+    filter: invert(97%) sepia(3%) saturate(1790%) hue-rotate(182deg)
+      brightness(100%) contrast(88%);
+  }
+  .filter-slate-light {
+    filter: invert(48%) sepia(17%) saturate(541%) hue-rotate(176deg)
+      brightness(89%) contrast(93%);
+  }
+  .filter-slate-dark {
+    filter: invert(8%) sepia(11%) saturate(3544%) hue-rotate(185deg)
+      brightness(91%) contrast(97%);
+  }
+  .filter-white {
+    filter: invert(92%) sepia(79%) saturate(15%) hue-rotate(11deg)
+      brightness(105%) contrast(100%);
+  }
+  .filter-off-white {
+    filter: invert(86%) sepia(1%) saturate(1855%) hue-rotate(196deg)
+      brightness(115%) contrast(97%);
+  }
+
+  .navbar {
+    @apply w-full h-[15vh] m-auto px-20 flex items-center absolute top-0;
+  }
+  .navbar nav {
+    @apply flex pl-[60px];
+  }
+  .navbar nav ul li {
+    @apply inline-block list-none mx-5;
+  }
+  .navbar nav ul li a {
+    @apply no-underline;
+  }
+
+  .hero-bg {
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 2s ease-in forwards;
+  }
+
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-150px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  .animate-fadeInLeft {
+    animation: fadeInLeft 1.2s both;
+  }
+
+  @keyframes fadeInTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-150px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-fadeInTop {
+    animation: fadeInTop 1.2s both;
+  }
+
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(150px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  .animate-fadeInRight {
+    animation: fadeInRight 1.2s both;
+  }
+
+  @keyframes fadeInBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(150px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-fadeInBottom {
+    animation: fadeInBottom 1.2s both;
+  }
+
+  .title:nth-child(1) {
+    @apply text-transparent;
+    -webkit-text-stroke: 2px #ea580c;
+  }
+
+  .title:nth-child(2) {
+    color: #ea580c;
+    animation: textFill 4s ease-in-out infinite;
+  }
+
+  @keyframes textFill {
+    0%,
+    100% {
+      clip-path: polygon(
+        0% 46%,
+        16% 43%,
+        33% 50%,
+        54% 60%,
+        70% 63%,
+        84% 59%,
+        100% 52%,
+        100% 100%,
+        0% 100%
+      );
+    }
+
+    50% {
+      clip-path: polygon(
+        0% 60%,
+        15% 65%,
+        34% 64%,
+        51% 62%,
+        67% 50%,
+        84% 45%,
+        100% 46%,
+        100% 100%,
+        0% 100%
+      );
+    }
+  }
+}

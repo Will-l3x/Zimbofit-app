@@ -20,9 +20,14 @@ export class TrainerListPage implements OnInit, OnDestroy {
   trainers: any[];
   viewed = false;
   page = 'Trainers';
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,

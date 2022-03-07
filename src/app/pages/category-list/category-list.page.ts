@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
-import { WorkoutService } from '../../services/workout.service';
+import { ProgramService } from '../../services/program.service';
 import { combineLatest, Subscription } from 'rxjs';
 import { ViewService } from '../../services/view.service';
 import { MenuController } from '@ionic/angular';
@@ -18,9 +18,14 @@ export class CategoryListPage implements OnInit, OnDestroy {
   subscription: Subscription;
   viewed = false;
   page = 'Categories';
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,
@@ -63,7 +68,7 @@ export class CategoryListPage implements OnInit, OnDestroy {
   constructor(
     private categoryService: CategoryService,
     private menu: MenuController,
-    private workoutService: WorkoutService,
+    private programService: ProgramService,
     private viewService: ViewService,
     private userService: UserService
   ) {
@@ -72,12 +77,12 @@ export class CategoryListPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     const categories$ = this.categoryService.getCategories();
-    const workouts$ = this.workoutService.getWorkouts();
+    const programs$ = this.programService.getPrograms();
 
-    this.subscription = combineLatest([categories$, workouts$]).subscribe(
-      ([categories, workouts]) => {
+    this.subscription = combineLatest([categories$, programs$]).subscribe(
+      ([categories, programs]) => {
         this.categories = categories.map((cat) => {
-          cat.workouts = workouts.filter((w) => w.category_id === cat.id);
+          cat.programs = programs.filter((w) => w.category_id === cat.id);
           return cat;
         });
 

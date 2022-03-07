@@ -32,9 +32,14 @@ export class StartPage implements OnInit, OnDestroy {
   page = 'Dashboard';
   subscription: Subscription;
   popover: any;
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,

@@ -3,23 +3,34 @@
     (searchText)="onSearch($event)"
     [placeholder]="Search"
   ></app-searchbar>
-  <ion-grid>
-    <ion-row>
-      <ion-col
-        *ngFor="let program of programs | slice: 0:limit"
-        size-lg="3"
-        size-md="4"
-        size-sm="6"
-        size-xs="12"
-      >
-        <app-program-list-item
-          [program]="program"
-          (clicked)="goToDetailPage(program.id)"
-        ></app-program-list-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+  <div class="grid grid-cols-1 gap-3">
+    <div class="card py-2" *ngFor="let program of programs | slice: 0:limit">
+      <div class="card_image">
+        <img src="assets/img/home/Lifestyle 05.jpg" alt="" />
+      </div>
+      <div class="card_text">
+        <div class="pricing">
+          <h1>{{ program?.name }}</h1>
+          <h2>
+            <span *ngIf="!program?.price">Free</span>
+            <span *ngIf="program?.price">{{ program?.price | currency }}</span>
+          </h2>
+        </div>
+        <app-rating
+          [targetId]="program?.id"
+          targetType="program"
+          [targetName]="program?.name"
+          (disabledPage)="(true)"
+        ></app-rating>
+        <app-like
+          [targetId]="program?.id"
+          targetType="program"
+          [targetName]="program?.name"
+          (disabledPage)="(true)"
+        ></app-like>
+      </div>
+    </div>
+  </div>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"

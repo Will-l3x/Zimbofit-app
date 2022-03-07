@@ -24,9 +24,14 @@ export class SupportPage {
   supportMessage: string;
   user: any;
   page = 'Support';
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,

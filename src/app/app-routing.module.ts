@@ -280,7 +280,13 @@ const routes: Routes = [
       import('./screens/exercise-list/exercise-list.module').then(
         (m) => m.ExerciseListPageModule
       ),
+  },  {
+    path: 'menuplan',
+    loadChildren: () => import('./pages/menuplan/menuplan.module').then( m => m.MenuplanPageModule)
   },
+
+
+
 ];
 
 @NgModule({

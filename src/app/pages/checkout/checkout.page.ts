@@ -26,9 +26,14 @@ export class CheckoutPage implements OnInit {
   invoiceId: string;
   invoice: Invoice;
   page = 'Checkout';
-  appPages = [
+   appPages = [
     {
       title: 'Dashboard',
+      url: '/app/tabs/dashboard',
+      icon: 'home',
+    },
+    {
+      title: 'Start',
       url: '/app/tabs/start',
       icon: 'play',
       requiresUser: true,
