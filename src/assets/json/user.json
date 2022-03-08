@@ -1,100 +1,107 @@
 [
-    {
-        "key": "name",
-        "type": "input",
-        "templateOptions": {
-            "placeholder": "Full Name",
-            "label": "Full name",
-            "required": true
+  {
+    "key": "name",
+    "type": "input",
+    "templateOptions": {
+      "placeholder": "Full Name",
+      "label": "Full name",
+      "required": true
+    }
+  },
+  {
+    "key": "phone",
+    "type": "input",
+    "templateOptions": {
+      "type": "phone",
+      "placeholder": "+263 000 000 000",
+      "label": "Phone Number",
+      "required": false,
+      "disabled": true
+    }
+  },
+  {
+    "key": "dob",
+    "type": "input",
+    "templateOptions": {
+      "type": "date",
+      "placeholder": "Select Date",
+      "label": "Date Of Birth",
+      "required": true
+    }
+  },
+  {
+    "key": "gender",
+    "type": "select",
+    "templateOptions": {
+      "placeholder": "Select Gender",
+      "label": "Gender",
+      "required": true,
+      "valueProp": "id",
+      "labelProp": "name",
+      "options": [
+        {
+          "id": "male",
+          "name": "Male"
+        },
+        {
+          "id": "female",
+          "name": "Female"
         }
-    },
-    {
-        "key": "phone",
-        "type": "input",
-        "templateOptions": {
-            "type": "phone",
-            "placeholder": "+263 000 000 000",
-            "label": "Phone Number",
-            "required": false,
-            "disabled": true
-        }
-    },
-    {
-        "key": "dob",
-        "type": "input",
-        "templateOptions": {
-            "type": "date",
-            "placeholder": "Select Date",
-            "label": "Date Of Birth",
-            "required": true
-        }
-    },
-    {
-        "key": "gender",
-        "type": "select",
-        "templateOptions": {
-            "placeholder": "Select Gender",
-            "label": "Gender",
-            "required": true,
-            "valueProp": "id",
-            "labelProp": "name",
-            "options": [
-                {
-                    "id": "male",
-                    "name": "Male"
-                },
-                {
-                    "id": "female",
-                    "name": "Female"
-                }
-            ]
-        }
-    },
-    {
-        "key": "height",
-        "type": "input",
-        "templateOptions": {
-            "type": "number",
-            "placeholder": "Height",
-            "label": "Height (m)",
-            "required": false,
-            "addonRight": {
-                "text": "m"
-            }
-        }
-    },
-    {
-        "key": "weight",
-        "type": "input",
-        "templateOptions": {
-            "type": "number",
-            "placeholder": "Weight",
-            "label": "Weight (kg)",
-            "required": false,
-            "addonRight": {
-                "text": "kg"
-            }
-        }
-    },
-    {
-        "key": "goals",
-        "type": "select",
-        "templateOptions": {
-            "placeholder": "Select goals",
-            "label": "Goals",
-            "multiple": true,
-            "options": [],
-            "valueProp": "id",
-            "labelProp": "name",
-            "required": false,
-            "disabled": false
-        }
-    },
-    { 
-      "key": "image_url",
-      "type": "input",
-      "templateOptions": {
-        "type": "hidden"
+      ]
+    }
+  },
+  {
+    "key": "height",
+    "type": "input",
+    "templateOptions": {
+      "type": "number",
+      "placeholder": "Height",
+      "label": "Height (m)",
+      "required": false,
+      "addonRight": {
+        "text": "m"
       }
     }
+  },
+  {
+    "key": "weight",
+    "type": "input",
+    "templateOptions": {
+      "type": "number",
+      "placeholder": "Weight",
+      "label": "Weight (kg)",
+      "required": false,
+      "addonRight": {
+        "text": "kg"
+      }
+    }
+  },
+  {
+    "key": "goal",
+    "type": "select",
+    "templateOptions": {
+      "placeholder": "Select goals",
+      "label": "Goals",
+      "multiple": true,
+      "valueProp": "id",
+      "labelProp": "name",
+      "required": false,
+      "disabled": false,
+      "options": [
+        { "id": 1, "name": "Weight Loss" },
+        { "id": 2, "name": "Muscle Gain" },
+        { "id": 3, "name": "Improved Flexibility" },
+        { "id": 4, "name": "Increased Endurance" },
+        { "id": 5, "name": "Reduced Pain" },
+        { "id": 6, "name": "Burn More Calories" }
+      ]
+    }
+  },
+  {
+    "key": "image_url",
+    "type": "input",
+    "templateOptions": {
+      "type": "hidden"
+    }
+  }
 ]

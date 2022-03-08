@@ -14,16 +14,16 @@
   side="start"
   type="overlay"
 >
- <li class="user">
-          <div class="text-center">
-            <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
-            <p>{{user?.name || 'John Doe'}}</p>
-          </div>
-        </li>
+  <li class="user">
+    <div class="text-center">
+      <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
+      <p>{{user?.name || 'John Doe'}}</p>
+    </div>
+  </li>
   <ion-content>
     <div class="sidenav" id="sidenav">
       <ul>
-       <li class="user">
+        <li class="user">
           <div class="text-center">
             <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
             <p>{{user?.name || 'John Doe'}}</p>
@@ -75,20 +75,11 @@
             [placeholder]="item.templateOptions.placeholder"
             (required)="item.templateOptions.required"
             value=""
+            [multiple]="item.templateOptions.multiple"
           >
-            <ng-template *ngIf="item.templateOptions.multiple; else single"
-              ><ion-select-option
-                *ngFor="let option of item.templateOptions.options"
-                [value]="{name: option.name, id: option.id}"
-              >
-                {{ option.name }}
-              </ion-select-option></ng-template
-            >
-
             <ion-select-option
-              #single
               *ngFor="let option of item.templateOptions.options"
-              [value]="option.id"
+              [value]="{name: option.name, id: option.id}"
             >
               {{ option.name }}
             </ion-select-option>
