@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button appBackbutton>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+      <!-- <ion-button (click)="sidenavOpen()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>Menu List</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-menu
+  contentId="main-content-menulist"
+  menuId="menu-content-menulist"
+  side="start"
+  type="overlay"
+>
+  <!-- <ion-header>
+    <ion-toolbar>
+      <ion-title>Awesome avocado menu</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <ion-content>
+    <div class="sidenav" id="sidenav">
+      <ul>
+        <li class="user">
+          <div class="text-center">
+            <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
+            <p>{{user?.name || 'John Doe'}}</p>
+          </div>
+        </li>
+        <li class="divider"></li>
+        <li
+          *ngFor="let item of appPages"
+          class="item"
+          [ngClass]="item.title === page ? 'active': ''"
+        >
+          <a routerLink="{{item.url}}">{{item.title}}</a>
+        </li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-menu>
+<ion-content id="main-content-menulist">
+  <ion-list>
+    <ion-item [routerLink]="['/app/tabs/mealplan/1']">
+      <div class="card py-2 grid grid-cols-7 gap-5">
+        <div class="card_image ml-1 col-span-2">
+          <img src="assets/img/home/Lifestyle 05.jpg" alt="" />
+        </div>
+        <div class="card-text flex justify-between py-2 col-span-5">
+          <h1 class="text-base text-slate-900">KETO BUTTER COFFEE SHAKE</h1>
+          <h3 class="text-base ml-3 w-20"><sup>$</sup> 3.00</h3>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item [routerLink]="['/app/tabs/mealplan/1']">
+      <div class="card py-2 grid grid-cols-7 gap-5">
+        <div class="card_image ml-1 col-span-2">
+          <img src="assets/img/home/Lifestyle 05.jpg" alt="" />
+        </div>
+        <div class="card-text flex justify-between py-2 col-span-5">
+          <h1 class="text-base text-slate-900">MUSHROOM OMELET</h1>
+          <h3 class="text-base ml-3 w-20"><sup>$</sup> 3.00</h3>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item [routerLink]="['/app/tabs/mealplan/1']">
+      <div class="card py-2 grid grid-cols-7 gap-5">
+        <div class="card_image ml-1 col-span-2">
+          <img src="assets/img/home/Lifestyle 05.jpg" alt="" />
+        </div>
+        <div class="card-text flex justify-between py-2 col-span-5">
+          <h1 class="text-base text-slate-900">KETO BUTTER COFFEE SHAKE</h1>
+          <h3 class="text-base ml-3 w-20"><sup>$</sup> 3.00</h3>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

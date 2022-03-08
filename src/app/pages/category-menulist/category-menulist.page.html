@@ -9,8 +9,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-menu
-  contentId="main-content-cat"
-  menuId="menu-content-cat"
+  contentId="main-content-cat-menu"
+  menuId="menu-content-cat-menu"
   side="start"
   type="overlay"
 >
@@ -42,14 +42,13 @@
     </div>
   </ion-content>
 </ion-menu>
-<ion-content id="main-content-cat">
+<ion-content id="main-content-cat-menu">
   <div class="grid grid-cols-1 gap-5 p-5">
     <div *ngFor="let category of categories" class="box">
-      <a href="/app/tabs/programs/{{category.id}}">
+      <a href="/app/tabs/menulist/{{category.id}}">
         <img src="assets/img/home/Lifestyle 05.jpg" alt="" />
         <div class="box__title">
           <h6 class="capitalize text-slate-900">{{category.name}}</h6>
-          <p class="text-primary"> {{category.programs?.length}} programs</p>
         </div>
       </a>
     </div>

@@ -16,9 +16,11 @@
   <ion-content>
     <div class="sidenav" id="sidenav">
       <ul>
-        <li class="center user">
-          <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
-          <p>{{user?.name || 'John Doe'}}</p>
+      <li class="user">
+          <div class="text-center">
+            <img [src]="user?.photoUrl ||'assets/img/man-05.svg'" alt="User" />
+            <p>{{user?.name || 'John Doe'}}</p>
+          </div>
         </li>
         <li class="divider"></li>
         <li

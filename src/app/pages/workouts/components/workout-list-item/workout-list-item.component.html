@@ -5,9 +5,9 @@
       alt="{{ workout?.name }}"
     />
   </div>
-  <div class="container">
-    <div class="title">
-      <h1>{{ workout?.name }}</h1>
+  <div class="wrapper">
+    <div class="title1">
+      <h1 class="text-slate-900">{{ workout?.name }}</h1>
       <h2 *ngIf="priceTag">
         <span *ngIf="!workout?.price">Free</span>
         <span *ngIf="workout?.price">{{ workout?.price | currency }}</span>

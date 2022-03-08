@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs-page';
 
-
 const routes: Routes = [
   {
     path: 'tabs',
@@ -75,6 +74,29 @@ const routes: Routes = [
           },
         ],
       },
+
+      {
+        path: 'menulist/:catId',
+        loadChildren: () =>
+          import('../menulist/menulist.module').then(
+            (m) => m.MenulistPageModule
+          ),
+      },
+      {
+        path: 'mealplan/:id',
+        loadChildren: () =>
+          import('../mealplan/mealplan.module').then(
+            (m) => m.MealplanPageModule
+          ),
+      },
+      {
+        path: 'categories-menulist',
+        loadChildren: () =>
+          import('../category-menulist/category-menulist.module').then(
+            (m) => m.CategoryMenulistPageModule
+          ),
+      },
+
       {
         path: 'workouts',
         children: [
@@ -323,7 +345,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TabsPageRoutingModule { }
-
+export class TabsPageRoutingModule {}
