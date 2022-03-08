@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @angular-eslint/component-selector */
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -26,7 +28,7 @@ export class TutorialPage {
 
   startApp() {
     this.router
-      .navigateByUrl('/app/tabs/start')
+      .navigateByUrl('/app/tabs/dashboard')
       .then(() => this.storage.set('ion_did_tutorial', true));
   }
 
@@ -39,7 +41,7 @@ export class TutorialPage {
   ionViewWillEnter() {
     this.storage.get('ion_did_tutorial').then(res => {
       if (res === true) {
-        this.router.navigateByUrl('/app/tabs/start');
+        this.router.navigateByUrl('/app/tabs/dashboard');
       } else {
         if (!this.viewed) {
           this.viewService.viewItems('tutorial');

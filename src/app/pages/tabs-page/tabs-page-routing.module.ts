@@ -336,7 +336,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/app/tabs/programs',
+        redirectTo: '/app/tabs/categories',
         pathMatch: 'full',
       },
     ],

@@ -18,36 +18,14 @@
         srcset=""
       />
     </div>
-    <!-- <div class="overlay">
-      <ion-buttons slot="start">
-        <ion-button appBackbutton>
-          <ion-icon
-            slot="icon-only"
-            color="primary"
-            name="arrow-back"
-          ></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </div> -->
   </div>
-  <div class="container">
+  <div class="wrapper">
     <div class="pricing">
       <h2>{{exercise?.name}}</h2>
       <!-- <h1><sup>$</sup>{{exercise?.price|number:'1.2'}}</h1> -->
     </div>
-    <h1 class="desc">Description</h1>
+    <h1 class="desc mt-5">Description</h1>
     <div class="container__text" style="padding-left: 30px; padding-right: 20px;">
-      <div
-        *ngIf="!offline && exercise?.image_url"
-        style="
-          height: 200px;
-          background-position: center;
-          background-size: contain;
-          background-repeat: no-repeat;
-        "
-        [style.background-image]="'url('+exercise?.image_url+')'"
-      ></div>
-
       <ng-container
         *ngFor="let description of exercise?.descriptions; let i = index"
       >

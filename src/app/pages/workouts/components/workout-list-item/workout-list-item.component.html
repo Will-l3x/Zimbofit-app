@@ -1,21 +1,17 @@
 <ion-item (click)="clicked.emit()">
-  <div slot="start" class="image">
-    <img
-      src="{{ workout?.image_url || 'assets/img/placeholder.png' }}"
-      alt="{{ workout?.name }}"
-    />
-  </div>
-  <div class="wrapper">
-    <div class="title1">
-      <h1 class="text-slate-900">{{ workout?.name }}</h1>
-      <h2 *ngIf="priceTag">
-        <span *ngIf="!workout?.price">Free</span>
-        <span *ngIf="workout?.price">{{ workout?.price | currency }}</span>
-      </h2>
-      <!-- <h1><sup>$</sup>3.00</h1> -->
+  <div class="card py-5 px-1 grid grid-cols-7 gap-5">
+    <div class="card_image ml-1 col-span-2">
+      <img src="assets/img/home/Lifestyle 05.jpg" alt="" />
     </div>
 
-    <div class="reviews">
+    <div class="card_text col-span-5">
+      <div class="pricing">
+        <h1>{{ workout?.name }}</h1>
+        <h2 class="ml-2">
+          <span *ngIf="!workout?.price">Free</span>
+          <span *ngIf="workout?.price">{{ workout?.price | currency }}</span>
+        </h2>
+      </div>
       <app-rating
         [targetId]="workout?.id"
         targetType="workout"

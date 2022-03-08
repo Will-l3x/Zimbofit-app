@@ -114,7 +114,7 @@ export class LoginPage implements OnInit {
     // console.log(user);
     if (user && user.profile_complete) {
       this.userLocationService.updateUserlocation();
-      this.router.navigateByUrl('/app/tabs/start');
+      this.router.navigateByUrl('/app/tabs/dashboard');
     } else if (user) {
       this.router.navigateByUrl('/edit-profile');
       this.userLocationService.updateUserlocation();

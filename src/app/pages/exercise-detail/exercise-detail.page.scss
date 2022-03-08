@@ -52,7 +52,8 @@ ion-content {
       img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center;
       }
     }
     .overlay {
@@ -73,7 +74,7 @@ ion-content {
     }
   }
 
-  .container {
+  .wrapper {
     position: relative;
     background-color: var(--ion-color-light);
     border-radius: $border-radius;

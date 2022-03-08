@@ -90,38 +90,56 @@ ion-content {
       font-size: 20px;
     }
     ion-list {
-    padding-top: 5px;
-    margin-top: 1.2rem;
-     ion-item {
-        .image {
-          height: 80px;
-          width: 80px;
-          margin: 12px 12px 12px 0;
-          border-radius: 8px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 28px 0px,
-            rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-          img {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            object-fit: center;
+      padding-top: 5px;
+      margin-top: 1.2rem;
+      ion-item {
+        .card {
+          .card_image {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 1px 1px 6px 1.2px rgba(0, 0, 0, 0.25),
+              -1px -1px 6px 1.2px rgba(0, 0, 0, 0.22);
+            cursor: pointer;
+            transition: 0.4s;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 20px;
+              object-fit: cover;
+            }
+          }
+          .card_text {
+            margin-top: 5px;
+            .pricing,
+            .likes {
+              display: flex;
+              align-items: center;
+            }
+            .pricing {
+              justify-content: space-between;
+            }
+            .likes {
+              justify-content: flex-start;
+            }
+            .pricing {
+              h2 {
+                margin-right: 12px;
+                font-weight: 500;
+                color: var(--ion-color-warning);
+              }
+            }
           }
         }
-        h3 {
-          margin: 0;
-          font-size: 24px;
-          font-weight: 500;
-          text-transform: capitalize;
-        }
-        ion-button {
-          --background: var(--ion-color-primary);
-          --color: var(--ion-color-primary-contrast);
+        .card-image:hover {
+          transform: scale(0.9, 0.9);
+          box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+            -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
         }
       }
+    }
   }
-  }
-  .container {
+  .wrapper {
     position: relative;
     border-radius: 8px;
     padding: 20px;

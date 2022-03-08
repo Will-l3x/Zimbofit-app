@@ -85,7 +85,7 @@
       </div>
     </div>
     <h1 class="desc">Trainer</h1>
-    <p>{{ program?.trainer?.name || "Takunda Mujuru" }}</p>
+    <p class="p-1">{{ program?.trainer?.name || "Takunda Mujuru" }}</p>
     <div class="trainer" *ngIf="program?.trainer">
       <app-trainer-profile
         [trainer]="program?.trainer"
